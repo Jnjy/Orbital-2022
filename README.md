@@ -1,6 +1,6 @@
 Hello! We are team commflea! :)
 
-Test run 2
+Member: Jin Yuan, Qin Yao
 
 # Getting Started with Create React App
 
