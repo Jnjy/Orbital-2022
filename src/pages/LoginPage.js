@@ -1,8 +1,13 @@
+import { Grid, Paper } from '@mui/material'
 import React from 'react'
 
 function LoginPage() {
   return (
-    <div>LoginPage</div>
+    <Grid>
+      <Paper>
+        <h1>heello</h1>
+      </Paper>
+    </Grid>
   )
 }
 
