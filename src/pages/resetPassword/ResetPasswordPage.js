@@ -1,8 +1,11 @@
 import React from 'react'
+import { useAuth } from '../../hooks/useAuth'
 
 function ResetPasswordPage() {
+  const { user } = useAuth();
+
   return (
-    <div><h1>Reset Password</h1></div>
+    <div>{user.email}</div>
   )
 }
 

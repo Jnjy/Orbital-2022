@@ -1,4 +1,4 @@
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/FirebaseConfig';
 import React, { useState, useEffect, useContext, createContext } from "react";
@@ -7,7 +7,9 @@ import React, { useState, useEffect, useContext, createContext } from "react";
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
+const firebaseAuth = getAuth(app);
+
+const googleAuthProvider = new GoogleAuthProvider();
 
 const authContext = createContext();
 // Provider component that wraps your app and makes auth object ...
@@ -27,7 +29,7 @@ function useProvideAuth() {
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
   const signin = (email, password) => {
-    return auth 
+    return firebaseAuth 
       .signInWithEmailAndPassword(email, password)
       .then((response) => {
         setUser(response.user);
@@ -35,7 +37,7 @@ function useProvideAuth() {
       });
   };
   const signup = (email, password) => {
-    return auth
+    return firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
         setUser(response.user);
@@ -43,32 +45,36 @@ function useProvideAuth() {
       });
   };
   const signout = () => {
-    return auth
+    return firebaseAuth
       .signOut()
       .then(() => {
         setUser(false);
       });
   };
   const sendPasswordResetEmail = (email) => {
-    return auth 
+    return firebaseAuth 
       .sendPasswordResetEmail(email)
       .then(() => {
         return true;
       });
   };
   const confirmPasswordReset = (code, password) => {
-    return auth
+    return firebaseAuth
       .confirmPasswordReset(code, password)
       .then(() => {
         return true;
       });
   };
+  const signInWithGoogle = () => {
+    return signInWithPopup(firebaseAuth, googleAuthProvider);
+  };
+
   // Subscribe to user on mount
   // Because this sets state in the callback it will cause any ...
   // ... component that utilizes this hook to re-render with the ...
   // ... latest auth object.
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
       } else {
@@ -86,5 +92,6 @@ function useProvideAuth() {
     signout,
     sendPasswordResetEmail,
     confirmPasswordReset,
+    signInWithGoogle
   };
 }
