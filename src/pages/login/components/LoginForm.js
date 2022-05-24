@@ -1,5 +1,6 @@
 import { Button, FormControl, Grid, Link, TextField, Typography } from '@mui/material'
 import GoogleButton from 'react-google-button'
+import { Google as GoogleIcon } from '../../../icons/GoogleIcon';
 
 const formFieldStyle = {
     padding:30
@@ -39,7 +40,7 @@ function LoginForm() {
                         </Link>
                     </Typography>
                     <Typography > Don't have an account? {' '}
-                        <Link href="/SignUp" >
+                        <Link href="/signup" >
                             Sign Up 
                         </Link>
                     </Typography>

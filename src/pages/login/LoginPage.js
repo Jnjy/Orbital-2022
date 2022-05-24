@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material'
+import { Grid, Paper, Typography } from '@mui/material'
 import React from 'react'
 import LoginForm from './components/LoginForm';
 
@@ -12,28 +12,34 @@ const paperStyles = {
 const titleStyle = {
   color:"#11AC0E",
   fontWeight: 'bold',
+  marginBottom: '20px'
+}
+
+const subtitleStyle = {
+  fontWeight: 'bold',
+  marginBottom: '30px'
 }
 
 function LoginPage() {
   return (
     <Grid
       container
-      justify="center"
+      style={{
+        height: '100vh'
+      }}
+      justifyContent="center"
       alignItems="center"
       direction="column"
-      spacing={5}
-      // need to think of a way to center the box instead of using padding(hard-coded)
-      style={{
-        paddingTop: '100px'
-      }}
     >
       <Grid item>
-          <Typography style={titleStyle} variant='h3'>CommFlea</Typography>
-          <Typography variant='h5'>Purchase made easier within community</Typography>
+          <Typography variant='h3' style={titleStyle}>CommFlea</Typography>
+          <Typography variant='h5' style={subtitleStyle}>Purchase made easier within community</Typography>
       </Grid>
       <Grid item>
-            <Typography variant='h6'>Login</Typography>
-            <LoginForm />
+        <Paper elevation={3}>
+          <Typography variant='h6' style={{paddingTop: '20px'}}>Login</Typography>
+          <LoginForm />
+        </Paper>
       </Grid>
     </Grid>
   );
