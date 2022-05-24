@@ -1,6 +1,7 @@
 import { Button, FormControl, Grid, Link, TextField, Typography } from '@mui/material'
 import GoogleButton from 'react-google-button'
-import { Google as GoogleIcon } from '../../../icons/GoogleIcon';
+import { useAuth } from '../../../hooks/useAuth'
+import { GoogleIcon } from '../../../icons/GoogleIcon'
 
 const formFieldStyle = {
     padding:30
@@ -15,7 +16,15 @@ const buttonStyle = {
     backgroundColor:'#11AC0E'
 }
 
+const googleButtonStyle = {
+    borderColor: '#11AC0E',
+    color: '#11AC0E',
+    width: 285
+}
+
 function LoginForm() {
+    const { signInWithGoogle } = useAuth();
+    
     return (
         <FormControl>
             <Grid container spacing={2} direction="column" justify="center" alignItems="center" style={formFieldStyle}>
@@ -49,9 +58,9 @@ function LoginForm() {
                     <Typography variant='p'>or</Typography>
                 </Grid>
                 <Grid item>
-                    <GoogleButton
-                        onClick={() => { console.log('Google button clicked') }}
-                    />
+                    <Button variant="outlined" startIcon={<GoogleIcon />} onClick={signInWithGoogle} style={googleButtonStyle}>
+                        Sign in with Google 
+                    </Button>
                 </Grid>
             </Grid>
         </FormControl>
