@@ -1,0 +1,39 @@
+.signupBox {
+    min-height: 100vh;
+}
+
+.title {
+    color:#11AC0E;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+}
+
+.paperHeader {
+    padding-top: 20px;
+}
+
+/* Button Styles */
+.button {
+    width: 285px;
+}
+
+.submit {
+    background-color:#11AC0E;
+}
+
+.googleSignUp {
+    color: #11AC0E;
+    border-color: #11AC0E;
+}
+
+/* Form Styles */
+.formField {
+    padding: 30px;
+}
+
+.formItemBox {
+    width: 300px;
+}
