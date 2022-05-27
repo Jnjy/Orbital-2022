@@ -1,0 +1,15 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  min-width: 250px;
+  padding: 20px 20px;
+  margin: 0 auto auto 0;
+  box-shadow: 0 0 6px hsl(210 14% 90%);
+  background-color: #111827;
+  height: 100%;
+}
+
+h2 {
+  color: white;
+}
