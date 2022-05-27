@@ -1,6 +1,12 @@
 .contentmain {
   display: flex;
-  align-content: center;
-  justify-content: center;
+  align-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
   flex: 1;
+}
+
+p {
+  max-width: 26%;
+  border: 1px solid black;
 }
