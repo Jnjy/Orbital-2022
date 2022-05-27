@@ -1,9 +1,10 @@
-import { Button, Grid, Link, Typography } from '@mui/material'
+import { Alert, Button, Grid, Link, Typography } from '@mui/material'
 import { useAuth } from '../../../hooks/useAuth'
 import { GoogleIcon } from '../../../icons/GoogleIcon'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import TextFieldBox from '../../../components/FormsUI/TextFieldBox'
+import { useState } from 'react'
 
 const formFieldStyle = {
     padding:30
@@ -39,13 +40,24 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 
 function LoginForm() {
-    const { signInWithGoogle } = useAuth();
-    
+    const { signInWithGoogle, signin } = useAuth();
+    const [ error, setError ] = useState('');
+
+    async function handleSubmit(values) {
+        try {
+            setError('');
+            await signin(values.email, values.password);
+        } catch {
+            // console.log('error');
+            setError("Login Failed");
+        }
+    }
+
     return (
         <Formik
             initialValues={{ ...INITIAL_FORM_STATE }}
             validationSchema={FORM_VALIDATION}
-            onSubmit={values => {console.log(values)}}
+            onSubmit={handleSubmit}
         >
             <Form>
                 <Grid container spacing={2} direction="column" justify="center" alignItems="center" style={formFieldStyle}>
@@ -68,17 +80,22 @@ function LoginForm() {
                     <Grid item>
                         <Button onClick={() => console.log("click")} type='submit' color='primary' variant="contained" fullWidth style={buttonStyle}>Log In</Button>
                     </Grid>
-                    <Grid item>
-                        <Typography >
-                            <Link href="/reset-password" >
-                                Forgot password?
-                            </Link>
-                        </Typography>
-                        <Typography > Don't have an account? {' '}
-                            <Link href="/signup" >
-                                Sign Up 
-                            </Link>
-                        </Typography>
+                    <Grid item container>
+                        <Grid item xs={6}>
+                            <Typography variant='p'>
+                                <Link href="/reset-password" >
+                                    Forgot password?
+                                </Link>
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant='p'> 
+                                Don't have an account? {' '}
+                                <Link href="/signup" >
+                                    Sign Up 
+                                </Link>
+                            </Typography>
+                        </Grid>
                     </Grid>
                     <Grid item>
                         <Typography variant='p'>or</Typography>
@@ -89,6 +106,7 @@ function LoginForm() {
                         </Button>
                     </Grid>
                 </Grid>
+                {error && <Alert severity="warning">{error}</Alert>}
             </Form>  
         </Formik>
     )

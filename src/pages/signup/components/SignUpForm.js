@@ -1,9 +1,10 @@
-import { Button, Grid, Typography } from '@mui/material'
+import { Alert, Button, Grid, Typography, Link } from '@mui/material'
 import { useAuth } from '../../../hooks/useAuth'
 import { GoogleIcon } from '../../../icons/GoogleIcon'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import TextFieldBox from '../../../components/FormsUI/TextFieldBox'
+import { useState } from 'react'
 
 const formFieldStyle = {
     padding:30
@@ -40,14 +41,24 @@ const FORM_VALIDATION = Yup.object().shape({
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
     .required('Required')
 })
-function SignUpForm() {
-    const { signInWithGoogle } = useAuth();
 
+function SignUpForm() {
+    const { signInWithGoogle, signup } = useAuth();
+    const [ error, setError ] = useState('');
+
+    async function handleSubmit(values) {
+        try {
+            setError('');
+            await signup(values.email, values.password);
+        } catch {
+            setError('Sign Up Failed');
+        }
+    }
     return (
         <Formik
             initialValues={{ ...INITIAL_FORM_STATE }}
             validationSchema={FORM_VALIDATION}
-            onSubmit={values => {console.log(values)}}
+            onSubmit={handleSubmit}
         >
             <Form>
                 <Grid container spacing={2} direction="column" justify="center" alignItems="center" style={formFieldStyle}>
@@ -77,7 +88,14 @@ function SignUpForm() {
                         required/>
                     </Grid>
                     <Grid item>
-                        <Button onClick={() => console.log("click")} type='submit' color='primary' variant="contained" fullWidth style={buttonStyle}>Sign Up</Button>
+                        <Button type='submit' color='primary' variant="contained" fullWidth style={buttonStyle}>Sign Up</Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant='p'>
+                            <Link href="/login" >
+                                Login instead?
+                            </Link>
+                        </Typography>
                     </Grid>
                     <Grid item>
                         <Typography variant='p'>or</Typography>
@@ -88,8 +106,8 @@ function SignUpForm() {
                         </Button>
                     </Grid>
                 </Grid>
+                {error && <Alert severity="warning">{error}</Alert>}
             </Form>
-            
         </Formik>
     )
 }
