@@ -8,11 +8,11 @@ function Layout(props) {
       <div className={classes.TopBar}>
         <Appbar />
       </div>
-      <div className={classes.content}>
-        <div>
+      <div className={classes.center}>
+        <div classname={classes.sidebar}>
           <Sidebar />
         </div>
-        <main>{props.children}</main>
+        <main classname={classes.content}>{props.children}</main>
       </div>
     </div>
   );

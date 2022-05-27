@@ -4,7 +4,20 @@
   flex: 1;
 }
 
-.content {
+.center {
   display: flex;
   flex: 1;
+}
+
+.sidebar {
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.content {
+  width: calc(100vw - 200px);
+  left: 200px;
+  position: relative;
 }
