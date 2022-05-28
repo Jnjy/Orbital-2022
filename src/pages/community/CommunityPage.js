@@ -10,10 +10,6 @@ function CommunityPage() {
           title="Community 1"
           desc="This is a short description of community 1"
         />
-        <MediaCard
-          title="Community 2"
-          desc="This is a short description of community 2"
-        />
       </div>
     </Layout>
   );

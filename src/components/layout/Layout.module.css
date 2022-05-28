@@ -1,9 +1,9 @@
 .wrapper {
   display: flex;
-  flex-direction: row;
 }
 
 .left {
+  margin-right: 275px;
 }
 
 .right {

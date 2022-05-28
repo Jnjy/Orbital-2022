@@ -9,7 +9,7 @@
   box-shadow: 0 0 6px hsl(210 14% 90%);
   background-color: #111827;
   height: 100%;
-  /* position: fixed; */
+  position: fixed;
 }
 
 h2 {
