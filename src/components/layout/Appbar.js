@@ -1,4 +1,4 @@
 function Appbar() {
-  return <header>Header</header>;
+  return <div>Header</div>;
 }
 export default Appbar;

@@ -5,7 +5,7 @@ import Appbar from "./Appbar";
 function Layout(props) {
   return (
     <div className={classes.wrapper}>
-      <div className={classes.TopBar}>
+      <div className={classes.appbar}>
         <Appbar />
       </div>
       <div className={classes.center}>
