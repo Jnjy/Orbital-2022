@@ -50,6 +50,12 @@ function LoginForm() {
       .catch((error) => setError("Login Failed"));
   }
 
+  async function googleSignIn() {
+    await signInWithGoogle()
+    .then((res) => navigate("/community"))
+    .catch(error => setError("Google Sign In Failed"));
+  }
+
   return (
     <Formik
       initialValues={{ ...INITIAL_FORM_STATE }}
@@ -113,7 +119,7 @@ function LoginForm() {
             <Button
               variant="outlined"
               startIcon={<GoogleIcon />}
-              onClick={signInWithGoogle}
+              onClick={googleSignIn}
               style={googleButtonStyle}
             >
               Sign in with Google

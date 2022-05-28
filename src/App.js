@@ -3,7 +3,7 @@ import { useAuth } from "./hooks/useAuth";
 
 import LoginPage from "./pages/login/LoginPage";
 import SignUpPage from "./pages/signup";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ResetPasswordPage from "./pages/resetPassword/ResetPasswordPage";
 import CommunityPage from "./pages/community/CommunityPage";
 import UserProfile from "./pages/profile/UserProfile";
@@ -15,9 +15,6 @@ function App() {
   // rabak way need to change
   return (
     <div className="App">
-      {user ? (
-        <CommunityPage />
-      ) : (
         <Routes>
           <Route index element={user ? <CommunityPage /> : <LoginPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -26,8 +23,7 @@ function App() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/store" element={<StorePage />} />
-        </Routes>
-      )}
+        </Routes> 
     </div>
   );
 }
