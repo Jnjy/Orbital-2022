@@ -8,6 +8,19 @@
   position: fixed;
 }
 
+.user {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
+
+.username {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  font-size: 24px;
+}
+
 .avatar {
   margin-left: auto;
   align-self: center;
