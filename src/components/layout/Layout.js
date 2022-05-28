@@ -8,14 +8,14 @@ import Appbar from "./Appbar";
 function Layout(props) {
   return (
     <div className={classes.wrapper}>
-      <div classname={classes.left}>
+      <div className={classes.left}>
         <Sidebar />
       </div>
-      <div classname={classes.right}>
+      <div className={classes.right}>
         <div className={classes.topbar}>
           <Appbar />
         </div>
-        <div classname={classes.content}>{props.children}</div>
+        <div className={classes.content}>{props.children}</div>
       </div>
     </div>
   );

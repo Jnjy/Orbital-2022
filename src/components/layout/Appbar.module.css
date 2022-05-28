@@ -2,7 +2,7 @@
   display: flex;
   background: green;
   height: 60px;
-  width: auto;
+  width: calc(100vw - 275px);
   /* align-self: right; */
   flex: 1;
   /* position: fixed; */

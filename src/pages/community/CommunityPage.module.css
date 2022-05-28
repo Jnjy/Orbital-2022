@@ -3,11 +3,12 @@
   align-content: space-between;
   justify-content: space-around;
   flex-wrap: wrap;
-  flex: 1;
+  flex: 1 0 21%;
 }
 
 p {
-  max-width: 13%;
+  max-width: 21%;
   max-height: 10%;
+
   border: 1px solid black;
 }
