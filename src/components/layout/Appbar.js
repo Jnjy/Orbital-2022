@@ -11,17 +11,19 @@ function Appbar(props) {
 
   const [name, setName] = useState("Loading name...");
 
+  const pageName = props.pageName;
+
   useEffect(() => {
     if (user?.displayName) {
       setName(user.displayName);
     }
   }, [user]);
 
-  console.log(name);
+  //console.log(name);
 
   return (
     <div className={classes.top}>
-      <div className={classes.pagename}>Pagename</div>
+      <div className={classes.pagename}>{pageName}</div>
       <div className={classes.user}>
         <div className={classes.username}>{name}</div>
         <div className={classes.avatar}>

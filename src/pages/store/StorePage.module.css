@@ -1,0 +1,11 @@
+.contentmain {
+  display: flex;
+  align-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex: 1 0 21%;
+}
+
+.card {
+  padding: 10px;
+}

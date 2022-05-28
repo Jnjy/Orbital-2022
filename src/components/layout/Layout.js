@@ -13,7 +13,7 @@ function Layout(props) {
       </div>
       <div className={classes.right}>
         <div className={classes.topbar}>
-          <Appbar />
+          <Appbar pageName={props.pageName} />
         </div>
         <div className={classes.content}>{props.children}</div>
       </div>

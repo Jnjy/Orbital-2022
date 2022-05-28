@@ -24,12 +24,13 @@ function Sidebar(props) {
         <div className={classes.title}>COMMFLEA</div>
         <Divider color="#FFFFFF" sx={{ borderBottomWidth: 3 }} />
         <div className={classes.nav}>
-          <SidebarLink text="Community" icon={PeopleAltIcon} />
-          <SidebarLink text="Store" icon={ShoppingBagIcon} />
+          <SidebarLink text="Community" icon={PeopleAltIcon} l="/community" />
+          <SidebarLink text="Store" icon={ShoppingBagIcon} l="/store" />
           <SidebarLink
             text="Logout"
             icon={LogoutIcon}
             clickEvent={handleLogOut}
+            l="/"
           />
         </div>
       </div>
