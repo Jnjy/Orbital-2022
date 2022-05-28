@@ -1,17 +1,13 @@
 .wrapper {
   display: flex;
-  flex: 1;
+  flex-direction: row;
 }
 
 .left {
-  width: 200px;
 }
 
 .right {
-  display: flex;
-  flex-direction: column;
 }
 
 .content {
-  margin-top: 60px;
 }

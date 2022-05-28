@@ -3,7 +3,9 @@
   background: green;
   height: 60px;
   width: auto;
+  /* align-self: right; */
   flex: 1;
+  /* position: fixed; */
 }
 
 .avatar {
