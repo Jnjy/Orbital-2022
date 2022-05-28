@@ -9,7 +9,6 @@ import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 function Sidebar(props) {
-
   const { signout } = useAuth();
   const navigate = useNavigate();
 
@@ -17,7 +16,7 @@ function Sidebar(props) {
     console.log("sign out");
     signout();
     navigate("/login");
-  }
+  };
 
   return (
     <nav>
@@ -27,8 +26,11 @@ function Sidebar(props) {
         <div className={classes.nav}>
           <SidebarLink text="Community" icon={PeopleAltIcon} />
           <SidebarLink text="Store" icon={ShoppingBagIcon} />
-          <SidebarLink text="Logout" icon={LogoutIcon} />
-          <Button onClick={handleLogOut}>Log Out</Button>
+          <SidebarLink
+            text="Logout"
+            icon={LogoutIcon}
+            clickEvent={handleLogOut}
+          />
         </div>
       </div>
     </nav>
