@@ -6,9 +6,6 @@
   flex: 1 0 21%;
 }
 
-p {
-  max-width: 21%;
-  max-height: 10%;
-
-  border: 1px solid black;
+.card {
+  padding: 10px;
 }
