@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/FirebaseConfig';
 import React, { useState, useEffect, useContext, createContext } from "react";
@@ -47,20 +47,15 @@ function useProvideAuth() {
       const errorMessage = error.message;
       throw error;
     });
-    // return firebaseAuth
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .then((response) => {
-    //     setUser(response.user);
-    //     return response.user;
-    //   });
   };
 
   const signout = () => {
-    return firebaseAuth
-      .signOut()
-      .then(() => {
-        setUser(false);
-      });
+    return signOut(firebaseAuth).then(() => {
+      console.log("Sign Out Successful");
+      setUser(null);
+    }).catch((error) => {
+      // An error happened.
+    });
   };
 
   const sendPasswordResetEmail = (email) => {

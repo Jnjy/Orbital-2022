@@ -5,6 +5,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import TextFieldBox from '../../../components/FormsUI/TextFieldBox'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const formFieldStyle = {
     padding:30
@@ -46,10 +47,13 @@ function SignUpForm() {
     const { signInWithGoogle, signup } = useAuth();
     const [ error, setError ] = useState('');
 
+    const navigate = useNavigate();
+
     async function handleSubmit(values) {
         try {
             setError('');
-            await signup(values.email, values.password);
+            await signup(values.email, values.password)
+            .then(navigate('/community'));
         } catch {
             setError('Sign Up Failed');
         }
