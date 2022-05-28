@@ -2,17 +2,20 @@ import classes from "./Layout.module.css";
 import Sidebar from "./Sidebar";
 import Appbar from "./Appbar";
 
+//left contains navbar
+//right contains topbar & main content
+
 function Layout(props) {
   return (
     <div className={classes.wrapper}>
-      <div className={classes.appbar}>
-        <Appbar />
+      <div classname={classes.left}>
+        <Sidebar />
       </div>
-      <div className={classes.center}>
-        <div classname={classes.sidebar}>
-          <Sidebar />
+      <div classname={classes.right}>
+        <div className={classes.topbar}>
+          <Appbar />
         </div>
-        <main classname={classes.content}>{props.children}</main>
+        <div classname={classes.content}>{props.children}</div>
       </div>
     </div>
   );

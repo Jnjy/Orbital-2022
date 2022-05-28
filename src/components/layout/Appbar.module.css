@@ -1,0 +1,21 @@
+.top {
+  display: flex;
+  background: green;
+  height: 60px;
+  width: auto;
+  flex: 1;
+}
+
+.avatar {
+  margin-left: auto;
+  align-self: center;
+  padding-right: 20px;
+}
+
+.pagename {
+  align-self: center;
+  font-size: 35px;
+  margin-left: 10px;
+  color: white;
+  font-weight: bold;
+}
