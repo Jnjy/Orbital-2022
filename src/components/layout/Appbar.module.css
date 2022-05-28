@@ -1,0 +1,23 @@
+.top {
+  display: flex;
+  background: green;
+  height: 60px;
+  width: calc(100vw - 275px);
+  /* align-self: right; */
+  flex: 1;
+  position: fixed;
+}
+
+.avatar {
+  margin-left: auto;
+  align-self: center;
+  padding-right: 20px;
+}
+
+.pagename {
+  align-self: center;
+  font-size: 35px;
+  margin-left: 10px;
+  color: white;
+  font-weight: bold;
+}

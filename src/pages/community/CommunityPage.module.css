@@ -3,10 +3,9 @@
   align-content: space-between;
   justify-content: space-around;
   flex-wrap: wrap;
-  flex: 1;
+  flex: 1 0 21%;
 }
 
-p {
-  max-width: 26%;
-  border: 1px solid black;
+.card {
+  padding: 10px;
 }

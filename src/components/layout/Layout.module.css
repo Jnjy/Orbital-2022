@@ -1,23 +1,14 @@
 .wrapper {
   display: flex;
-  flex-direction: column;
-  flex: 1;
 }
 
-.center {
-  display: flex;
-  flex: 1;
+.left {
+  margin-right: 275px;
 }
 
-.sidebar {
-  width: 200px;
-  position: fixed;
-  top: 0;
-  left: 0;
+.right {
 }
 
 .content {
-  width: calc(100vw - 200px);
-  left: 200px;
-  position: relative;
+  margin-top: 75px;
 }
