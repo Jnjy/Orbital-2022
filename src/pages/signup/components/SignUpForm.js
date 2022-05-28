@@ -50,14 +50,12 @@ function SignUpForm() {
     const navigate = useNavigate();
 
     async function handleSubmit(values) {
-        try {
-            setError('');
-            await signup(values.email, values.password)
-            .then(navigate('/community'));
-        } catch {
-            setError('Sign Up Failed');
-        }
+        setError('');
+        await signup(values.email, values.password)
+        .then((res) => navigate("/community"))
+        .catch(error => setError("SignUp Failed"));
     }
+    
     return (
         <Formik
             initialValues={{ ...INITIAL_FORM_STATE }}

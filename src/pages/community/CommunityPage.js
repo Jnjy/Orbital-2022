@@ -14,25 +14,25 @@ function CommunityPage() {
         </div>
         <div className={classes.card}>
           <MediaCard
-            title="Community 1"
+            title="Community 2"
             desc="This is a short description of community 1"
           />
         </div>
         <div className={classes.card}>
           <MediaCard
-            title="Community 1"
+            title="Community 3"
             desc="This is a short description of community 1"
           />
         </div>
         <div className={classes.card}>
           <MediaCard
-            title="Community 1"
+            title="Community 4"
             desc="This is a short description of community 1"
           />
         </div>
         <div className={classes.card}>
           <MediaCard
-            title="Community 1"
+            title="Community 5"
             desc="This is a short description of community 1"
           />
         </div>

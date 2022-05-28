@@ -47,14 +47,10 @@ function LoginForm() {
     const navigate = useNavigate();
 
     async function handleSubmit(values) {
-        try {
-            setError('');
-            await signin(values.email, values.password)
-            .then(navigate('/community'));
-        } catch {
-            // console.log('error');
-            setError("Login Failed");
-        }
+        setError('');
+        await signin(values.email, values.password)
+        .then((res) => navigate("/community"))
+        .catch(error => setError("Login Failed"));
     }
 
     return (

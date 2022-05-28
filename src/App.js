@@ -12,18 +12,18 @@ import UserProfile from "./pages/profile/UserProfile";
 function App() {
   const { user } = useAuth();
 
+  // rabak way need to change
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>  
-          <Route index element={user ? <LoginPage /> : <SignUpPage />} /> 
+      {user ? <CommunityPage /> 
+      : (<Routes>  
+          <Route index element={user ? <CommunityPage /> : <LoginPage />} /> 
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/community" element={<CommunityPage />} />
-        </Routes>
-      </BrowserRouter>
+        </Routes>)}
     </div>
   );
 }
