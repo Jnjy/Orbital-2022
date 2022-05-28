@@ -5,7 +5,7 @@
   width: calc(100vw - 275px);
   /* align-self: right; */
   flex: 1;
-  /* position: fixed; */
+  position: fixed;
 }
 
 .avatar {
