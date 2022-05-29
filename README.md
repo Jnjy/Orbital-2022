@@ -1,5 +1,5 @@
 <div>
-    <p>Team name: CommFlea</p>
+    <p>Team Name: CommFlea</p>
     <p>Level of Achievement: Apollo 11</p>
     <p>Team Members:</p>
     <ul>
