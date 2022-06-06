@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../config/FirebaseConfig';
+import { app, firebaseConfig } from '../config/FirebaseConfig';
+import { getFirestore } from '@firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore'
 import React, { useState, useEffect, useContext, createContext } from "react";
-
-const app = initializeApp(firebaseConfig);
 
 const firebaseAuth = getAuth(app);
 
@@ -21,6 +21,7 @@ export const useAuth = () => {
 
 function useProvideAuth() {
   const [user, setUser] = useState(null);
+  //const usersCollectionRef = collection(db, "users");
 
   const signin = (email, password) => {
     return signInWithEmailAndPassword(firebaseAuth, email, password)
@@ -79,6 +80,11 @@ function useProvideAuth() {
   };
 
   useEffect(() => {
+    //const getUsers = async () => {
+    //  const data = await getDocs(usersCollectionRef);
+    //  console.log(data.docs);
+    //};
+    
     const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
@@ -87,6 +93,7 @@ function useProvideAuth() {
       }
     });
     // Cleanup subscription on unmount
+    //getUsers();
     return () => unsubscribe();
   }, []);
   // Return the user object and auth methods

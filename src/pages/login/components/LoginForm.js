@@ -43,11 +43,28 @@ function LoginForm() {
 
   const navigate = useNavigate();
 
+  async function handleLoginError(error) {
+    // eslint-disable-next-line default-case
+    switch(error.code) {
+      case "auth/user-not-found":
+        setError("No user found");
+        break;
+      case "auth/wrong-password":
+        setError("Wrong password");
+        break;
+      case "auth/too-many-requests":
+        setError("Too many attempts. Accound temporary disabled.");
+        break;
+      default:
+        setError(error.code);
+    }
+  }
+
   async function handleSubmit(values) {
     setError("");
     await signin(values.email, values.password)
       .then((res) => navigate("/community"))
-      .catch((error) => setError("Login Failed"));
+      .catch((error) => handleLoginError(error));
   }
 
   async function googleSignIn() {
@@ -126,7 +143,8 @@ function LoginForm() {
             </Button>
           </Grid>
         </Grid>
-        {error && <Alert severity="warning">{error}</Alert>}
+        {console.log(error)}
+        {error && <Alert severity="error">{error}</Alert>}
       </Form>
     </Formik>
   );

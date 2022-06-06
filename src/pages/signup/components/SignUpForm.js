@@ -49,11 +49,21 @@ function SignUpForm() {
 
     const navigate = useNavigate();
 
+    async function handleSignupError(error) {
+        switch(error.code) {
+            case "auth/email-already-in-use":
+                setError("Email exists. Please login instead.")
+                break;
+            default:
+              setError(error.code);
+          }
+    }
+
     async function handleSubmit(values) {
         setError('');
         await signup(values.email, values.password)
         .then((res) => navigate("/community"))
-        .catch(error => setError("SignUp Failed"));
+        .catch(error => handleSignupError(error));
     }
     
     async function googleSignIn() {
@@ -114,7 +124,7 @@ function SignUpForm() {
                         </Button>
                     </Grid>
                 </Grid>
-                {error && <Alert severity="warning">{error}</Alert>}
+                {error && <Alert severity="error">{error}</Alert>}
             </Form>
         </Formik>
     )
