@@ -30,8 +30,6 @@ function useProvideAuth() {
       setUser(newUser);
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
       throw error;
     });
   };
@@ -44,8 +42,6 @@ function useProvideAuth() {
       setUser(newUser)
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
       throw error;
     });
   };

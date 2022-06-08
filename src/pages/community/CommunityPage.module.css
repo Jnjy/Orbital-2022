@@ -1,5 +1,7 @@
 .contentmain {
   display: flex;
+  padding-left: 10%;
+  padding-right: 10%;
   align-content: space-between;
   justify-content: space-around;
   flex-wrap: wrap;

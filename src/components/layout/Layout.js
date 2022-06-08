@@ -1,23 +1,19 @@
-import classes from "./Layout.module.css";
-import Sidebar from "./Sidebar";
-import Appbar from "./Appbar";
+import styles from "./Layout.module.css";
+import NavBar from "../NavBar/NavBar";
+import { Typography } from "@mui/material";
 
 //left contains navbar
 //right contains topbar & main content
 
 function Layout(props) {
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.left}>
-        <Sidebar />
-      </div>
-      <div className={classes.right}>
-        <div className={classes.topbar}>
-          <Appbar pageName={props.pageName} />
-        </div>
-        <div className={classes.content}>{props.children}</div>
-      </div>
-    </div>
+    <>
+      <NavBar />
+      <div className={styles.caption}>
+        <Typography  variant="caption">Community</Typography>
+      </div> 
+      <div className={styles.content}>{props.children}</div>
+    </>
   );
 }
 

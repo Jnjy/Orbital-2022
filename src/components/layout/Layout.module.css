@@ -6,9 +6,8 @@
   margin-right: 275px;
 }
 
-.right {
-}
-
-.content {
-  margin-top: 75px;
+.caption {
+  padding-top: 2%;
+  padding-left: 12%;
+  text-align: left;
 }

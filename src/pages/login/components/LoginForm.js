@@ -53,7 +53,7 @@ function LoginForm() {
         setError("Wrong password");
         break;
       case "auth/too-many-requests":
-        setError("Too many attempts. Accound temporary disabled.");
+        setError("Too many attempts. Account temporary disabled.");
         break;
       default:
         setError(error.code);
