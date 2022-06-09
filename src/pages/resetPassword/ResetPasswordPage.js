@@ -16,6 +16,7 @@ const FORM_VALIDATION = Yup.object().shape(
 
 function ResetPasswordPage() {
   const { sendResetEmail } = useAuth();
+  const navigate = useNavigate();
 
   async function handlePasswordResetEmail(values) {
     await sendResetEmail("jefferyng2000@gmail.com")
@@ -67,7 +68,7 @@ function ResetPasswordPage() {
         </Formik>
       </Grid>
       <Grid item>
-        <Button>Back to Login</Button>
+        <Button onClick={() => navigate("/login")}>Back to Login</Button>
       </Grid>
     </Grid>
   )
