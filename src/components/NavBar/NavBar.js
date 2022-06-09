@@ -5,6 +5,8 @@ import Container from '@mui/material/Container';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Avatar, Badge, IconButton, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
+import styles from "./NavBar.module.css"
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
 function NavBar() {
   return (
@@ -17,7 +19,7 @@ function NavBar() {
             component="a"
             href="/"
             sx={{
-              flexGrow: 1,
+              flexGrow: 0,
               display: { xs: 'none', md: 'flex' },
               color: 'inherit',
               textDecoration: 'none',
@@ -25,10 +27,20 @@ function NavBar() {
           >
             COMMFLEA
           </Typography>
+          <Box sx={{ flexGrow: 1 }}></Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
               size="large"
               aria-label="show 16 new notifications"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <Badge badgeContent={0} color="error">
+                <ChatBubbleIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              size="large"
               color="inherit"
             >
               <Badge badgeContent={0} color="error">
@@ -38,13 +50,9 @@ function NavBar() {
             <IconButton
               size="large"
               edge="end"
-              aria-label="account of current user"
-             
-              aria-haspopup="true"
-              
               color="inherit"
             >
-              <Tooltip title="Open settings">
+            <Tooltip title="Open settings">
               <IconButton onClick={() => console.log("menu")} sx={{ p: 0 }}>
                 <Avatar />
               </IconButton>
