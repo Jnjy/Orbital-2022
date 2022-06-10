@@ -1,4 +1,10 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, 
+         getAuth, 
+         GoogleAuthProvider, 
+         signInWithEmailAndPassword, 
+         signInWithPopup, 
+         sendPasswordResetEmail,
+         signOut } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
 import { app, firebaseConfig } from '../config/FirebaseConfig';
 import { getFirestore } from '@firebase/firestore'
@@ -55,12 +61,14 @@ function useProvideAuth() {
     });
   };
 
-  const sendPasswordResetEmail = (email) => {
-    return firebaseAuth 
-      .sendPasswordResetEmail(email)
-      .then(() => {
-        return true;
-      });
+  const sendResetEmail = (email) => {
+    return sendPasswordResetEmail(firebaseAuth, email)
+    .then(() => {
+      console.log("useAuth: send password reset email")
+    })
+    .catch((error) => {
+      throw error;
+    });
   };
 
   const confirmPasswordReset = (code, password) => {
@@ -98,7 +106,7 @@ function useProvideAuth() {
     signin,
     signup,
     signout,
-    sendPasswordResetEmail,
+    sendResetEmail,
     confirmPasswordReset,
     signInWithGoogle
   };
