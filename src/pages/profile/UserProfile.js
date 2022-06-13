@@ -1,23 +1,35 @@
-import {Avatar, Card, CardHeader, Grid} from '@mui/material'
-import { maxWidth } from '@mui/system'
-import React from 'react'
+import { Box, Container, Grid, Tab, Tabs, Typography } from '@mui/material'
+import UserInformation from './components/UserInformation'
+import styles from './UserProfile.module.css'
+import NavBar from '../../components/NavBar/NavBar'
+import { useState } from 'react';
+import UserUtil from './components/UserUtil'
 
 function UserProfile() {
   return (
-    <Grid container
-    spacing={3}>
-      <Grid item xs={12} md={6}>
-        <Card>
-          <Avatar />
-        </Card>
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Card>
-          
-        </Card>
-      </Grid>
-    </Grid>
-  )
+    <>
+      <NavBar />
+      <Container maxWidth="xl">
+        <Box 
+        sx={{ 
+          padding: '40px', justifyContent: "center", 
+        display: { xs: 'none', md: 'flex' } }}>
+          <Grid 
+          container 
+          direction="row" 
+          justifyContent="center" 
+          alignItems="center" 
+          spacing={2}
+          minHeight="90vh">
+            {/* User information section */}
+            <UserInformation />
+      
+            {/* Edit Section */}
+          </Grid>
+        </Box>
+      </Container>
+    </>
+  );
 }
 
-export default UserProfile
+export default UserProfile;

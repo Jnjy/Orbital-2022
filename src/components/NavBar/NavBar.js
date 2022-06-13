@@ -7,8 +7,11 @@ import { Avatar, Badge, IconButton, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
 import styles from "./NavBar.module.css"
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const navigate = useNavigate();
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -27,7 +30,7 @@ function NavBar() {
           >
             COMMFLEA
           </Typography>
-          <Box sx={{ flexGrow: 1 }}></Box>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}></Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
               size="large"
@@ -52,11 +55,11 @@ function NavBar() {
               edge="end"
               color="inherit"
             >
-            <Tooltip title="Open settings">
-              <IconButton onClick={() => console.log("menu")} sx={{ p: 0 }}>
-                <Avatar />
-              </IconButton>
-            </Tooltip>
+              <Tooltip title="Profile">
+                <IconButton onClick={() => navigate('/profile')} sx={{ p: 0 }}>
+                  <Avatar />
+                </IconButton>
+              </Tooltip>
             </IconButton>
           </Box>          
         </Toolbar>
