@@ -7,14 +7,20 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import styles from "./CommCards.module.css"
 import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-export default function MediaCard(props) {
-  
+export default function CommCard(props) {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/store");
+  }
+
   return (
     <Grid container justifyContent="center" item sm={6} md={4} xl={3}>
       <Card sx={{ 
       ':hover': {
-      boxShadow: 20, // theme.shadows[20]
+      boxShadow: 20, 
       },
       maxWidth: 380 }}>
         {/* <CardMedia
@@ -33,7 +39,7 @@ export default function MediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Enter</Button>
+          <Button variant="outlined" size="small" onClick={handleNavigate}>Enter Community</Button>
           <Button size="small">Learn More</Button>
         </CardActions>
       </Card>
