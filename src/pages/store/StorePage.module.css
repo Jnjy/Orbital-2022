@@ -1,5 +1,7 @@
 .contentmain {
   display: flex;
+  padding-left: 10%;
+  padding-right: 10%;
   align-content: space-between;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -8,4 +10,10 @@
 
 .card {
   padding: 10px;
+}
+
+.itemList {
+  padding-top: 3%;
+  padding-left: 8%;
+  padding-right: 8%;
 }

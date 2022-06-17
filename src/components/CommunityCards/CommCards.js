@@ -9,7 +9,7 @@ import styles from "./CommCards.module.css"
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-export default function MediaCard(props) {
+export default function CommCard(props) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
