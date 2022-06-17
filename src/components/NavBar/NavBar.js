@@ -3,14 +3,38 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Avatar, Badge, IconButton, Tooltip } from '@mui/material';
+import { Avatar, Badge, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
 import styles from "./NavBar.module.css"
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 
 function NavBar() {
   const navigate = useNavigate();
+
+  const { signout } = useAuth();
+
+  const [ anchorEl, setAnchorEl ] = useState(null);
+
+  const handleOpenMenu = (e) => {
+    setAnchorEl(e.currentTarget);
+  }
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  }
+
+  const handleProfileNavigation = () => {
+    navigate("/profile")
+  }
+
+  const handleLogOut = async () => {
+    await signout()
+    .then(res => navigate("/login"))
+    .catch(error => console.log(error));
+  }
 
   return (
     <AppBar position="static">
@@ -54,13 +78,30 @@ function NavBar() {
               size="large"
               edge="end"
               color="inherit"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenMenu}
             >
-              <Tooltip title="Profile">
-                <IconButton onClick={() => navigate('/profile')} sx={{ p: 0 }}>
-                  <Avatar />
-                </IconButton>
-              </Tooltip>
+              <Avatar />
             </IconButton>
+            <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleCloseMenu}
+              >
+                <MenuItem onClick={handleProfileNavigation}>Profile</MenuItem>
+                <MenuItem onClick={handleLogOut}>Log out</MenuItem>
+              </Menu>
           </Box>          
         </Toolbar>
       </Container>
