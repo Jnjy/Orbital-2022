@@ -6,11 +6,13 @@ import { Typography } from "@mui/material";
 //right contains topbar & main content
 
 function Layout(props) {
+  const { pageName } = props;
+
   return (
     <>
       <NavBar />
       <div className={styles.caption}>
-        <Typography  variant="caption">Community</Typography>
+        <Typography  variant="h2">{ pageName }</Typography>
       </div> 
       <div className={styles.content}>{props.children}</div>
     </>

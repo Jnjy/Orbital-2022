@@ -1,17 +1,8 @@
 import "./App.css";
-import { useAuth } from "./hooks/useAuth";
-
-import LoginPage from "./pages/login/LoginPage";
-import SignUpPage from "./pages/signup";
-import { Route, Routes } from "react-router-dom";
-import ResetPasswordPage from "./pages/resetPassword/ResetPasswordPage";
-import CommunityPage from "./pages/community/CommunityPage";
-import UserProfile from "./pages/profile/UserProfile";
-import StorePage from "./pages/store/StorePage";
+import RoutePaths from "./components/Router/Routes";
 
 function App() {
-  const { user } = useAuth();
-
+  
   // rabak way need to change
   return (
     <div className="App">
@@ -24,6 +15,7 @@ function App() {
         <Route path="/community" element={<CommunityPage />} />
         <Route path="/store" element={<StorePage />} />
       </Routes>
+        <RoutePaths />
     </div>
   );
 }
