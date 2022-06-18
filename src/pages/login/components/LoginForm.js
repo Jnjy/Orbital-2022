@@ -69,6 +69,10 @@ function LoginForm() {
 
   async function googleSignIn() {
     await signInWithGoogle()
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
       .then((res) => navigate("/community"))
       .catch((error) => setError("Google Sign In Failed"));
   }

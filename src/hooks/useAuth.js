@@ -18,10 +18,24 @@ const googleAuthProvider = new GoogleAuthProvider();
 
 const authContext = createContext();
 
-const usersRef = collection(db, "users");
-
 const createUser = async (id, data) => {
   await setDoc(doc(db, "users", id), data);
+};
+
+export const createUserGoogle = async (id, data) => {
+  db.collection("users")
+    .doc(id)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        console.log("Userdata exists!");
+      } else {
+        createUser(id, { name: "googlesigninplaceholder" });
+      }
+    })
+    .catch((error) => {
+      console.log("Error w doc", error);
+    });
 };
 
 export function ProvideAuth({ children }) {
