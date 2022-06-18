@@ -45,7 +45,7 @@ function LoginForm() {
 
   async function handleLoginError(error) {
     // eslint-disable-next-line default-case
-    switch(error.code) {
+    switch (error.code) {
       case "auth/user-not-found":
         setError("No user found");
         break;
@@ -69,8 +69,8 @@ function LoginForm() {
 
   async function googleSignIn() {
     await signInWithGoogle()
-    .then((res) => navigate("/community"))
-    .catch(error => setError("Google Sign In Failed"));
+      .then((res) => navigate("/community"))
+      .catch((error) => setError("Google Sign In Failed"));
   }
 
   return (
