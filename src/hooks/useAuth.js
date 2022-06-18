@@ -9,7 +9,7 @@ import {
 import { initializeApp } from "firebase/app";
 import { app, firebaseConfig, db } from "../config/FirebaseConfig";
 import { getFirestore, doc, setDoc } from "@firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, getDoc } from "firebase/firestore";
 import React, { useState, useEffect, useContext, createContext } from "react";
 
 const firebaseAuth = getAuth(app);
@@ -20,16 +20,18 @@ const authContext = createContext();
 
 const createUser = async (id, data) => {
   await setDoc(doc(db, "users", id), data);
+  console.log("Creating user doc");
 };
 
 export const createUserGoogle = async (id, data) => {
-  db.collection("users")
-    .doc(id)
-    .get()
+  await getDoc(doc(db, "users", id))
     .then((doc) => {
-      if (doc.exists) {
+      if (doc.exists()) {
         console.log("Userdata exists!");
+        //console.log(doc);
+        console.log(id);
       } else {
+        console.log("doc don't exist!");
         createUser(id, { name: "googlesigninplaceholder" });
       }
     })
