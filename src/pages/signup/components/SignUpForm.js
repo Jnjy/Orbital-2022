@@ -1,5 +1,5 @@
 import { Alert, Button, Grid, Typography, Link } from "@mui/material";
-import { useAuth } from "../../../hooks/useAuth";
+import { useAuth, createUserGoogle } from "../../../hooks/useAuth";
 import { GoogleIcon } from "../../../icons/GoogleIcon";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -66,6 +66,11 @@ function SignUpForm() {
 
   async function googleSignIn() {
     await signInWithGoogle()
+      .then((res) => {
+        console.log(res);
+        createUserGoogle(res.user.uid, res.user.displayName);
+        return res;
+      })
       //.then(console.log("Signedup!"))
       .then((res) => navigate("/community"))
       .catch((error) => setError("Google Sign In Failed"));

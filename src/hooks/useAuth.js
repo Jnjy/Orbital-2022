@@ -32,7 +32,7 @@ export const createUserGoogle = async (id, data) => {
         console.log(id);
       } else {
         console.log("doc don't exist!");
-        createUser(id, { name: "googlesigninplaceholder" });
+        createUser(id, { name: data });
       }
     })
     .catch((error) => {
