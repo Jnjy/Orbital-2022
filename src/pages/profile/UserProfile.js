@@ -13,7 +13,7 @@ function UserProfile() {
         <Box 
         sx={{ 
           padding: '40px', justifyContent: "center", 
-        display: { xs: 'none', md: 'flex' } }}>
+          }}>
           <Grid 
           container 
           direction="row" 
