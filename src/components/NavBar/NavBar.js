@@ -107,5 +107,5 @@ function NavBar() {
       </Container>
     </AppBar>
   );
-};
+}
 export default NavBar;
