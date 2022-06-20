@@ -30,9 +30,6 @@ export const createUserGoogle = async (userObj) => {
   await getDoc(doc(db, "users", userObj.user.uid))
     .then((doc) => {
       if (doc.exists()) {
-        console.log("Userdata exists!");
-        //console.log(doc);
-        console.log(userObj.user.uid);
       } else {
         console.log("doc don't exist!");
         createUser(userObj.user.uid, {
@@ -71,31 +68,23 @@ function useProvideAuth() {
   };
 
   const signup = (email, password) => {
-    return (
-      createUserWithEmailAndPassword(firebaseAuth, email, password)
-        //.then((userCredential) => {console.log(userCredential.user.uid);return userCredential;})
-        //.then((userCredential) => {usersRef.doc(`${userCredential.user.uid}`).set({name: "nameplaceholder",uid: userCredential.user.uid,});console.log("Doc created");return userCredential;})
-        .then((userCredential) => {
-          createUser(userCredential.user.uid, {
-            name: "signupnameplaceholder",
-            email: userCredential.user.email,
-            creationTime: userCredential.user.metadata.createdAt,
-            phone: "+65 0000 0000",
-          });
-          //DEBUG: for debugging use
-          console.log(userCredential);
-          //console.log("Returning");
-          return userCredential;
-        })
-        .then((userCredential) => {
-          //Signed in
-          const newUser = userCredential.user;
-          setUser(newUser);
-        })
-        .catch((error) => {
-          throw error;
-        })
-    );
+    return createUserWithEmailAndPassword(firebaseAuth, email, password)
+      .then((userCredential) => {
+        createUser(userCredential.user.uid, {
+          name: "signupnameplaceholder",
+          email: userCredential.user.email,
+          creationTime: userCredential.user.metadata.createdAt,
+          phone: "+65 0000 0000",
+        });
+        return userCredential;
+      })
+      .then((userCredential) => {
+        const newUser = userCredential.user;
+        setUser(newUser);
+      })
+      .catch((error) => {
+        throw error;
+      });
   };
 
   const signout = () => {
@@ -130,11 +119,6 @@ function useProvideAuth() {
   };
 
   useEffect(() => {
-    //const getUsers = async () => {
-    //  const data = await getDocs(usersCollectionRef);
-    //  console.log(data.docs);
-    //};
-
     const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
