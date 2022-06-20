@@ -70,9 +70,8 @@ function LoginForm() {
   async function googleSignIn() {
     await signInWithGoogle()
       .then((res) => {
-        //console.log(res);
-        //console.log(res.user.displayName);
-        createUserGoogle(res.user.uid, res.user.displayName);
+        console.log(res);
+        createUserGoogle(res);
         return res;
       })
       .then((res) => navigate("/community"))

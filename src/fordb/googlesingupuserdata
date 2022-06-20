@@ -1,0 +1,53 @@
+{
+  "user": {
+    "uid": "eAIaMdhv6VVYdWStbQRwQV6hQzk2",
+    "email": "sean.wong2307@gmail.com",
+    "emailVerified": true,
+    "displayName": "Sean Wong",
+    "isAnonymous": false,
+    "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GgWFYd7iF36bnMX23dVHNivzA0lrdBHXWSQVY0tLKs=s96-c",
+    "providerData": [
+      {
+        "providerId": "google.com",
+        "uid": "100544335408963110226",
+        "displayName": "Sean Wong",
+        "email": "sean.wong2307@gmail.com",
+        "phoneNumber": null,
+        "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GgWFYd7iF36bnMX23dVHNivzA0lrdBHXWSQVY0tLKs=s96-c"
+      }
+    ],
+    "stsTokenManager": {
+      "refreshToken": "AIwUaOlIgmV_9sNL0NJqsArI3fCIFQ1iks1stkLug7gXugGGR3cOVYSTQXpzJyYAnLpwA5N13V5u4qs3x1keupla5HIKwitMN2VgLJMKRFGUEpOjp8M9-C5RU2gpGsmZR-II9aHEUEMKgIL-NXQKrZigf8KBTsj0OfHSVw0KUq51TKOtEm3iJHDg-Z4HuPvJVkZFx5RbIOmaNa2MtogI3cyVJyqV2DUr-dO-zd0_JZdKkkuxrzyfBQwu8XrI6tY8wPRnTx-tFu78tO56s04lCEme4GjJs7QMm9o5xQQxZHoDms18iFtnSr4KgtM-UETwwjeoVAsLuKpLe9U88o9a_2Vl0uphzhkud5Or3arGB_ZBpmjxQ9ek3EH3Ig2HAbhMLo1uM_AJdbn3Q7_OX8LxXJziFBvp--VMj1Net1Co4paACc-EEXNMSew",
+      "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY5MGZiMWFlMDQ4YTU0OGZiNjgxYWQ2MDkyYjBiODY5ZWE0NjdhYzYiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU2VhbiBXb25nIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdnV0ZZZDdpRjM2Ym5NWDIzZFZITml2ekEwbHJkQkhYV1NRVlkwdExLcz1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9vcmJpdGFsLTIwMjItOTVkZjQiLCJhdWQiOiJvcmJpdGFsLTIwMjItOTVkZjQiLCJhdXRoX3RpbWUiOjE2NTU3MjA1OTEsInVzZXJfaWQiOiJlQUlhTWRodjZWVllkV1N0YlFSd1FWNmhRemsyIiwic3ViIjoiZUFJYU1kaHY2VlZZZFdTdGJRUndRVjZoUXprMiIsImlhdCI6MTY1NTcyMDU5MSwiZXhwIjoxNjU1NzI0MTkxLCJlbWFpbCI6InNlYW4ud29uZzIzMDdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMDA1NDQzMzU0MDg5NjMxMTAyMjYiXSwiZW1haWwiOlsic2Vhbi53b25nMjMwN0BnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.j-xL1SxdiqsZd8z37Hz6mNm5Tc-6Qh4GDjdvLJ80kfNgWNeInuH2SMITw_lfzwOU1lbtcj7IGnaB5wOcp7KrZNm3ffoA75XCcpk5JkY-A2gvsAw2KqSe-k92ahqr2x7AoNCIQ1B6huo09S3Ov_nbMRcUHr1PzWZBtcGaE1LBlNU0O7f-argXpjLTMjjgJJqnMvV_7SWlncJUq7MZ8Qd_4RokF4g0jqVB5XWKsBXDsTYkmYeWmpkEyfHTw-VZsszhkLSgmB-WTD1GlnvNhdmrI7G5H3cmlvUNmOF6CT-GL2uxs7y2okNQMBjNeYZxRLtsNn6W39v8dMf8sRnColUsHA",
+      "expirationTime": 1655724191697
+    },
+    "createdAt": "1655720590571",
+    "lastLoginAt": "1655720590572",
+    "apiKey": "AIzaSyA51xTa_HDa6q1gUUygM6jbChTCBRn8idM",
+    "appName": "[DEFAULT]"
+  },
+  "providerId": "google.com",
+  "_tokenResponse": {
+    "federatedId": "https://accounts.google.com/100544335408963110226",
+    "providerId": "google.com",
+    "email": "sean.wong2307@gmail.com",
+    "emailVerified": true,
+    "firstName": "Sean",
+    "fullName": "Sean Wong",
+    "lastName": "Wong",
+    "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14GgWFYd7iF36bnMX23dVHNivzA0lrdBHXWSQVY0tLKs=s96-c",
+    "localId": "eAIaMdhv6VVYdWStbQRwQV6hQzk2",
+    "displayName": "Sean Wong",
+    "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY5MGZiMWFlMDQ4YTU0OGZiNjgxYWQ2MDkyYjBiODY5ZWE0NjdhYzYiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU2VhbiBXb25nIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdnV0ZZZDdpRjM2Ym5NWDIzZFZITml2ekEwbHJkQkhYV1NRVlkwdExLcz1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9vcmJpdGFsLTIwMjItOTVkZjQiLCJhdWQiOiJvcmJpdGFsLTIwMjItOTVkZjQiLCJhdXRoX3RpbWUiOjE2NTU3MjA1OTEsInVzZXJfaWQiOiJlQUlhTWRodjZWVllkV1N0YlFSd1FWNmhRemsyIiwic3ViIjoiZUFJYU1kaHY2VlZZZFdTdGJRUndRVjZoUXprMiIsImlhdCI6MTY1NTcyMDU5MSwiZXhwIjoxNjU1NzI0MTkxLCJlbWFpbCI6InNlYW4ud29uZzIzMDdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMDA1NDQzMzU0MDg5NjMxMTAyMjYiXSwiZW1haWwiOlsic2Vhbi53b25nMjMwN0BnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.j-xL1SxdiqsZd8z37Hz6mNm5Tc-6Qh4GDjdvLJ80kfNgWNeInuH2SMITw_lfzwOU1lbtcj7IGnaB5wOcp7KrZNm3ffoA75XCcpk5JkY-A2gvsAw2KqSe-k92ahqr2x7AoNCIQ1B6huo09S3Ov_nbMRcUHr1PzWZBtcGaE1LBlNU0O7f-argXpjLTMjjgJJqnMvV_7SWlncJUq7MZ8Qd_4RokF4g0jqVB5XWKsBXDsTYkmYeWmpkEyfHTw-VZsszhkLSgmB-WTD1GlnvNhdmrI7G5H3cmlvUNmOF6CT-GL2uxs7y2okNQMBjNeYZxRLtsNn6W39v8dMf8sRnColUsHA",
+    "context": "",
+    "oauthAccessToken": "ya29.a0ARrdaM8R7T-ULaKL_mEm8iBUR1rHgbPnavlwYwrMasTGFGGqgzguFONw7I7tfK21GfdFQDtEZYwaWSrYmsF6yMbq2-QWPdLaE1MBM1kSaWfuciPm7QSPVPaJRUlsUFEP4-3sPKxkUaIXt92O6-ucRGCzsW2mYL8",
+    "oauthExpireIn": 3598,
+    "refreshToken": "AIwUaOlIgmV_9sNL0NJqsArI3fCIFQ1iks1stkLug7gXugGGR3cOVYSTQXpzJyYAnLpwA5N13V5u4qs3x1keupla5HIKwitMN2VgLJMKRFGUEpOjp8M9-C5RU2gpGsmZR-II9aHEUEMKgIL-NXQKrZigf8KBTsj0OfHSVw0KUq51TKOtEm3iJHDg-Z4HuPvJVkZFx5RbIOmaNa2MtogI3cyVJyqV2DUr-dO-zd0_JZdKkkuxrzyfBQwu8XrI6tY8wPRnTx-tFu78tO56s04lCEme4GjJs7QMm9o5xQQxZHoDms18iFtnSr4KgtM-UETwwjeoVAsLuKpLe9U88o9a_2Vl0uphzhkud5Or3arGB_ZBpmjxQ9ek3EH3Ig2HAbhMLo1uM_AJdbn3Q7_OX8LxXJziFBvp--VMj1Net1Co4paACc-EEXNMSew",
+    "expiresIn": "3600",
+    "oauthIdToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjU4MGFkYjBjMzJhMTc1ZDk1MGExYzE5MDFjMTgyZmMxNzM0MWRkYzQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNDYxMjg4NTQ4MDc3LWh1NjVuZmJpc3Ywcjd2dDM4YXQ1Z2JjdXU0aGx1YmtvLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNDYxMjg4NTQ4MDc3LWh1NjVuZmJpc3Ywcjd2dDM4YXQ1Z2JjdXU0aGx1YmtvLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAwNTQ0MzM1NDA4OTYzMTEwMjI2IiwiZW1haWwiOiJzZWFuLndvbmcyMzA3QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiX0h3aTNqUDY0UmcwR3k1NlNIeDRxZyIsImlhdCI6MTY1NTcyMDU5MCwiZXhwIjoxNjU1NzI0MTkwfQ.k3JdTWmzLGABOr8_rSqF4i1Ib4XmSCO6ik1Qxq9wczMoa20-Hm_ThS5J68AwjNczkpxxW_5LMhEOernUMTv9V6RrbdDcP4JmytQRjoubzHsvd8gTom21phAacwyZl_cR3kiVLWpoZ2oVCXWCbpLCOfJ5isuEqIiGSiIsXU-U8tjObhtd8sJ4qRriN5cmHG6NSbz76q-8DPKpACSsVv4ncrOVUZTNaFOmmNFIPpeVon_YmmR_SRyshyVdV5CnR3efvHEv_KdP9lEPuJNQ6x70rVLBNeDT6AuzOHMZpWDmSB3PJZ6QVMbTT5KZkMQ6Fj6_h7TgSPhujSnMk_AW5DS-4Q",
+    "rawUserInfo": "{\"name\":\"Sean Wong\",\"granted_scopes\":\"https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid\",\"id\":\"100544335408963110226\",\"verified_email\":true,\"given_name\":\"Sean\",\"locale\":\"en\",\"family_name\":\"Wong\",\"email\":\"sean.wong2307@gmail.com\",\"picture\":\"https://lh3.googleusercontent.com/a-/AOh14GgWFYd7iF36bnMX23dVHNivzA0lrdBHXWSQVY0tLKs=s96-c\"}",
+    "isNewUser": true,
+    "kind": "identitytoolkit#VerifyAssertionResponse"
+  },
+  "operationType": "signIn"
+}

@@ -68,7 +68,7 @@ function SignUpForm() {
     await signInWithGoogle()
       .then((res) => {
         console.log(res);
-        createUserGoogle(res.user.uid, res.user.displayName);
+        createUserGoogle(res);
         return res;
       })
       //.then(console.log("Signedup!"))

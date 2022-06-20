@@ -1,0 +1,37 @@
+{
+  "user": {
+    "uid": "Yxp3pdcjEgexXePVIn651d2UAqj2",
+    "email": "as@gmail.com",
+    "emailVerified": false,
+    "isAnonymous": false,
+    "providerData": [
+      {
+        "providerId": "password",
+        "uid": "as@gmail.com",
+        "displayName": null,
+        "email": "as@gmail.com",
+        "phoneNumber": null,
+        "photoURL": null
+      }
+    ],
+    "stsTokenManager": {
+      "refreshToken": "AIwUaOmw1UGkoKhOXNNSyq38jkGlMvu_zvrN01stYVjlDwQNzEmOZoMYK1n23UZ3jo3I0huBI7T_eRjSNx6pw6Ob5RpebW0V3lst5ZYsiVxdrvgl9xOYlOqpoJL5RT94J7YOqEYpLMBt0D6DoVvQTb8VVFQNqKS_V2G-t0fxPmljMoFyFKVciF7Ip04X3X8sFZULPex_pLjNJ_nbEYNpI_jWNL00HQv6dA",
+      "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY5MGZiMWFlMDQ4YTU0OGZiNjgxYWQ2MDkyYjBiODY5ZWE0NjdhYzYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb3JiaXRhbC0yMDIyLTk1ZGY0IiwiYXVkIjoib3JiaXRhbC0yMDIyLTk1ZGY0IiwiYXV0aF90aW1lIjoxNjU1NzIwNTIwLCJ1c2VyX2lkIjoiWXhwM3BkY2pFZ2V4WGVQVkluNjUxZDJVQXFqMiIsInN1YiI6Ill4cDNwZGNqRWdleFhlUFZJbjY1MWQyVUFxajIiLCJpYXQiOjE2NTU3MjA1MjAsImV4cCI6MTY1NTcyNDEyMCwiZW1haWwiOiJhc0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYXNAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Y-lE4fxE6IgYrp4CsG7qBCwq-Znz2WqP3pegVZvgSaQb4i4di1AIikqzDhDXUatpy_OP9jC1ELN-cSKMT3YF0AVn--yTveTkDGKYDQz5TCkhPJN5iMAlE419Ju3nV-Tx1xAlAyB06MyM-PPveWpNc6QWu05ku9kF6d4_fhVqr9N_kJZx04S70KMJFzefQKaEei1NDjlnyZIZGN0c1ocsjZ-ACJ_0iksPNwaf08Mqgxcbo3Wp5e3JZL3iZ6tmJ-jW9Bb891H3E_bFCcEyt0CXIJKp6IjaCoAHLYaJzBECdjARi9Wd7zeuJ3uA-Vc4W0qjYNegORMkmVbsy1_B_2bkow",
+      "expirationTime": 1655724121312
+    },
+    "createdAt": "1655720520265",
+    "lastLoginAt": "1655720520265",
+    "apiKey": "AIzaSyA51xTa_HDa6q1gUUygM6jbChTCBRn8idM",
+    "appName": "[DEFAULT]"
+  },
+  "providerId": null,
+  "_tokenResponse": {
+    "kind": "identitytoolkit#SignupNewUserResponse",
+    "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY5MGZiMWFlMDQ4YTU0OGZiNjgxYWQ2MDkyYjBiODY5ZWE0NjdhYzYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vb3JiaXRhbC0yMDIyLTk1ZGY0IiwiYXVkIjoib3JiaXRhbC0yMDIyLTk1ZGY0IiwiYXV0aF90aW1lIjoxNjU1NzIwNTIwLCJ1c2VyX2lkIjoiWXhwM3BkY2pFZ2V4WGVQVkluNjUxZDJVQXFqMiIsInN1YiI6Ill4cDNwZGNqRWdleFhlUFZJbjY1MWQyVUFxajIiLCJpYXQiOjE2NTU3MjA1MjAsImV4cCI6MTY1NTcyNDEyMCwiZW1haWwiOiJhc0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYXNAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Y-lE4fxE6IgYrp4CsG7qBCwq-Znz2WqP3pegVZvgSaQb4i4di1AIikqzDhDXUatpy_OP9jC1ELN-cSKMT3YF0AVn--yTveTkDGKYDQz5TCkhPJN5iMAlE419Ju3nV-Tx1xAlAyB06MyM-PPveWpNc6QWu05ku9kF6d4_fhVqr9N_kJZx04S70KMJFzefQKaEei1NDjlnyZIZGN0c1ocsjZ-ACJ_0iksPNwaf08Mqgxcbo3Wp5e3JZL3iZ6tmJ-jW9Bb891H3E_bFCcEyt0CXIJKp6IjaCoAHLYaJzBECdjARi9Wd7zeuJ3uA-Vc4W0qjYNegORMkmVbsy1_B_2bkow",
+    "email": "as@gmail.com",
+    "refreshToken": "AIwUaOmw1UGkoKhOXNNSyq38jkGlMvu_zvrN01stYVjlDwQNzEmOZoMYK1n23UZ3jo3I0huBI7T_eRjSNx6pw6Ob5RpebW0V3lst5ZYsiVxdrvgl9xOYlOqpoJL5RT94J7YOqEYpLMBt0D6DoVvQTb8VVFQNqKS_V2G-t0fxPmljMoFyFKVciF7Ip04X3X8sFZULPex_pLjNJ_nbEYNpI_jWNL00HQv6dA",
+    "expiresIn": "3600",
+    "localId": "Yxp3pdcjEgexXePVIn651d2UAqj2"
+  },
+  "operationType": "signIn"
+}

@@ -13,6 +13,7 @@ import { getFirestore, doc, setDoc } from "@firebase/firestore";
 import { collection, getDocs, getDoc } from "firebase/firestore";
 
 import React, { useState, useEffect, useContext, createContext } from "react";
+import { MediationTwoTone } from "@mui/icons-material";
 
 const firebaseAuth = getAuth(app);
 
@@ -25,16 +26,21 @@ const createUser = async (id, data) => {
   console.log("Creating user doc");
 };
 
-export const createUserGoogle = async (id, data) => {
-  await getDoc(doc(db, "users", id))
+export const createUserGoogle = async (userObj) => {
+  await getDoc(doc(db, "users", userObj.user.uid))
     .then((doc) => {
       if (doc.exists()) {
         console.log("Userdata exists!");
         //console.log(doc);
-        console.log(id);
+        console.log(userObj.user.uid);
       } else {
         console.log("doc don't exist!");
-        createUser(id, { name: data });
+        createUser(userObj.user.uid, {
+          name: userObj.user.displayName,
+          email: userObj.user.email,
+          creationTime: userObj.user.metadata.createdAt,
+          phone: "+65 0000 0000",
+        });
       }
     })
     .catch((error) => {
@@ -70,10 +76,15 @@ function useProvideAuth() {
         //.then((userCredential) => {console.log(userCredential.user.uid);return userCredential;})
         //.then((userCredential) => {usersRef.doc(`${userCredential.user.uid}`).set({name: "nameplaceholder",uid: userCredential.user.uid,});console.log("Doc created");return userCredential;})
         .then((userCredential) => {
-          createUser(userCredential.user.uid, { name: "nameplaceholder" });
+          createUser(userCredential.user.uid, {
+            name: "signupnameplaceholder",
+            email: userCredential.user.email,
+            creationTime: userCredential.user.metadata.createdAt,
+            phone: "+65 0000 0000",
+          });
           //DEBUG: for debugging use
-          console.log(userCredential.user.uid);
-          console.log("Reeturning");
+          console.log(userCredential);
+          //console.log("Returning");
           return userCredential;
         })
         .then((userCredential) => {
@@ -98,15 +109,14 @@ function useProvideAuth() {
       });
   };
 
-
   const sendResetEmail = (email) => {
     return sendPasswordResetEmail(firebaseAuth, email)
-    .then(() => {
-      console.log("useAuth: send password reset email")
-    })
-    .catch((error) => {
-      throw error;
-    });
+      .then(() => {
+        console.log("useAuth: send password reset email");
+      })
+      .catch((error) => {
+        throw error;
+      });
   };
 
   const confirmPasswordReset = (code, password) => {
