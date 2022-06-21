@@ -4,17 +4,31 @@ import Layout from "../../components/layout/Layout.js";
 import styles from "./CommunityPage.module.css";
 import { useAuth } from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
-import { getCommunity } from "../../hooks/useDB.js";
+import { getCommunity, queryCommunity } from "../../hooks/useDB.js";
 
 function CommunityPage(props) {
-  const { commList, setCommList } = useState();
+  const [commList, setCommList] = useState([]);
 
   const { user } = useAuth();
+
   useEffect(() => {
     if (user) {
-      getCommunity(user.uid).then((res) => console.log(res));
+      //res is an Array<QueryDocumentSnapshot<T>>
+      //1. Get the array
+      //2. Aft array gets, for each, we extract data
+
+      // getCommunity(user.uid).then((res) =>
+      //   res.forEach((doc) => console.log("doc.data()"))
+      // );
+
+      //This returns a query snapshot
+      queryCommunity(user.uid).then((res) => {
+        setCommList(res);
+      });
     }
   }, [user]);
+
+  useEffect(() => {}, [commList]);
   return (
     <Layout pageName="Community">
       <div>{commList}</div>
