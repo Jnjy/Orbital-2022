@@ -8,7 +8,6 @@ import { db } from "../../../config/FirebaseConfig";
 import moment from "moment";
 
 function UserInformation() {
-  const [value, setValue] = useState("one");
   const { user } = useAuth();
   const [name, setName] = useState("Loading name...");
   const [profile, setProfile] = useState("blank profile");
@@ -29,10 +28,6 @@ function UserInformation() {
     }
   };
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   useEffect(() => {
     if (user?.displayName) {
       setName(user.displayName);
@@ -42,13 +37,6 @@ function UserInformation() {
       console.log(user.uid);
     }
   }, [user]);
-
-  function EpochToDate(timeEpoch, offset) {
-    var d = new Date(timeEpoch);
-    var utc = d.getTime() + d.getTimezoneOffset() * 60000; //This converts to UTC 00:00
-    var nd = new Date(utc + 3600000 * offset);
-    return nd.toLocaleString();
-  }
 
   useEffect(() => {
     if (profile) {
