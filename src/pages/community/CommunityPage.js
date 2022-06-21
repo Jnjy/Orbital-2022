@@ -9,6 +9,7 @@ import { getCommunityInfo, queryCommunity } from "../../hooks/useDB.js";
 function CommunityPage(props) {
   const [commList, setCommList] = useState([]);
   const [allCommInfo, setAllCommInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { user } = useAuth();
 
@@ -18,17 +19,18 @@ function CommunityPage(props) {
     if (user) {
       queryCommunity(user.uid).then((res) => {
         setCommList(res);
+        setIsLoading(true);
       });
     }
   }, [user]);
 
   useEffect(() => {
     commList.forEach((r) => {
-      getCommunityInfo(r).then((res) => {
-        console.log(res);
-        comms.push(res);
-        console.log(comms);
-      });
+      getCommunityInfo(r)
+        .then((res) => {
+          comms.push(res);
+        })
+        .then(setAllCommInfo(comms), setIsLoading(false));
     });
   }, [commList]);
 
@@ -45,18 +47,6 @@ function CommunityPage(props) {
       >
         {/* add search and filter bar
         to be replaced by mapping from db*/}
-        <CommCard
-          title="Community 1"
-          desc="This is a short description of community 1"
-        />
-        <CommCard
-          title="Community 1"
-          desc="This is a short description of community 1"
-        />
-        <CommCard
-          title="Community 1"
-          desc="This is a short description of community 1"
-        />
         <CommCard
           title="Community 1"
           desc="This is a short description of community 1"
