@@ -26,6 +26,7 @@ const createUser = async (id, data) => {
   console.log("Creating user doc");
 };
 
+//Phone number is placeholder
 export const createUserGoogle = async (userObj) => {
   await getDoc(doc(db, "users", userObj.user.uid))
     .then((doc) => {

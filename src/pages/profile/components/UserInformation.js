@@ -42,11 +42,23 @@ function UserInformation() {
     }
   }, [user]);
 
+  function EpochToDate(timeEpoch, offset) {
+    var d = new Date(timeEpoch);
+    var utc = d.getTime() + d.getTimezoneOffset() * 60000; //This converts to UTC 00:00
+    var nd = new Date(utc + 3600000 * offset);
+    return nd.toLocaleString();
+  }
+
   useEffect(() => {
     if (profile) {
       setEmail(profile.email);
       setName(profile.name);
-      setJdate(profile.creationTime);
+      //creation time in epoch date, need to parse properly
+      console.log(profile.creationTime);
+      //Converts string to int
+      const date = EpochToDate(parseInt(profile.creationTime), +8);
+      console.log(date);
+      setJdate(date);
       setPhone(profile.phone);
     }
   }, [profile]);
