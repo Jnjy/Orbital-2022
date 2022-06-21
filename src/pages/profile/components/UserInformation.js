@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../config/FirebaseConfig";
+import moment from "moment";
 
 function UserInformation() {
   const [value, setValue] = useState("one");
@@ -56,7 +57,7 @@ function UserInformation() {
       //creation time in epoch date, need to parse properly
       console.log(profile.creationTime);
       //Converts string to int
-      const date = EpochToDate(parseInt(profile.creationTime), +8);
+      const date = moment(parseInt(profile.creationTime)).format("DD-MM-YYYY");
       console.log(date);
       setJdate(date);
       setPhone(profile.phone);
