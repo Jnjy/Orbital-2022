@@ -1,39 +1,39 @@
 .signupBox {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .title {
-    color:#11AC0E;
-    margin-bottom: 20px;
+  color: #11ac0e;
+  margin-bottom: 20px;
 }
 
 .subtitle {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .paperHeader {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 /* Button Styles */
 .button {
-    width: 285px;
+  width: 285px;
 }
 
 .submit {
-    background-color:#11AC0E;
+  background-color: #11ac0e;
 }
 
 .googleSignUp {
-    color: #11AC0E;
-    border-color: #11AC0E;
+  color: #11ac0e;
+  border-color: #11ac0e;
 }
 
 /* Form Styles */
 .formField {
-    padding: 30px;
+  padding: 30px;
 }
 
 .formItemBox {
-    width: 300px;
+  width: 300px;
 }
