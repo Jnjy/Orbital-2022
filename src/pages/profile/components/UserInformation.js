@@ -1,24 +1,55 @@
-import {
-  Badge,
-  Box,
-  Container,
-  Grid,
-  Item,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Badge, Grid, Paper, Stack, Typography } from "@mui/material";
 import styles from "../UserProfile.module.css";
 import Avatar from "@mui/material/Avatar";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "../../../hooks/useAuth";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../../config/FirebaseConfig";
 
 function UserInformation() {
   const [value, setValue] = useState("one");
+  const { user } = useAuth();
+  const [name, setName] = useState("Loading name...");
+  const [profile, setProfile] = useState("blank profile");
+  const [pemail, setEmail] = useState("placeholder@gmail.com");
+  const [phone, setPhone] = useState("+65 XXXX XXXX");
+  const [jdate, setJdate] = useState("DD/MM/YYYY");
+
+  const getUser = async (uid) => {
+    const docRef = doc(db, "users", uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setProfile(docSnap.data());
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    if (user?.displayName) {
+      setName(user.displayName);
+    }
+    if (user) {
+      getUser(user.uid);
+      console.log(user.uid);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (profile) {
+      setEmail(profile.email);
+      setName(profile.name);
+      setJdate(profile.creationTime);
+      setPhone(profile.phone);
+    }
+  }, [profile]);
 
   return (
     <Grid item md={4}>
@@ -42,20 +73,20 @@ function UserInformation() {
               }
             >
               <Avatar
-                alt="Profile Picture"
+                alt={"Profile Picture"}
                 src="https://helios-i.mashable.com/imagery/articles/04i1KeWXNed98aQakEZjeOs/hero-image.fill.size_1248x702.v1623362896.jpg"
                 sx={{ width: 150, height: 150 }}
               />
             </Badge>
           </Grid>
           <Grid item>
-            <Typography variant="h4">Name</Typography>
-            <Typography variant="caption">Joined since DD/MM/YY</Typography>
+            <Typography variant="h4">{name}</Typography>
+            <Typography variant="caption">Joined since {jdate}</Typography>
           </Grid>
           <Grid item>
             <Stack spacing={2}>
-              <Typography variant="p">Email: commflea@mail.com</Typography>
-              <Typography variant="p">Phone No: 12345678</Typography>
+              <Typography variant="p">{pemail}</Typography>
+              <Typography variant="p">Phone No: {phone}</Typography>
               <Typography variant="p">Telegram Handle: @commflea</Typography>
             </Stack>
           </Grid>
