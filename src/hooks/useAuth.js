@@ -13,6 +13,7 @@ import { getFirestore, doc, setDoc } from "@firebase/firestore";
 import { collection, getDocs, getDoc } from "firebase/firestore";
 
 import React, { useState, useEffect, useContext, createContext } from "react";
+import { MediationTwoTone } from "@mui/icons-material";
 
 const firebaseAuth = getAuth(app);
 
@@ -25,16 +26,19 @@ const createUser = async (id, data) => {
   console.log("Creating user doc");
 };
 
-export const createUserGoogle = async (id, data) => {
-  await getDoc(doc(db, "users", id))
+//Phone number is placeholder
+export const createUserGoogle = async (userObj) => {
+  await getDoc(doc(db, "users", userObj.user.uid))
     .then((doc) => {
       if (doc.exists()) {
-        console.log("Userdata exists!");
-        //console.log(doc);
-        console.log(id);
       } else {
         console.log("doc don't exist!");
-        createUser(id, { name: data });
+        createUser(userObj.user.uid, {
+          name: userObj.user.displayName,
+          email: userObj.user.email,
+          creationTime: userObj.user.metadata.createdAt,
+          phone: "+65 0000 0000",
+        });
       }
     })
     .catch((error) => {
@@ -65,26 +69,23 @@ function useProvideAuth() {
   };
 
   const signup = (email, password) => {
-    return (
-      createUserWithEmailAndPassword(firebaseAuth, email, password)
-        //.then((userCredential) => {console.log(userCredential.user.uid);return userCredential;})
-        //.then((userCredential) => {usersRef.doc(`${userCredential.user.uid}`).set({name: "nameplaceholder",uid: userCredential.user.uid,});console.log("Doc created");return userCredential;})
-        .then((userCredential) => {
-          createUser(userCredential.user.uid, { name: "nameplaceholder" });
-          //DEBUG: for debugging use
-          console.log(userCredential.user.uid);
-          console.log("Reeturning");
-          return userCredential;
-        })
-        .then((userCredential) => {
-          //Signed in
-          const newUser = userCredential.user;
-          setUser(newUser);
-        })
-        .catch((error) => {
-          throw error;
-        })
-    );
+    return createUserWithEmailAndPassword(firebaseAuth, email, password)
+      .then((userCredential) => {
+        createUser(userCredential.user.uid, {
+          name: "signupnameplaceholder",
+          email: userCredential.user.email,
+          creationTime: userCredential.user.metadata.createdAt,
+          phone: "+65 0000 0000",
+        });
+        return userCredential;
+      })
+      .then((userCredential) => {
+        const newUser = userCredential.user;
+        setUser(newUser);
+      })
+      .catch((error) => {
+        throw error;
+      });
   };
 
   const signout = () => {
@@ -98,15 +99,14 @@ function useProvideAuth() {
       });
   };
 
-
   const sendResetEmail = (email) => {
     return sendPasswordResetEmail(firebaseAuth, email)
-    .then(() => {
-      console.log("useAuth: send password reset email")
-    })
-    .catch((error) => {
-      throw error;
-    });
+      .then(() => {
+        console.log("useAuth: send password reset email");
+      })
+      .catch((error) => {
+        throw error;
+      });
   };
 
   const confirmPasswordReset = (code, password) => {
@@ -120,11 +120,6 @@ function useProvideAuth() {
   };
 
   useEffect(() => {
-    //const getUsers = async () => {
-    //  const data = await getDocs(usersCollectionRef);
-    //  console.log(data.docs);
-    //};
-
     const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);

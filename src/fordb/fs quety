@@ -1,0 +1,181 @@
+{
+  "_firestore": {
+    "app": {
+      "_isDeleted": false,
+      "_options": {
+        "apiKey": "AIzaSyA51xTa_HDa6q1gUUygM6jbChTCBRn8idM",
+        "authDomain": "orbital-2022-95df4.firebaseapp.com",
+        "projectId": "orbital-2022-95df4",
+        "storageBucket": "orbital-2022-95df4.appspot.com",
+        "messagingSenderId": "461288548077",
+        "appId": "1:461288548077:web:84d86d9266a8cc1d958ee4",
+        "measurementId": "G-T3LN0X7G8E"
+      },
+      "_config": {
+        "name": "[DEFAULT]",
+        "automaticDataCollectionEnabled": false
+      },
+      "_name": "[DEFAULT]",
+      "_automaticDataCollectionEnabled": false,
+      "_container": {
+        "name": "[DEFAULT]",
+        "providers": {}
+      }
+    },
+    "databaseId": {
+      "projectId": "orbital-2022-95df4",
+      "database": "(default)"
+    },
+    "settings": {
+      "host": "firestore.googleapis.com",
+      "ssl": true,
+      "ignoreUndefinedProperties": false,
+      "cacheSizeBytes": 41943040,
+      "experimentalForceLongPolling": false,
+      "experimentalAutoDetectLongPolling": false,
+      "useFetchStreams": true
+    }
+  },
+  "_userDataWriter": {
+    "firestore": {
+      "app": {
+        "_isDeleted": false,
+        "_options": {
+          "apiKey": "AIzaSyA51xTa_HDa6q1gUUygM6jbChTCBRn8idM",
+          "authDomain": "orbital-2022-95df4.firebaseapp.com",
+          "projectId": "orbital-2022-95df4",
+          "storageBucket": "orbital-2022-95df4.appspot.com",
+          "messagingSenderId": "461288548077",
+          "appId": "1:461288548077:web:84d86d9266a8cc1d958ee4",
+          "measurementId": "G-T3LN0X7G8E"
+        },
+        "_config": {
+          "name": "[DEFAULT]",
+          "automaticDataCollectionEnabled": false
+        },
+        "_name": "[DEFAULT]",
+        "_automaticDataCollectionEnabled": false,
+        "_container": {
+          "name": "[DEFAULT]",
+          "providers": {}
+        }
+      },
+      "databaseId": {
+        "projectId": "orbital-2022-95df4",
+        "database": "(default)"
+      },
+      "settings": {
+        "host": "firestore.googleapis.com",
+        "ssl": true,
+        "ignoreUndefinedProperties": false,
+        "cacheSizeBytes": 41943040,
+        "experimentalForceLongPolling": false,
+        "experimentalAutoDetectLongPolling": false,
+        "useFetchStreams": true
+      }
+    }
+  },
+  "_key": {
+    "path": {
+      "segments": [
+        "users",
+        "bLdRvNTAWtRIQcNlhAtL0TewUvP2"
+      ],
+      "offset": 0,
+      "len": 2
+    }
+  },
+  "_document": {
+    "key": {
+      "path": {
+        "segments": [
+          "projects",
+          "orbital-2022-95df4",
+          "databases",
+          "(default)",
+          "documents",
+          "users",
+          "bLdRvNTAWtRIQcNlhAtL0TewUvP2"
+        ],
+        "offset": 5,
+        "len": 2
+      }
+    },
+    "documentType": 1,
+    "version": {
+      "timestamp": {
+        "seconds": 1655722039,
+        "nanoseconds": 923277000
+      }
+    },
+    "readTime": {
+      "timestamp": {
+        "seconds": 1655736868,
+        "nanoseconds": 364082000
+      }
+    },
+    "data": {
+      "value": {
+        "mapValue": {
+          "fields": {
+            "phone": {
+              "stringValue": "+65 0000 0000"
+            },
+            "creationTime": {
+              "stringValue": "1655722038829"
+            },
+            "email": {
+              "stringValue": "sean.wong2307@gmail.com"
+            },
+            "name": {
+              "stringValue": "Sean Wong"
+            }
+          }
+        }
+      }
+    },
+    "documentState": 0
+  },
+  "_converter": null,
+  "_firestoreImpl": {
+    "app": {
+      "_isDeleted": false,
+      "_options": {
+        "apiKey": "AIzaSyA51xTa_HDa6q1gUUygM6jbChTCBRn8idM",
+        "authDomain": "orbital-2022-95df4.firebaseapp.com",
+        "projectId": "orbital-2022-95df4",
+        "storageBucket": "orbital-2022-95df4.appspot.com",
+        "messagingSenderId": "461288548077",
+        "appId": "1:461288548077:web:84d86d9266a8cc1d958ee4",
+        "measurementId": "G-T3LN0X7G8E"
+      },
+      "_config": {
+        "name": "[DEFAULT]",
+        "automaticDataCollectionEnabled": false
+      },
+      "_name": "[DEFAULT]",
+      "_automaticDataCollectionEnabled": false,
+      "_container": {
+        "name": "[DEFAULT]",
+        "providers": {}
+      }
+    },
+    "databaseId": {
+      "projectId": "orbital-2022-95df4",
+      "database": "(default)"
+    },
+    "settings": {
+      "host": "firestore.googleapis.com",
+      "ssl": true,
+      "ignoreUndefinedProperties": false,
+      "cacheSizeBytes": 41943040,
+      "experimentalForceLongPolling": false,
+      "experimentalAutoDetectLongPolling": false,
+      "useFetchStreams": true
+    }
+  },
+  "metadata": {
+    "hasPendingWrites": false,
+    "fromCache": false
+  }
+}
