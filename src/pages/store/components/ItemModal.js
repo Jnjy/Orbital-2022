@@ -1,7 +1,7 @@
 import { Button, Modal, Stack, Typography } from '@mui/material'
 import { Box } from '@mui/system';
-import React, { useState } from 'react'
-
+import { useState } from 'react'
+import ItemForm from "./ItemForm"
 const modalStyle = {
   position: 'absolute',
   top: '50%',
@@ -27,12 +27,8 @@ function ItemModal() {
       >
         <Box sx={modalStyle}>
           <Stack spacing={2}>
-            <Typography variant="h6">Title</Typography>
-            <Typography variant="h6">Form</Typography>
-            <Stack direction="row-reverse">
-              <Button color='error'>Cancel</Button>
-              <Button>Add</Button>
-            </Stack>
+            <Typography variant="h6">Post an item</Typography>
+            <ItemForm handleClose={ handleClose }/>
           </Stack>
         </Box>
       </Modal>
