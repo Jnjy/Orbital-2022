@@ -1,6 +1,5 @@
 import { Box, Container, Grid, Tab, Tabs, Typography } from '@mui/material'
 import UserInformation from './components/UserInformation'
-import styles from './UserProfile.module.css'
 import NavBar from '../../components/NavBar/NavBar'
 import { useState } from 'react';
 import UserUtil from './components/UserUtil'

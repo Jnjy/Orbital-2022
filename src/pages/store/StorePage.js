@@ -1,11 +1,13 @@
 import { Grid } from "@mui/material";
 import ItemCard from "../../components/ItemCards/ItemCards";
 import Layout from "../../components/layout/Layout.js";
+import ItemModal from "./components/ItemModal";
 import styles from "./StorePage.module.css";
 
 function StorePage(props) {
   return (
     <Layout pageName="Store">
+    <ItemModal />
       <Grid 
       container
       spacing={2}
