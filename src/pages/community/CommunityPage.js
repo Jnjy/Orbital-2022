@@ -29,7 +29,6 @@ function CommunityPage(props) {
     commList.forEach((r) => {
       getCommunityInfo(r).then((res) => {
         comms.push(res);
-        console.log(comms.length);
         setAllCommInfo(comms);
       });
     });
@@ -50,9 +49,8 @@ function CommunityPage(props) {
         {/* add search and filter bar
         to be replaced by mapping from db*/}
         {allCommInfo.map(({ name, shortDesc }) => (
-          <CommCard title={name} desc={shortDesc} />
+          <CommCard title={name} desc={shortDesc} key={name} />
         ))}
-        {/* {console.log(allCommInfo[0])} */}
         <CommCard
           title="Placeholder 1"
           desc="This is a short description of community 1"
