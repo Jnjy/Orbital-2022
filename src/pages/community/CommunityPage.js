@@ -4,12 +4,15 @@ import Layout from "../../components/layout/Layout.js";
 import styles from "./CommunityPage.module.css";
 import { useAuth } from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
-import { getCommunity, queryCommunity } from "../../hooks/useDB.js";
+import { getCommunityInfo, queryCommunity } from "../../hooks/useDB.js";
 
 function CommunityPage(props) {
   const [commList, setCommList] = useState([]);
+  const [allCommInfo, setAllCommInfo] = useState([]);
 
   const { user } = useAuth();
+
+  let comms = [];
 
   useEffect(() => {
     if (user) {
@@ -19,7 +22,16 @@ function CommunityPage(props) {
     }
   }, [user]);
 
-  useEffect(() => {}, [commList]);
+  useEffect(() => {
+    commList.forEach((r) => {
+      getCommunityInfo(r).then((res) => {
+        console.log(res);
+        comms.push(res);
+        console.log(comms);
+      });
+    });
+  }, [commList]);
+
   return (
     <Layout pageName="Community">
       <div>{commList}</div>

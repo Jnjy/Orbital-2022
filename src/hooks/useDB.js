@@ -38,3 +38,17 @@ export const queryCommunity = async (uid) => {
   });
   return data;
 };
+
+//cid = Community ID
+export const getCommunityInfo = async (cid) => {
+  const docRef = doc(db, "community", cid);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    //console.log("Document data:", docSnap.data());
+    return docSnap.data();
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+};
