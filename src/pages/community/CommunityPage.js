@@ -13,15 +13,6 @@ function CommunityPage(props) {
 
   useEffect(() => {
     if (user) {
-      //res is an Array<QueryDocumentSnapshot<T>>
-      //1. Get the array
-      //2. Aft array gets, for each, we extract data
-
-      // getCommunity(user.uid).then((res) =>
-      //   res.forEach((doc) => console.log("doc.data()"))
-      // );
-
-      //This returns a query snapshot
       queryCommunity(user.uid).then((res) => {
         setCommList(res);
       });
