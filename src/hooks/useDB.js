@@ -10,11 +10,15 @@ import {
 
 import { db } from "../config/FirebaseConfig";
 
-export const getProfile = async (uid) => {
-  //console.log(uid);
-  await getDoc(doc(db, "users", uid)).then((res) => {
-    //console.log(res);
-    //console.log("res loaded");
-    return res;
-  });
+export const getUser = async (uid) => {
+  const docRef = doc(db, "users", uid);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    //console.log("Document data:", docSnap.data());
+    return docSnap.data();
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
 };

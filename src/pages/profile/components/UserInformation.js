@@ -3,8 +3,7 @@ import styles from "../UserProfile.module.css";
 import Avatar from "@mui/material/Avatar";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../hooks/useAuth";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../config/FirebaseConfig";
+import { getUser } from "../../../hooks/useDB";
 import moment from "moment";
 
 function UserInformation() {
@@ -15,26 +14,12 @@ function UserInformation() {
   const [phone, setPhone] = useState("+65 XXXX XXXX");
   const [jdate, setJdate] = useState("DD/MM/YYYY");
 
-  const getUser = async (uid) => {
-    const docRef = doc(db, "users", uid);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setProfile(docSnap.data());
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-  };
-
   useEffect(() => {
     if (user?.displayName) {
       setName(user.displayName);
     }
     if (user) {
-      getUser(user.uid);
-      console.log(user.uid);
+      getUser(user.uid).then((res) => setProfile(res));
     }
   }, [user]);
 
@@ -42,11 +27,8 @@ function UserInformation() {
     if (profile) {
       setEmail(profile.email);
       setName(profile.name);
-      //creation time in epoch date, need to parse properly
-      console.log(profile.creationTime);
       //Converts string to int
       const date = moment(parseInt(profile.creationTime)).format("DD-MM-YYYY");
-      console.log(date);
       setJdate(date);
       setPhone(profile.phone);
     }
