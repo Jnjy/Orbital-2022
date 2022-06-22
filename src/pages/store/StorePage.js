@@ -1,4 +1,5 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
+import { useLocation, useParams } from "react-router-dom";
 import ItemCard from "../../components/ItemCards/ItemCards";
 import Layout from "../../components/layout/Layout.js";
 import ItemModal from "./components/ItemModal";
@@ -8,11 +9,14 @@ import { useState, useEffect } from "react";
 import { getItemInfo, queryItems } from "../../hooks/useDB.js";
 
 function StorePage(props) {
+
   //state of selected community should be at this.props.location.state.commID (or equivalent)
   //This is a placeholder for "Sheares hall"
   const selectedComm = "7vpSMNq4nJRtzPvRoQQM";
   const [itemsList, setItemsList] = useState([]);
   const [allItemInfo, setAllItemInfo] = useState([]);
+  const {commId} = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     if (selectedComm) {
@@ -40,6 +44,7 @@ function StorePage(props) {
   return (
     <Layout pageName="Store">
       <ItemModal />
+      <Button onClick={() => console.log(location.state.commId)}>CLICK</Button>
       <Grid
         container
         spacing={2}
