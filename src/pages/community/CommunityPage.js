@@ -5,6 +5,7 @@ import styles from "./CommunityPage.module.css";
 import { useAuth } from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
 import { getCommunityInfo, queryCommunity } from "../../hooks/useDB.js";
+import CommunityModal from "./components/CommunityModal.js";
 
 function CommunityPage(props) {
   const [commList, setCommList] = useState([]);
@@ -38,6 +39,7 @@ function CommunityPage(props) {
   return (
     <Layout pageName="Community">
       <div>{commList}</div>
+      <CommunityModal />
       <Grid
         container
         spacing={2}
