@@ -3,6 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useRef } from "react";
 import ErrorMessage from "../../store/components/Error";
+import TextFieldBox from "../../../components/FormsUI/TextFieldBox";
 
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 
@@ -33,7 +34,7 @@ function ItemForm({ handleClose }) {
 
   const handleSubmit = (values) => {
     console.log(values);
-    handleClose();
+    //handleClose();
   };
 
   return (
@@ -45,11 +46,13 @@ function ItemForm({ handleClose }) {
       {({ values, setFieldValue }) => (
         <Form>
           <Stack spacing={4}>
-            <TextField fullWidth label="Community Name" required />
-            <TextField fullWidth label="Community Address" required />
-            <TextField
+            <TextFieldBox fullWidth name="commName" label="Community Name" />
+            <TextFieldBox fullWidth name="commAddress" label="Community Address" />
+            <TextFieldBox
+
               id="outlined-textarea"
-              label="Description"
+              name="commDescription"
+              label="commDescription"
               placeholder="Description"
               maxRows={4}
               multiline

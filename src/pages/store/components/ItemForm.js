@@ -3,11 +3,13 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useRef } from "react";
 import ErrorMessage from "./Error";
+import TextFieldBox from "../../../components/FormsUI/TextFieldBox";
 
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 
 const INITIAL_FORM_STATE = {
   itemName: "",
+  itemPrice: "",
   itemDescription: "",
   itemImage: "",
   itemCondition: "",
@@ -47,11 +49,13 @@ function ItemForm({ handleClose }) {
         <Form>
           <Stack spacing={4}>
             <Stack direction="row" spacing={4}>
-              <TextField fullWidth label="Item Name" />
-              <TextField fullWidth label="Item Price" />
+              <TextFieldBox name="itemName" fullWidth label="Item Name" />
+              <TextFieldBox name="itemPrice" fullWidth label="Item Price" />
+              <TextFieldBox name="itemCondition" fullWidth label="Item Condition" />
             </Stack>
-            <TextField
+            <TextFieldBox
               id="outlined-textarea"
+              name="itemDescription"
               label="Item Description"
               placeholder="Description"
               maxRows={4}
