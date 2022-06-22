@@ -14,6 +14,12 @@ function CommunityPage(props) {
 
   const { user } = useAuth();
 
+  const addComm = (cid) => {
+    let curr = commList;
+    curr = [...curr, cid];
+    setCommList(curr);
+  };
+
   useEffect(() => {
     if (user) {
       //Putting a placeholder here until adding user to community is setup
@@ -26,7 +32,7 @@ function CommunityPage(props) {
   }, [user]);
 
   useEffect(() => {
-    var promises = commList.map((cid) =>
+    const promises = commList.map((cid) =>
       getCommunityInfo(cid).then((r) => [cid, r])
     );
     Promise.all(promises).then((r) => {
@@ -37,7 +43,7 @@ function CommunityPage(props) {
 
   return (
     <Layout pageName="Community">
-      <CommunityModal uid={user} />
+      <CommunityModal uid={user} ac={addComm} />
       <Grid
         container
         spacing={2}

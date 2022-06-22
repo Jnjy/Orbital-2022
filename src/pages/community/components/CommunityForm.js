@@ -6,6 +6,7 @@ import ErrorMessage from "../../store/components/Error";
 import TextFieldBox from "../../../components/FormsUI/TextFieldBox";
 import { addCommunity, linkUserCommunity } from "../../../hooks/useDB";
 import { useAuth } from "../../../hooks/useAuth";
+import { act } from "react-dom/test-utils";
 
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 
@@ -31,14 +32,17 @@ const FORM_VALIDATION = Yup.object().shape({
     ),
 });
 
-function ItemForm({ handleClose }) {
+function ItemForm({ handleClose, addC }) {
   const { user } = useAuth();
 
   const imageRef = useRef(null);
 
   const handleSubmit = (values) => {
     console.log(values);
-    addCommunity(values).then((r) => linkUserCommunity(user.uid, r.id));
+    addCommunity(values).then((r) => {
+      linkUserCommunity(user.uid, r.id);
+      addC(r.id);
+    });
     handleClose();
   };
 
