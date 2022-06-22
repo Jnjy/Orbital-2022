@@ -39,7 +39,7 @@ function CommunityPage(props) {
   return (
     <Layout pageName="Community">
       <div>{commList}</div>
-      <CommunityModal />
+      <CommunityModal uid={user} />
       <Grid
         container
         spacing={2}
