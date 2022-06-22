@@ -37,7 +37,6 @@ function CommunityPage(props) {
 
   return (
     <Layout pageName="Community">
-      <div>{commList}</div>
       <CommunityModal uid={user} />
       <Grid
         container
@@ -62,10 +61,7 @@ function CommunityPage(props) {
           <div>Loading!</div>
         )}
 
-        <CommCard
-          title="Placeholder 1"
-          desc="Placeholder"
-        />
+        <CommCard title="Placeholder 1" desc="Placeholder" />
       </Grid>
     </Layout>
   );
