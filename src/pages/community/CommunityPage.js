@@ -48,8 +48,8 @@ function CommunityPage(props) {
       >
         {/* add search and filter bar
         to be replaced by mapping from db*/}
-        {allCommInfo.map(({ name, shortDesc }) => (
-          <CommCard title={name} desc={shortDesc} key={name} />
+        {allCommInfo.map(({ name, shortDesc, cid }) => (
+          <CommCard title={name} desc={shortDesc} key={cid} />
         ))}
         <CommCard
           title="Placeholder 1"
