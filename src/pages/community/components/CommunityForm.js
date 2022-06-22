@@ -55,12 +55,22 @@ function ItemForm({ handleClose, addC }) {
       {({ values, setFieldValue }) => (
         <Form>
           <Stack spacing={4}>
-            <TextFieldBox fullWidth name="name" label="Community Name" />
-            <TextFieldBox fullWidth name="address" label="Community Address" />
+            <TextFieldBox
+              fullWidth
+              name="name"
+              label="Community Name"
+              required
+            />
+            <TextFieldBox
+              fullWidth
+              name="address"
+              label="Community Address"
+              required
+            />
             <TextFieldBox
               id="outlined-textarea"
               name="shortDesc"
-              label="commDescription"
+              label="Community Description"
               placeholder="Description"
               maxRows={4}
               multiline
