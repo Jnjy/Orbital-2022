@@ -30,10 +30,10 @@ export const queryCommunity = async (uid) => {
   const colRef = collection(db, "junction_user_community");
   const q = query(colRef, where("userid", "==", uid));
   const querySnapshot = await getDocs(q);
-  //console.log("running qc");
+
   let data = [];
+
   querySnapshot.forEach((doc) => {
-    //console.log(doc.data());
     data = [...data, doc.data().commid];
   });
   return data;
@@ -45,7 +45,6 @@ export const getCommunityInfo = async (cid) => {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    //console.log("Document data:", docSnap.data());
     return docSnap.data();
   } else {
     // doc.data() will be undefined in this case
@@ -58,8 +57,9 @@ export const queryItems = async (cid) => {
   const colRef = collection(db, "junction_community_items");
   const q = query(colRef, where("commid", "==", cid));
   const querySnapshot = await getDocs(q);
-  //console.log("running qc");
+
   let data = [];
+
   querySnapshot.forEach((doc) => {
     //console.log(doc.data());
     data = [...data, doc.data().itemid];
@@ -73,10 +73,11 @@ export const getItemInfo = async (iid) => {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    //console.log("Document data:", docSnap.data());
     return docSnap.data();
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
   }
 };
+
+//export const addCommunity = async

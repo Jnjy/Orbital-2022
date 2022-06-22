@@ -20,7 +20,7 @@ function CommunityPage(props) {
       //queryCommunity(user.uid).then((res) => {
       queryCommunity("e9iLoiJsNUTd0mGvBUKAjexLHOl1").then((res) => {
         setCommList(res);
-        setIsLoading(true);
+        //setIsLoading(true);
       });
     }
   }, [user]);

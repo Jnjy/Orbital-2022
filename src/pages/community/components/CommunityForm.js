@@ -8,8 +8,8 @@ const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 
 const INITIAL_FORM_STATE = {
   commName: "",
-  commDescription: "", 
-  commAddress: "", 
+  commDescription: "",
+  commAddress: "",
   image: "",
 };
 
@@ -45,14 +45,15 @@ function ItemForm({ handleClose }) {
       {({ values, setFieldValue }) => (
         <Form>
           <Stack spacing={4}>
-            <TextField fullWidth label="Community Name" />
-            <TextField fullWidth label="Community Address" />
+            <TextField fullWidth label="Community Name" required />
+            <TextField fullWidth label="Community Address" required />
             <TextField
               id="outlined-textarea"
               label="Description"
               placeholder="Description"
               maxRows={4}
               multiline
+              required
             />
             <input
               ref={imageRef}
@@ -64,7 +65,7 @@ function ItemForm({ handleClose }) {
             />
             <ErrorMessage name="image" />
           </Stack>
-          <Button type="submit">Post</Button>
+          <Button type="submit">Add</Button>
         </Form>
       )}
     </Formik>

@@ -7,18 +7,17 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import styles from "./CommCards.module.css";
 import { Grid } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CommCard(props) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/store", 
-              { state: {
-                  commId: props.commId,
-                }
-              }
-            );
+    navigate("/store", {
+      state: {
+        commId: props.commId,
+      },
+    });
   };
 
   return (
@@ -38,7 +37,7 @@ export default function CommCard(props) {
           alt="Community 1"
         /> */}
         <CardContent>
-        {console.log(props)}
+          {console.log(props)}
           <Typography
             gutterBottom
             variant="h5"
@@ -60,7 +59,9 @@ export default function CommCard(props) {
           <Button variant="outlined" size="small" onClick={handleNavigate}>
             Enter Community
           </Button>
-          <Button size="small" onClick={handleNavigate}>Learn More</Button>
+          <Button size="small" onClick={handleNavigate}>
+            Learn More
+          </Button>
         </CardActions>
       </Card>
     </Grid>
