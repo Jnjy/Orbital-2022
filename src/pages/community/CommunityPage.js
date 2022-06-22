@@ -18,22 +18,21 @@ function CommunityPage(props) {
     if (user) {
       //Putting a placeholder here until adding user to community is setup
       //queryCommunity(user.uid).then((res) => {
-      queryCommunity("e9iLoiJsNUTd0mGvBUKAjexLHOl1").then((res) => {
+      queryCommunity(user.uid).then((res) => {
         setCommList(res);
-        //setIsLoading(true);
+        setIsLoading(true);
       });
     }
   }, [user]);
 
   useEffect(() => {
-    let comms = [];
-    commList.forEach((r) => {
-      getCommunityInfo(r).then((res) => {
-        comms.push(res);
-        setAllCommInfo(comms);
-      });
+    var promises = commList.map((cid) =>
+      getCommunityInfo(cid).then((r) => [cid, r])
+    );
+    Promise.all(promises).then((r) => {
+      console.log(r);
+      setAllCommInfo(r);
     });
-    setIsLoading(false);
   }, [commList]);
 
   return (
@@ -50,9 +49,19 @@ function CommunityPage(props) {
       >
         {/* add search and filter bar
         to be replaced by mapping from db*/}
-        {allCommInfo.map(({ name, shortDesc, cid }) => (
-          <CommCard title={name} desc={shortDesc} commId={cid} key={cid} />
-        ))}
+        {isLoading ? (
+          allCommInfo.map((elem) => (
+            <CommCard
+              title={elem[1].name}
+              desc={elem[1].shortDesc}
+              commId={elem[0]}
+              key={elem[0]}
+            />
+          ))
+        ) : (
+          <div>Loading!</div>
+        )}
+
         <CommCard
           title="Placeholder 1"
           desc="This is a short description of community 1"

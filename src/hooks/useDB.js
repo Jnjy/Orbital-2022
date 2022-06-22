@@ -46,7 +46,10 @@ export const getCommunityInfo = async (cid) => {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    return docSnap.data();
+    let data = docSnap.data();
+    console.log(typeof data);
+    //data = [...data, { cid: cid }];
+    return data;
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
