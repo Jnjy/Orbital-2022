@@ -37,7 +37,6 @@ export default function CommCard(props) {
           alt="Community 1"
         /> */}
         <CardContent>
-          {console.log(props)}
           <Typography
             gutterBottom
             variant="h5"
