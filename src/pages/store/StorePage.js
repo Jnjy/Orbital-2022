@@ -1,5 +1,5 @@
-import { Grid } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Button, Grid } from "@mui/material";
+import { useLocation, useParams } from "react-router-dom";
 import ItemCard from "../../components/ItemCards/ItemCards";
 import Layout from "../../components/layout/Layout.js";
 import ItemModal from "./components/ItemModal";
@@ -7,13 +7,12 @@ import styles from "./StorePage.module.css";
 
 function StorePage(props) {
   const {commId} = useParams();
+  const location = useLocation();
 
   return (
     <Layout pageName="Store">
-      <div>
-        {commId}
-      </div>
       <ItemModal />
+      <Button onClick={() => console.log(location.state.commId)}>CLICK</Button>
       <Grid
         container
         spacing={2}
