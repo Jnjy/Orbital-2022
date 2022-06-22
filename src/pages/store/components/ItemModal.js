@@ -14,10 +14,12 @@ const modalStyle = {
   p: 4,
 };
 
-function ItemModal() {
+function ItemModal(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const ai = props.ai;
+  const cid = props.cid;
 
   return (
     <div>
@@ -26,7 +28,7 @@ function ItemModal() {
         <Box sx={modalStyle}>
           <Stack spacing={2}>
             <Typography variant="h6">Post an item</Typography>
-            <ItemForm handleClose={handleClose} />
+            <ItemForm handleClose={handleClose} addI={ai} cid={cid} />
           </Stack>
         </Box>
       </Modal>

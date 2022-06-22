@@ -4,7 +4,11 @@ import Layout from "../../components/layout/Layout.js";
 import styles from "./CommunityPage.module.css";
 import { useAuth } from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
-import { getCommunityInfo, queryCommunity } from "../../hooks/useDB.js";
+import {
+  getAllCommunity,
+  getCommunityInfo,
+  queryCommunity,
+} from "../../hooks/useDB.js";
 import CommunityModal from "./components/CommunityModal.js";
 
 function CommunityPage(props) {
@@ -14,11 +18,29 @@ function CommunityPage(props) {
 
   const { user } = useAuth();
 
+  const addComm = (cid) => {
+    let curr = commList;
+    curr = [...curr, cid];
+    setCommList(curr);
+  };
+
+  // useEffect(() => {
+  //   if (user) {
+  //     //Putting a placeholder here until adding user to community is setup
+  //     //queryCommunity(user.uid).then((res) => {
+  //     queryCommunity(user.uid).then((res) => {
+  //       //getAllCommunity().then((res) => {
+  //       console.log(res);
+  //       setCommList(res);
+  //       setIsLoading(true);
+  //     });
+  //   }
+  // }, [user]);
+
   useEffect(() => {
     if (user) {
-      //Putting a placeholder here until adding user to community is setup
-      //queryCommunity(user.uid).then((res) => {
-      queryCommunity(user.uid).then((res) => {
+      getAllCommunity().then((res) => {
+        //console.log(res);
         setCommList(res);
         setIsLoading(true);
       });
@@ -26,19 +48,18 @@ function CommunityPage(props) {
   }, [user]);
 
   useEffect(() => {
-    var promises = commList.map((cid) =>
+    const promises = commList.map((cid) =>
       getCommunityInfo(cid).then((r) => [cid, r])
     );
     Promise.all(promises).then((r) => {
-      console.log(r);
+      //console.log(r);
       setAllCommInfo(r);
     });
   }, [commList]);
 
   return (
     <Layout pageName="Community">
-      <div>{commList}</div>
-      <CommunityModal uid={user} />
+      <CommunityModal uid={user} ac={addComm} />
       <Grid
         container
         spacing={2}
@@ -61,11 +82,7 @@ function CommunityPage(props) {
         ) : (
           <div>Loading!</div>
         )}
-
-        <CommCard
-          title="Placeholder 1"
-          desc="Placeholder"
-        />
+        <CommCard title="Placeholder 1" desc="Placeholder" />
       </Grid>
     </Layout>
   );

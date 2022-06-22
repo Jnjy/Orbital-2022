@@ -31,14 +31,17 @@ const FORM_VALIDATION = Yup.object().shape({
     ),
 });
 
-function ItemForm({ handleClose }) {
+function ItemForm({ handleClose, addC }) {
   const { user } = useAuth();
 
   const imageRef = useRef(null);
 
   const handleSubmit = (values) => {
     console.log(values);
-    addCommunity(values).then((r) => linkUserCommunity(user.uid, r.id));
+    addCommunity(values).then((r) => {
+      linkUserCommunity(user.uid, r.id);
+      addC(r.id);
+    });
     handleClose();
   };
 
@@ -51,12 +54,22 @@ function ItemForm({ handleClose }) {
       {({ values, setFieldValue }) => (
         <Form>
           <Stack spacing={4}>
-            <TextFieldBox fullWidth name="name" label="Community Name" />
-            <TextFieldBox fullWidth name="address" label="Community Address" />
+            <TextFieldBox
+              fullWidth
+              name="name"
+              label="Community Name"
+              required
+            />
+            <TextFieldBox
+              fullWidth
+              name="address"
+              label="Community Address"
+              required
+            />
             <TextFieldBox
               id="outlined-textarea"
               name="shortDesc"
-              label="commDescription"
+              label="Community Description"
               placeholder="Description"
               maxRows={4}
               multiline

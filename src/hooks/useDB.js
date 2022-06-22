@@ -47,7 +47,7 @@ export const getCommunityInfo = async (cid) => {
 
   if (docSnap.exists()) {
     let data = docSnap.data();
-    console.log(typeof data);
+    //console.log(typeof data);
     //data = [...data, { cid: cid }];
     return data;
   } else {
@@ -96,4 +96,31 @@ export const linkUserCommunity = async (uid, cid) => {
   const docSnap = await setDoc(docRef, { commid: cid, userid: uid });
   console.log(docSnap);
   return docSnap;
+};
+
+export const addItem = async (data) => {
+  const colRef = collection(db, "items");
+  const docRef = await addDoc(colRef, data);
+  console.log(docRef);
+  return docRef;
+};
+
+export const linkCommunityItem = async (cid, iid) => {
+  const docRef = doc(db, "junction_community_items", cid + "_" + iid);
+  const docSnap = await setDoc(docRef, { commid: cid, itemid: iid });
+  console.log(docSnap);
+  return docSnap;
+};
+
+export const getAllCommunity = async () => {
+  const colRef = collection(db, "community");
+  const querySnapshot = await getDocs(colRef);
+
+  let data = [];
+
+  querySnapshot.forEach((doc) => {
+    data = [...data, doc.id];
+  });
+  //console.log(data);
+  return data;
 };

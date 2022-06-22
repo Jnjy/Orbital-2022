@@ -14,10 +14,11 @@ const modalStyle = {
   p: 4,
 };
 
-function CommunityModal() {
+function CommunityModal(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const ac = props.ac;
 
   return (
     <div>
@@ -26,7 +27,7 @@ function CommunityModal() {
         <Box sx={modalStyle}>
           <Stack spacing={2}>
             <Typography variant="h6">Post an item</Typography>
-            <CommunityForm handleClose={handleClose} />
+            <CommunityForm handleClose={handleClose} addC={ac} />
           </Stack>
         </Box>
       </Modal>

@@ -45,7 +45,7 @@ function DesktopView() {
         variant="h6"
         noWrap
         component="a"
-        href="/"
+        href="/community"
         sx={{
           flexGrow: 0,
           display: { xs: "none", md: "flex" },
