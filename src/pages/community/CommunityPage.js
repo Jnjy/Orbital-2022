@@ -30,7 +30,7 @@ function CommunityPage(props) {
       getCommunityInfo(cid).then((r) => [cid, r])
     );
     Promise.all(promises).then((r) => {
-      console.log(r);
+      //console.log(r);
       setAllCommInfo(r);
     });
   }, [commList]);
@@ -60,7 +60,6 @@ function CommunityPage(props) {
         ) : (
           <div>Loading!</div>
         )}
-
         <CommCard title="Placeholder 1" desc="Placeholder" />
       </Grid>
     </Layout>

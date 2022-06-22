@@ -47,7 +47,7 @@ export const getCommunityInfo = async (cid) => {
 
   if (docSnap.exists()) {
     let data = docSnap.data();
-    console.log(typeof data);
+    //console.log(typeof data);
     //data = [...data, { cid: cid }];
     return data;
   } else {
