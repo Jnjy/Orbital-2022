@@ -4,7 +4,11 @@ import Layout from "../../components/layout/Layout.js";
 import styles from "./CommunityPage.module.css";
 import { useAuth } from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
-import { getCommunityInfo, queryCommunity } from "../../hooks/useDB.js";
+import {
+  getAllCommunity,
+  getCommunityInfo,
+  queryCommunity,
+} from "../../hooks/useDB.js";
 import CommunityModal from "./components/CommunityModal.js";
 
 function CommunityPage(props) {
@@ -20,11 +24,23 @@ function CommunityPage(props) {
     setCommList(curr);
   };
 
+  // useEffect(() => {
+  //   if (user) {
+  //     //Putting a placeholder here until adding user to community is setup
+  //     //queryCommunity(user.uid).then((res) => {
+  //     queryCommunity(user.uid).then((res) => {
+  //       //getAllCommunity().then((res) => {
+  //       console.log(res);
+  //       setCommList(res);
+  //       setIsLoading(true);
+  //     });
+  //   }
+  // }, [user]);
+
   useEffect(() => {
     if (user) {
-      //Putting a placeholder here until adding user to community is setup
-      //queryCommunity(user.uid).then((res) => {
-      queryCommunity(user.uid).then((res) => {
+      getAllCommunity().then((res) => {
+        //console.log(res);
         setCommList(res);
         setIsLoading(true);
       });

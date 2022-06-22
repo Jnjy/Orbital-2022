@@ -111,3 +111,16 @@ export const linkCommunityItem = async (cid, iid) => {
   console.log(docSnap);
   return docSnap;
 };
+
+export const getAllCommunity = async () => {
+  const colRef = collection(db, "community");
+  const querySnapshot = await getDocs(colRef);
+
+  let data = [];
+
+  querySnapshot.forEach((doc) => {
+    data = [...data, doc.id];
+  });
+  //console.log(data);
+  return data;
+};
