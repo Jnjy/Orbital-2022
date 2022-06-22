@@ -51,6 +51,7 @@ function CommunityPage(props) {
         {allCommInfo.map(({ name, shortDesc, cid }) => (
           <CommCard title={name} desc={shortDesc} key={cid} />
         ))}
+        {allCommInfo.map((r) => console.log(r))}
         <CommCard
           title="Placeholder 1"
           desc="This is a short description of community 1"
