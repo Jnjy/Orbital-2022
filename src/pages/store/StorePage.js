@@ -9,23 +9,14 @@ import { useState, useEffect } from "react";
 import { getItemInfo, queryItems } from "../../hooks/useDB.js";
 
 function StorePage(props) {
-
-  //state of selected community should be at this.props.location.state.commID (or equivalent)
-  //This is a placeholder for "Sheares hall"
-  const selectedComm = "7vpSMNq4nJRtzPvRoQQM";
   const [itemsList, setItemsList] = useState([]);
   const [allItemInfo, setAllItemInfo] = useState([]);
-  const {commId} = useParams();
   const location = useLocation();
-
+  const selectedComm = location.state.commId;
   useEffect(() => {
     if (selectedComm) {
-      //Putting a placeholder here until adding user to community is setup
-      //queryCommunity(user.uid).then((res) => {
       queryItems(selectedComm).then((res) => {
         setItemsList(res);
-        console.log(res);
-        //setIsLoading(true);
       });
     }
   }, [selectedComm]);
@@ -38,7 +29,6 @@ function StorePage(props) {
         setAllItemInfo(items);
       });
     });
-    //setIsLoading(false);
   }, [itemsList]);
 
   return (
