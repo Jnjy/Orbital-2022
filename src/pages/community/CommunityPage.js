@@ -20,7 +20,7 @@ function CommunityPage(props) {
       //queryCommunity(user.uid).then((res) => {
       queryCommunity("e9iLoiJsNUTd0mGvBUKAjexLHOl1").then((res) => {
         setCommList(res);
-        setIsLoading(true);
+        //setIsLoading(true);
       });
     }
   }, [user]);
@@ -53,7 +53,6 @@ function CommunityPage(props) {
         {allCommInfo.map(({ name, shortDesc, cid }) => (
           <CommCard title={name} desc={shortDesc} commId={cid} key={cid} />
         ))}
-        {allCommInfo.map((r) => console.log(r))}
         <CommCard
           title="Placeholder 1"
           desc="This is a short description of community 1"
