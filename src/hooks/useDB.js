@@ -97,3 +97,17 @@ export const linkUserCommunity = async (uid, cid) => {
   console.log(docSnap);
   return docSnap;
 };
+
+export const addItem = async (data) => {
+  const colRef = collection(db, "items");
+  const docRef = await addDoc(colRef, data);
+  console.log(docRef);
+  return docRef;
+};
+
+export const linkCommunityItem = async (cid, iid) => {
+  const docRef = doc(db, "junction_community_items", cid + "_" + iid);
+  const docSnap = await setDoc(docRef, { commid: cid, itemid: iid });
+  console.log(docSnap);
+  return docSnap;
+};

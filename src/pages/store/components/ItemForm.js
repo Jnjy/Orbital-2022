@@ -4,17 +4,10 @@ import * as Yup from "yup";
 import { useRef } from "react";
 import ErrorMessage from "./Error";
 import TextFieldBox from "../../../components/FormsUI/TextFieldBox";
+import { addItem, linkCommunityItem } from "../../../hooks/useDB";
+import { useAuth } from "../../../hooks/useAuth";
 
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
-
-const INITIAL_FORM_STATE = {
-  itemName: "",
-  itemPrice: "",
-  itemDescription: "",
-  itemImage: "",
-  itemCondition: "",
-  image: "",
-};
 
 const FORM_VALIDATION = Yup.object().shape({
   image: Yup.mixed()
@@ -31,12 +24,28 @@ const FORM_VALIDATION = Yup.object().shape({
     ),
 });
 
-function ItemForm({ handleClose }) {
+function ItemForm({ handleClose, addI, cid }) {
+  const { user } = useAuth();
+
   const imageRef = useRef(null);
 
   const handleSubmit = (values) => {
     console.log(values);
+    //setFieldValue("ownerID", user.uid);
+    addItem(values).then((r) => {
+      linkCommunityItem(cid, r.id);
+      addI(r.id);
+    });
     handleClose();
+  };
+
+  const INITIAL_FORM_STATE = {
+    itemName: "",
+    itemPrice: "",
+    itemDesc: "",
+    itemCond: "",
+    image: "",
+    ownerID: user.uid,
   };
 
   return (
@@ -50,18 +59,33 @@ function ItemForm({ handleClose }) {
           <Stack spacing={4}>
             <Grid container direction="row" spacing={4}>
               <Grid item xs={12} md={4}>
-                <TextFieldBox name="itemName" fullWidth label="Item Name" required/>
+                <TextFieldBox
+                  name="itemName"
+                  fullWidth
+                  label="Item Name"
+                  required
+                />
               </Grid>
               <Grid item xs={12} md={4}>
-                <TextFieldBox name="itemPrice" fullWidth label="Item Price" required/>
+                <TextFieldBox
+                  name="itemPrice"
+                  fullWidth
+                  label="Item Price"
+                  required
+                />
               </Grid>
               <Grid item xs={12} md={4}>
-                <TextFieldBox name="itemCondition" fullWidth label="Item Condition" required/>
+                <TextFieldBox
+                  name="itemCond"
+                  fullWidth
+                  label="Item Condition"
+                  required
+                />
               </Grid>
             </Grid>
             <TextFieldBox
               id="outlined-textarea"
-              name="itemDescription"
+              name="itemDesc"
               label="Item Description"
               placeholder="Description"
               maxRows={4}

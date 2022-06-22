@@ -6,7 +6,6 @@ import ErrorMessage from "../../store/components/Error";
 import TextFieldBox from "../../../components/FormsUI/TextFieldBox";
 import { addCommunity, linkUserCommunity } from "../../../hooks/useDB";
 import { useAuth } from "../../../hooks/useAuth";
-import { act } from "react-dom/test-utils";
 
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 

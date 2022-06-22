@@ -4,7 +4,6 @@ import ItemCard from "../../components/ItemCards/ItemCards";
 import Layout from "../../components/layout/Layout.js";
 import ItemModal from "./components/ItemModal";
 import styles from "./StorePage.module.css";
-import { useAuth } from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
 import { getItemInfo, queryItems } from "../../hooks/useDB.js";
 
@@ -14,6 +13,12 @@ function StorePage(props) {
   const location = useLocation();
   const selectedComm = location.state.commId;
   const selectedCommName = location.state.name;
+
+  const addItem = (iid) => {
+    let curr = itemsList;
+    curr = [...curr, iid];
+    setItemsList(curr);
+  };
 
   useEffect(() => {
     if (selectedComm) {
@@ -28,14 +33,14 @@ function StorePage(props) {
       getItemInfo(iid).then((res) => [iid, res])
     );
     Promise.all(promises).then((res) => {
-      console.log(res);
+      //console.log(res);
       setAllItemInfo(res);
     });
   }, [itemsList]);
 
   return (
     <Layout pageName={"Store - " + selectedCommName}>
-      <ItemModal />
+      <ItemModal ai={addItem} cid={selectedComm} />
       <Button onClick={() => console.log(location.state.commId)}>CLICK</Button>
       <Grid
         container
@@ -48,7 +53,11 @@ function StorePage(props) {
         {/* add search and filter bar
         to be replaced by mapping from db*/}
         {allItemInfo.map((elem) => (
-          <ItemCard title={elem[1].name} desc={elem[1].price} key={elem[0]} />
+          <ItemCard
+            title={elem[1].itemName}
+            desc={elem[1].itemPrice}
+            key={elem[0]}
+          />
         ))}
         <ItemCard title="Placeholder 1" desc="P 1 Description" />
       </Grid>
