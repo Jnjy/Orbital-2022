@@ -20,7 +20,7 @@ function RoutePaths() {
       <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/profile" element={<UserProfile />} />
       <Route path="/community" element={<CommunityPage />} />
-      <Route path="/store" element={<StorePage />} />
+      <Route path="/store/:commId" element={<StorePage />} />
     </Routes>
   );
 }
