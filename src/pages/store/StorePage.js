@@ -13,6 +13,8 @@ function StorePage(props) {
   const [allItemInfo, setAllItemInfo] = useState([]);
   const location = useLocation();
   const selectedComm = location.state.commId;
+  const selectedCommName = location.state.name;
+
   useEffect(() => {
     if (selectedComm) {
       queryItems(selectedComm).then((res) => {
@@ -20,16 +22,6 @@ function StorePage(props) {
       });
     }
   }, [selectedComm]);
-
-  // useEffect(() => {
-  //   let items = [];
-  //   itemsList.forEach((r) => {
-  //     getItemInfo(r).then((res) => {
-  //       items.push(res);
-  //       setAllItemInfo(items);
-  //     });
-  //   });
-  // }, [itemsList]);
 
   useEffect(() => {
     var promises = itemsList.map((iid) =>
@@ -42,7 +34,7 @@ function StorePage(props) {
   }, [itemsList]);
 
   return (
-    <Layout pageName="Store">
+    <Layout pageName={"Store - " + selectedCommName}>
       <ItemModal />
       <Button onClick={() => console.log(location.state.commId)}>CLICK</Button>
       <Grid

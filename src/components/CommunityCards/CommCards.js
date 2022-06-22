@@ -16,6 +16,7 @@ export default function CommCard(props) {
     navigate("/store", {
       state: {
         commId: props.commId,
+        name: props.title,
       },
     });
   };
