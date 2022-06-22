@@ -1,9 +1,9 @@
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import DesktopView from './views/DesktopView';
-import MobileView from './views/MobileView';
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import DesktopView from "./views/DesktopView";
+import MobileView from "./views/MobileView";
 
 function NavBar() {
   return (

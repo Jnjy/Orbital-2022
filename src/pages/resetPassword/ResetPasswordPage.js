@@ -1,18 +1,18 @@
-import { Grid, Paper, Button, Typography } from '@mui/material';
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth'
+import { Grid, Paper, Button, Typography } from "@mui/material";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import TextFieldBox from "../../components/FormsUI/TextFieldBox";
-import styles from "./ResetPasswordPage.module.css"
+import styles from "./ResetPasswordPage.module.css";
 
 const INITIAL_FORM_STATE = {
   email: "",
-}
-const FORM_VALIDATION = Yup.object().shape(
-  {email: Yup.string().email("Invalid email.").required("Required"),}
-)
+};
+const FORM_VALIDATION = Yup.object().shape({
+  email: Yup.string().email("Invalid email.").required("Required"),
+});
 
 function ResetPasswordPage() {
   const { sendResetEmail } = useAuth();
@@ -20,15 +20,15 @@ function ResetPasswordPage() {
 
   async function handlePasswordResetEmail(values) {
     await sendResetEmail("jefferyng2000@gmail.com")
-    .then((res) => console.log(values.email))
-    .catch((err) => console.log(err.code));
+      .then((res) => console.log(values.email))
+      .catch((err) => console.log(err.code));
   }
 
   return (
-    <Grid 
-    container
+    <Grid
+      container
       style={{
-        height: '100vh'
+        height: "100vh",
       }}
       justifyContent="center"
       alignItems="center"
@@ -36,31 +36,43 @@ function ResetPasswordPage() {
     >
       <Grid item>
         <Typography variant="h5">Reset Password Page</Typography>
-        <Typography variant="caption">Enter your email to reset your password.</Typography>
+        <Typography variant="caption">
+          Enter your email to reset your password.
+        </Typography>
       </Grid>
       <Grid item>
         <Formik
           initialValues={{ ...INITIAL_FORM_STATE }}
           validationSchema={FORM_VALIDATION}
-          onSubmit={handlePasswordResetEmail}>
+          onSubmit={handlePasswordResetEmail}
+        >
           <Form>
-            <Grid container item direction="column" spacing={2} className={styles.formBox}>  
+            <Grid
+              container
+              item
+              direction="column"
+              spacing={2}
+              className={styles.formBox}
+            >
               <Grid item>
                 <TextFieldBox
-                name="email"
-                label="Email"
-                placeholder="Enter e-mail"
-                required/>
+                  name="email"
+                  label="Email"
+                  placeholder="Enter e-mail"
+                  required
+                />
               </Grid>
               <Grid item>
-                <Button 
-                color="error"
-                onClick={() => console.log("Prompt send password reset email")}
-                type="submit"
-                variant="contained"
-                className={styles.resetButton}
+                <Button
+                  color="error"
+                  onClick={() =>
+                    console.log("Prompt send password reset email")
+                  }
+                  type="submit"
+                  variant="contained"
+                  className={styles.resetButton}
                 >
-                Reset Password
+                  Reset Password
                 </Button>
               </Grid>
             </Grid>
@@ -71,7 +83,7 @@ function ResetPasswordPage() {
         <Button onClick={() => navigate("/login")}>Back to Login</Button>
       </Grid>
     </Grid>
-  )
+  );
 }
 
-export default ResetPasswordPage
+export default ResetPasswordPage;
