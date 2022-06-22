@@ -4,13 +4,15 @@ import * as Yup from "yup";
 import { useRef } from "react";
 import ErrorMessage from "../../store/components/Error";
 import TextFieldBox from "../../../components/FormsUI/TextFieldBox";
+import { addCommunity, linkUserCommunity } from "../../../hooks/useDB";
+import { useAuth } from "../../../hooks/useAuth";
 
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 
 const INITIAL_FORM_STATE = {
-  commName: "",
-  commDescription: "",
-  commAddress: "",
+  name: "",
+  shortDesc: "",
+  address: "",
   image: "",
 };
 
@@ -30,11 +32,14 @@ const FORM_VALIDATION = Yup.object().shape({
 });
 
 function ItemForm({ handleClose }) {
+  const { user } = useAuth();
+
   const imageRef = useRef(null);
 
   const handleSubmit = (values) => {
     console.log(values);
-    //handleClose();
+    addCommunity(values).then((r) => linkUserCommunity(user.uid, r.id));
+    handleClose();
   };
 
   return (
@@ -46,12 +51,11 @@ function ItemForm({ handleClose }) {
       {({ values, setFieldValue }) => (
         <Form>
           <Stack spacing={4}>
-            <TextFieldBox fullWidth name="commName" label="Community Name" />
-            <TextFieldBox fullWidth name="commAddress" label="Community Address" />
+            <TextFieldBox fullWidth name="name" label="Community Name" />
+            <TextFieldBox fullWidth name="address" label="Community Address" />
             <TextFieldBox
-
               id="outlined-textarea"
-              name="commDescription"
+              name="shortDesc"
               label="commDescription"
               placeholder="Description"
               maxRows={4}
