@@ -1,12 +1,18 @@
 import { Grid } from "@mui/material";
+import { useParams } from "react-router-dom";
 import ItemCard from "../../components/ItemCards/ItemCards";
 import Layout from "../../components/layout/Layout.js";
 import ItemModal from "./components/ItemModal";
 import styles from "./StorePage.module.css";
 
 function StorePage(props) {
+  const {commId} = useParams();
+
   return (
     <Layout pageName="Store">
+      <div>
+        {commId}
+      </div>
       <ItemModal />
       <Grid
         container
