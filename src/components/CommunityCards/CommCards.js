@@ -13,7 +13,12 @@ export default function CommCard(props) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/store/" + props.commId);
+    navigate("/store", 
+              { state: {
+                  commId: props.commId,
+                }
+              }
+            );
   };
 
   return (
