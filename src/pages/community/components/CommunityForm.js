@@ -34,7 +34,7 @@ function ItemForm({ handleClose }) {
 
   const handleSubmit = (values) => {
     console.log(values);
-    //handleClose();
+    handleClose();
   };
 
   return (
@@ -46,8 +46,8 @@ function ItemForm({ handleClose }) {
       {({ values, setFieldValue }) => (
         <Form>
           <Stack spacing={4}>
-            <TextFieldBox fullWidth name="commName" label="Community Name" />
-            <TextFieldBox fullWidth name="commAddress" label="Community Address" />
+            <TextFieldBox fullWidth name="commName" label="Community Name" required/>
+            <TextFieldBox fullWidth name="commAddress" label="Community Address" required/>
             <TextFieldBox
 
               id="outlined-textarea"

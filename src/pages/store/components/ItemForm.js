@@ -1,4 +1,4 @@
-import { Button, Stack, TextField } from "@mui/material";
+import { Button, Grid, Stack, TextField } from "@mui/material";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useRef } from "react";
@@ -48,11 +48,17 @@ function ItemForm({ handleClose }) {
       {({ values, setFieldValue }) => (
         <Form>
           <Stack spacing={4}>
-            <Stack direction="row" spacing={4}>
-              <TextFieldBox name="itemName" fullWidth label="Item Name" />
-              <TextFieldBox name="itemPrice" fullWidth label="Item Price" />
-              <TextFieldBox name="itemCondition" fullWidth label="Item Condition" />
-            </Stack>
+            <Grid container direction="row" spacing={4}>
+              <Grid item xs={12} md={4}>
+                <TextFieldBox name="itemName" fullWidth label="Item Name" required/>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextFieldBox name="itemPrice" fullWidth label="Item Price" required/>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextFieldBox name="itemCondition" fullWidth label="Item Condition" required/>
+              </Grid>
+            </Grid>
             <TextFieldBox
               id="outlined-textarea"
               name="itemDescription"

@@ -55,7 +55,7 @@ function CommunityPage(props) {
         ))}
         <CommCard
           title="Placeholder 1"
-          desc="This is a short description of community 1"
+          desc="Placeholder"
         />
       </Grid>
     </Layout>

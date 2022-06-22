@@ -50,9 +50,11 @@ export default function CommCard(props) {
             src="https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
             alt="placeholder"
           />
-          <Typography variant="body3" color="text.secondary">
-            {props.desc}
-          </Typography>
+          <span className={styles.commDesc}>
+            <Typography variant="body3" color="text.secondary">
+              {props.desc}
+            </Typography>
+          </span>
         </CardContent>
         <CardActions>
           <Button variant="outlined" size="small" onClick={handleNavigate}>

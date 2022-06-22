@@ -46,9 +46,11 @@ export default function MediaCard(props) {
             src="https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
             alt="placeholder"
           />
-          <Typography variant="body3" color="text.secondary">
-            {props.desc}
-          </Typography>
+          <span className={styles.itemDesc}>
+            <Typography variant="body3" color="text.secondary">
+              {props.desc}
+            </Typography>
+          </span>
         </CardContent>
         <CardActions>
           <Button
