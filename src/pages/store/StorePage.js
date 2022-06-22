@@ -13,6 +13,8 @@ function StorePage(props) {
   const [allItemInfo, setAllItemInfo] = useState([]);
   const location = useLocation();
   const selectedComm = location.state.commId;
+  const selectedCommName = location.state.name;
+
   useEffect(() => {
     if (selectedComm) {
       queryItems(selectedComm).then((res) => {
@@ -22,17 +24,17 @@ function StorePage(props) {
   }, [selectedComm]);
 
   useEffect(() => {
-    let items = [];
-    itemsList.forEach((r) => {
-      getItemInfo(r).then((res) => {
-        items.push(res);
-        setAllItemInfo(items);
-      });
+    var promises = itemsList.map((iid) =>
+      getItemInfo(iid).then((res) => [iid, res])
+    );
+    Promise.all(promises).then((res) => {
+      console.log(res);
+      setAllItemInfo(res);
     });
   }, [itemsList]);
 
   return (
-    <Layout pageName="Store">
+    <Layout pageName={"Store - " + selectedCommName}>
       <ItemModal />
       <Button onClick={() => console.log(location.state.commId)}>CLICK</Button>
       <Grid
@@ -45,8 +47,8 @@ function StorePage(props) {
       >
         {/* add search and filter bar
         to be replaced by mapping from db*/}
-        {allItemInfo.map(({ name, price }) => (
-          <ItemCard title={name} desc={price} key={name} />
+        {allItemInfo.map((elem) => (
+          <ItemCard title={elem[1].name} desc={elem[1].price} key={elem[0]} />
         ))}
         <ItemCard title="Placeholder 1" desc="P 1 Description" />
       </Grid>

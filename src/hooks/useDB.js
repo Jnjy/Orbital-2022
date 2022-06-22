@@ -8,6 +8,7 @@ import {
   doc,
   deleteDoc,
   getDoc,
+  setDoc,
 } from "firebase/firestore";
 
 import { db } from "../config/FirebaseConfig";
@@ -45,7 +46,10 @@ export const getCommunityInfo = async (cid) => {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    return docSnap.data();
+    let data = docSnap.data();
+    console.log(typeof data);
+    //data = [...data, { cid: cid }];
+    return data;
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
@@ -80,4 +84,16 @@ export const getItemInfo = async (iid) => {
   }
 };
 
-//export const addCommunity = async
+export const addCommunity = async (data) => {
+  const colRef = collection(db, "community");
+  const docRef = await addDoc(colRef, data);
+  console.log(docRef);
+  return docRef;
+};
+
+export const linkUserCommunity = async (uid, cid) => {
+  const docRef = doc(db, "junction_user_community", uid + "_" + cid);
+  const docSnap = await setDoc(docRef, { commid: cid, userid: uid });
+  console.log(docSnap);
+  return docSnap;
+};
