@@ -23,7 +23,7 @@ function CommunityModal(props) {
   return (
     <div>
       <Button onClick={handleOpen}>Add a new community</Button>
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open} onClose={handleClose} closetimeoutms={1000}>
         <Box sx={modalStyle}>
           <Stack spacing={2}>
             <Typography variant="h6">Post an item</Typography>
