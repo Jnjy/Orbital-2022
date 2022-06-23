@@ -119,8 +119,16 @@ export const getAllCommunity = async () => {
   let data = [];
 
   querySnapshot.forEach((doc) => {
+    //console.log(doc.id, " => ", doc.data());
+    //console.log(doc);
     data = [...data, doc.id];
   });
   //console.log(data);
   return data;
+};
+
+export const updateImgRef = async (col, id, info) => {
+  const docRef = doc(db, col, id);
+  const updateFn = await updateDoc(docRef, info);
+  return updateFn;
 };
