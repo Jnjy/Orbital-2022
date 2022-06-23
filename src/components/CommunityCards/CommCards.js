@@ -21,6 +21,10 @@ export default function CommCard(props) {
     });
   };
 
+  const handleView = () => {
+    console.log(props.commId);
+  }
+
   return (
     <Grid container justifyContent="center" item sm={6} md={4} xl={3}>
       <Card
@@ -61,7 +65,7 @@ export default function CommCard(props) {
           <Button variant="outlined" size="small" onClick={handleNavigate}>
             Enter Community
           </Button>
-          <Button size="small" onClick={handleNavigate}>
+          <Button size="small" onClick={handleView}>
             Learn More
           </Button>
         </CardActions>

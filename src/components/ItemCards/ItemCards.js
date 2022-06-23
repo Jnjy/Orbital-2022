@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import styles from "./ItemCards.module.css";
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
+import ViewItem from "../../pages/store/components/ViewItem"
 export default function MediaCard(props) {
   const navigate = useNavigate();
 
@@ -60,7 +60,7 @@ export default function MediaCard(props) {
           >
             Request
           </Button>
-          <Button size="small">Learn More</Button>
+          <ViewItem props={props}/>
         </CardActions>
       </Card>
     </Grid>
