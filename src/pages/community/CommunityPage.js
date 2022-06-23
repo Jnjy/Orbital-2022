@@ -12,6 +12,7 @@ function CommunityPage(props) {
   const [commList, setCommList] = useState([]);
   const [allCommInfo, setAllCommInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [imgLoaded, setImgLoaded] = useState([]);
 
   const { user } = useAuth();
 
@@ -23,6 +24,7 @@ function CommunityPage(props) {
 
   useEffect(() => {
     if (user) {
+      //[cid, cid, cid, cid]
       getAllCommunity().then((res) => {
         //console.log(res);
         setCommList(res);
@@ -36,9 +38,23 @@ function CommunityPage(props) {
       getCommunityInfo(cid).then((r) => [cid, r, getImageURL(r.image)])
     );
     Promise.all(promises).then((r) => {
-      setAllCommInfo(r);
+      let tmp = [];
+      for (let i = 0; i < r.length; i++) {
+        tmp[i] = r[i][2];
+      }
+      Promise.all(tmp).then((res) => {
+        console.log(res);
+        for (let j = 0; j < r.length; j++) {
+          r[j][2] = res[j];
+        }
+        setImgLoaded(r);
+      });
     });
   }, [commList]);
+
+  useEffect(() => {
+    setAllCommInfo(imgLoaded);
+  }, [imgLoaded]);
 
   return (
     <Layout pageName="Community">

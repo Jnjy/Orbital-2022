@@ -64,7 +64,7 @@ export default function CommCard(props) {
           <Button variant="outlined" size="small" onClick={handleNavigate}>
             Enter Community
           </Button>
-          <ViewCommunity props={props}/>
+          <ViewCommunity props={props} />
         </CardActions>
       </Card>
     </Grid>
