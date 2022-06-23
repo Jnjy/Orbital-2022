@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import styles from "./CommCards.module.css";
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import ViewCommunity from "../../pages/community/components/ViewCommunity";
 
 export default function CommCard(props) {
   const navigate = useNavigate();
@@ -65,9 +66,7 @@ export default function CommCard(props) {
           <Button variant="outlined" size="small" onClick={handleNavigate}>
             Enter Community
           </Button>
-          <Button size="small" onClick={handleView}>
-            Learn More
-          </Button>
+          <ViewCommunity props={props}/>
         </CardActions>
       </Card>
     </Grid>

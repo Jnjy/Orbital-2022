@@ -1,7 +1,7 @@
-import { Box, Button, Grid, Modal, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Modal, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
-import styles from "../StorePage.module.css"
+import styles from "../CommunityPage.module.css";
 
 const modalStyle = {
     position: "absolute",
@@ -23,19 +23,16 @@ const infoBox = {
     overflowY: "scroll",
 }
 
-function ViewItem(props) {
-    const [open, setOpen ] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+function ViewCommunity(props) {
+    const [ open, setOpen ] = useState(false);
 
-    const handleView = () => {
-        console.log("view");
-        console.log(props);
-    }
+    const handleView = () => setOpen(true);
+
+    const handleClose = () => setOpen(false);
 
     return (
         <>
-            <Button size="small" onClick={handleOpen}>Learn More</Button>
+            <Button size="small" onClick={handleView}>Learn More</Button>
             <Modal open={open} onClose={handleClose} closetimeoutms={1000}>
                 <Box sx={modalStyle}>
                     <Stack spacing={2}>
@@ -51,16 +48,6 @@ function ViewItem(props) {
                                 alt="placeholder"/>
                                 <Typography variant="p">
                                     <span>
-                                        <b>Price: {" "}</b>
-                                    </span>$xx.xx
-                                </Typography>
-                                <Typography variant="p">
-                                    <span>
-                                        <b>Condition: {" "}</b>
-                                    </span>5/10
-                                </Typography>
-                                <Typography variant="p">
-                                    <span>
                                         <b>
                                             Description:
                                         </b>
@@ -74,7 +61,7 @@ function ViewItem(props) {
                 </Box>
             </Modal>
         </>
-    )
+    );
 }
 
-export default ViewItem;
+export default ViewCommunity;
