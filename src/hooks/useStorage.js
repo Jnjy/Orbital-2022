@@ -1,10 +1,11 @@
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../config/FirebaseConfig";
 
-export const uploadImage = (file) => {
-  const storageRef = ref(storage, "images/" + file.name);
-  const uploadTask = uploadBytesResumable(storageRef, file, {
-    contentType: "image/jpeg",
-  });
+export const uploadImage = async (img, folder, col) => {
+  const storageRef = ref(
+    storage,
+    "images/" + col + "/" + folder + "/" + img.name
+  );
+  const uploadTask = await uploadBytesResumable(storageRef, img);
   return uploadTask;
 };
