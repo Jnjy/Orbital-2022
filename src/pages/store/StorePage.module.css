@@ -17,3 +17,10 @@
   padding-left: 8%;
   padding-right: 8%;
 }
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
