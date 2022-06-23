@@ -26,13 +26,13 @@ const infoBox = {
 function ViewCommunity(props) {
     const [ open, setOpen ] = useState(false);
 
-    const handleView = () => setOpen(true);
+    const handleOpen = () => setOpen(true);
 
     const handleClose = () => setOpen(false);
 
     return (
         <>
-            <Button size="small" onClick={handleView}>Learn More</Button>
+            <Button size="small" onClick={handleOpen}>Learn More</Button>
             <Modal open={open} onClose={handleClose} closetimeoutms={1000}>
                 <Box sx={modalStyle}>
                     <Stack spacing={2}>

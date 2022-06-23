@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Modal, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Modal, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import styles from "../StorePage.module.css"
@@ -27,11 +27,6 @@ function ViewItem(props) {
     const [open, setOpen ] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-    const handleView = () => {
-        console.log("view");
-        console.log(props);
-    }
 
     return (
         <>
