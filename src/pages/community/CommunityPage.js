@@ -4,11 +4,7 @@ import Layout from "../../components/layout/Layout.js";
 import styles from "./CommunityPage.module.css";
 import { useAuth } from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
-import {
-  getAllCommunity,
-  getCommunityInfo,
-  queryCommunity,
-} from "../../hooks/useDB.js";
+import { getAllCommunity, getCommunityInfo } from "../../hooks/useDB.js";
 import CommunityModal from "./components/CommunityModal.js";
 import { getImageURL } from "../../hooks/useStorage.js";
 

@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 export default function CommCard(props) {
   const navigate = useNavigate();
 
-  //console.log(props.imgUrl);
+  console.log(props.imgUrl);
 
   const handleNavigate = () => {
     navigate("/store", {
