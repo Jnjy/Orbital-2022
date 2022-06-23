@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 export default function CommCard(props) {
   const navigate = useNavigate();
 
+  //console.log(props.imgUrl);
+
   const handleNavigate = () => {
     navigate("/store", {
       state: {
@@ -48,7 +50,8 @@ export default function CommCard(props) {
           </Typography>
           <img
             className={styles.postImg}
-            src="https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
+            // src="https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
+            src={props.imgUrl}
             alt="placeholder"
           />
           <span className={styles.commDesc}>

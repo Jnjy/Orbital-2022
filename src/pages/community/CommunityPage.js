@@ -10,6 +10,7 @@ import {
   queryCommunity,
 } from "../../hooks/useDB.js";
 import CommunityModal from "./components/CommunityModal.js";
+import { getImageURL } from "../../hooks/useStorage.js";
 
 function CommunityPage(props) {
   const [commList, setCommList] = useState([]);
@@ -24,19 +25,6 @@ function CommunityPage(props) {
     setCommList(curr);
   };
 
-  // useEffect(() => {
-  //   if (user) {
-  //     //Putting a placeholder here until adding user to community is setup
-  //     //queryCommunity(user.uid).then((res) => {
-  //     queryCommunity(user.uid).then((res) => {
-  //       //getAllCommunity().then((res) => {
-  //       console.log(res);
-  //       setCommList(res);
-  //       setIsLoading(true);
-  //     });
-  //   }
-  // }, [user]);
-
   useEffect(() => {
     if (user) {
       getAllCommunity().then((res) => {
@@ -49,10 +37,9 @@ function CommunityPage(props) {
 
   useEffect(() => {
     const promises = commList.map((cid) =>
-      getCommunityInfo(cid).then((r) => [cid, r])
+      getCommunityInfo(cid).then((r) => [cid, r, getImageURL(r.image)])
     );
     Promise.all(promises).then((r) => {
-      //console.log(r);
       setAllCommInfo(r);
     });
   }, [commList]);
@@ -77,12 +64,22 @@ function CommunityPage(props) {
               desc={elem[1].shortDesc}
               commId={elem[0]}
               key={elem[0]}
+              imgUrl={
+                //"https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
+                elem[2]
+              }
             />
           ))
         ) : (
           <div>Loading!</div>
         )}
-        <CommCard title="Placeholder 1" desc="Placeholder" />
+        <CommCard
+          title="Placeholder 1"
+          desc="Placeholder"
+          imgUrl={
+            "https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
+          }
+        />
       </Grid>
     </Layout>
   );
