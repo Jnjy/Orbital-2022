@@ -36,7 +36,7 @@ function ViewItem(props) {
     return (
         <>
             <Button size="small" onClick={handleOpen}>Learn More</Button>
-            <Modal open={open} onClose={handleClose}>
+            <Modal open={open} onClose={handleClose} closetimeoutms={1000}>
                 <Box sx={modalStyle}>
                     <Stack spacing={2}>
                         <Box sx={{display: 'flex', flexDirection: 'row-reverse'}}>
