@@ -4,8 +4,13 @@ import * as Yup from "yup";
 import { useRef } from "react";
 import ErrorMessage from "../../store/components/Error";
 import TextFieldBox from "../../../components/FormsUI/TextFieldBox";
-import { addCommunity, linkUserCommunity } from "../../../hooks/useDB";
+import {
+  addCommunity,
+  linkUserCommunity,
+  updateImgRef,
+} from "../../../hooks/useDB";
 import { useAuth } from "../../../hooks/useAuth";
+import { uploadImage } from "../../../hooks/useStorage";
 
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 
@@ -37,11 +42,36 @@ function ItemForm({ handleClose, addC }) {
   const imageRef = useRef(null);
 
   const handleSubmit = (values) => {
-    console.log(values);
-    addCommunity(values).then((r) => {
-      linkUserCommunity(user.uid, r.id);
-      addC(r.id);
-    });
+    let cid = "";
+
+    const newValue = {
+      name: values.name,
+      shortDesc: values.shortDesc,
+      address: values.address,
+      image: "",
+    };
+
+    //1. Create Community
+    const promise = addCommunity(newValue)
+      .then((r) => {
+        //1a. Link user to communtiy (optional step at this juncture tbh)
+        linkUserCommunity(user.uid, r.id).then((r) => r);
+        cid = r.id;
+        return r;
+      })
+      //2. Add image
+      .then((r) => {
+        const promise = uploadImage(values.image, cid, "community");
+        const result = Promise.resolve(promise);
+        return result;
+      })
+      //3. Store image location to db
+      .then((r) => {
+        console.log(r);
+        updateImgRef("community", cid, { image: r.ref.fullPath });
+        addC(cid);
+      });
+    Promise.resolve(promise);
     handleClose();
   };
 
