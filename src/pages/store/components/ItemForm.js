@@ -56,7 +56,7 @@ function ItemForm({ handleClose, addI, cid }) {
     //1. Create Item
     const promise = addItem(newValue)
       .then((r) => {
-        //1a. Link user to communtiy (optional step at this juncture tbh)
+        //1a. Link Community to Item
         linkCommunityItem(cid, r.id).then((r) => r);
         iid = r.id;
         return r;

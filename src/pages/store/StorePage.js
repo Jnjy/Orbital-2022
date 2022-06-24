@@ -6,10 +6,12 @@ import ItemModal from "./components/ItemModal";
 import styles from "./StorePage.module.css";
 import { useState, useEffect } from "react";
 import { getItemInfo, queryItems } from "../../hooks/useDB.js";
+import { getImageURL } from "../../hooks/useStorage";
 
 function StorePage(props) {
   const [itemsList, setItemsList] = useState([]);
   const [allItemInfo, setAllItemInfo] = useState([]);
+  const [imgLoaded, setImgLoaded] = useState([]);
   const location = useLocation();
   const selectedComm = location.state.commId;
   const selectedCommName = location.state.name;
@@ -30,15 +32,29 @@ function StorePage(props) {
 
   useEffect(() => {
     var promises = itemsList.map((iid) =>
-      getItemInfo(iid).then((res) => [iid, res])
+      getItemInfo(iid).then((res) => [iid, res, getImageURL(res.image)])
     );
     Promise.all(promises).then((res) => {
       //console.log(res);
-
-      //TAKE OUT DO ELSEWHERE
-      setAllItemInfo(res);
+      Promise.all(promises).then((r) => {
+        let tmp = [];
+        for (let i = 0; i < r.length; i++) {
+          tmp[i] = r[i][2];
+        }
+        Promise.all(tmp).then((res) => {
+          console.log(res);
+          for (let j = 0; j < r.length; j++) {
+            r[j][2] = res[j];
+          }
+          setImgLoaded(r);
+        });
+      });
     });
   }, [itemsList]);
+
+  useEffect(() => {
+    setAllItemInfo(imgLoaded);
+  }, [imgLoaded]);
 
   return (
     <Layout pageName={"Store - " + selectedCommName}>
@@ -59,9 +75,21 @@ function StorePage(props) {
             title={elem[1].itemName}
             desc={elem[1].itemPrice}
             key={elem[0]}
+            imgUrl={
+              //"https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
+              elem[2]
+                ? elem[2]
+                : "https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
+            }
           />
         ))}
-        <ItemCard title="Placeholder 1" desc="P 1 Description" />
+        <ItemCard
+          title="Placeholder 1"
+          desc="P 1 Description"
+          imgUrl={
+            "https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
+          }
+        />
       </Grid>
     </Layout>
   );
