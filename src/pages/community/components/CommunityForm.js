@@ -48,29 +48,39 @@ function ItemForm({ handleClose, addC }) {
       name: values.name,
       shortDesc: values.shortDesc,
       address: values.address,
-      image: "",
+      image: "placeholder-image.png",
     };
 
-    //1. Create Community
-    const promise = addCommunity(newValue)
-      .then((r) => {
-        //1a. Link user to communtiy (optional step at this juncture tbh)
-        linkUserCommunity(user.uid, r.id).then((r) => r);
-        cid = r.id;
-        return r;
-      })
-      //2. Add image
-      .then((r) => {
-        const promise = uploadImage(values.image, cid, "community");
-        const result = Promise.resolve(promise);
-        return result;
-      })
-      //3. Store image location to db
-      .then((r) => {
-        console.log(r);
-        updateImgRef("community", cid, { image: r.ref.fullPath });
-        addC(cid);
-      });
+    let promise = addCommunity(newValue).then((r) => {
+      //1a. Link user to communtiy (optional step at this juncture tbh)
+      linkUserCommunity(user.uid, r.id).then((r) => r);
+      cid = r.id;
+      addC(cid);
+      console.log("Added NO IMAGE");
+      return r;
+    });
+    if (values.image !== "") {
+      //1. Create Community
+      promise = addCommunity(newValue)
+        .then((r) => {
+          //1a. Link user to communtiy (optional step at this juncture tbh)
+          linkUserCommunity(user.uid, r.id).then((r) => r);
+          cid = r.id;
+          return r;
+        })
+        //2. Add image
+        .then((r) => {
+          const promise = uploadImage(values.image, cid, "community");
+          const result = Promise.resolve(promise);
+          return result;
+        })
+        //3. Store image location to db
+        .then((r) => {
+          console.log(r);
+          updateImgRef("community", cid, { image: r.ref.fullPath });
+          addC(cid);
+        });
+    }
     Promise.resolve(promise);
     handleClose();
   };
