@@ -24,9 +24,7 @@ function CommunityPage(props) {
 
   useEffect(() => {
     if (user) {
-      //[cid, cid, cid, cid]
       getAllCommunity().then((res) => {
-        //console.log(res);
         setCommList(res);
         setIsLoading(true);
       });

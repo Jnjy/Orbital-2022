@@ -34,6 +34,8 @@ function StorePage(props) {
     );
     Promise.all(promises).then((res) => {
       //console.log(res);
+
+      //TAKE OUT DO ELSEWHERE
       setAllItemInfo(res);
     });
   }, [itemsList]);

@@ -4,10 +4,20 @@ import * as Yup from "yup";
 import { useRef } from "react";
 import ErrorMessage from "./Error";
 import TextFieldBox from "../../../components/FormsUI/TextFieldBox";
-import { addItem, linkCommunityItem } from "../../../hooks/useDB";
+import { addItem, linkCommunityItem, updateImgRef } from "../../../hooks/useDB";
 import { useAuth } from "../../../hooks/useAuth";
+import { uploadImage } from "../../../hooks/useStorage";
 
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
+
+const INITIAL_FORM_STATE = {
+  itemName: "",
+  itemPrice: "",
+  itemDesc: "",
+  itemCond: "",
+  image: "",
+  ownerID: "",
+};
 
 const FORM_VALIDATION = Yup.object().shape({
   image: Yup.mixed()
@@ -30,22 +40,47 @@ function ItemForm({ handleClose, addI, cid }) {
   const imageRef = useRef(null);
 
   const handleSubmit = (values) => {
-    console.log(values);
-    //setFieldValue("ownerID", user.uid);
-    addItem(values).then((r) => {
-      linkCommunityItem(cid, r.id);
-      addI(r.id);
-    });
-    handleClose();
-  };
+    let iid = "";
 
-  const INITIAL_FORM_STATE = {
-    itemName: "",
-    itemPrice: "",
-    itemDesc: "",
-    itemCond: "",
-    image: "",
-    ownerID: user.uid,
+    const newValue = {
+      itemName: values.itemName,
+      itemPrice: values.itemPrice,
+      itemDesc: values.itemDesc,
+      itemCond: values.itemCond,
+      image: "",
+      ownerID: user.uid,
+    };
+
+    console.log(newValue);
+
+    //1. Create Item
+    const promise = addItem(newValue)
+      .then((r) => {
+        //1a. Link user to communtiy (optional step at this juncture tbh)
+        linkCommunityItem(cid, r.id).then((r) => r);
+        iid = r.id;
+        return r;
+      })
+      //2. Add image
+      .then((r) => {
+        const promise = uploadImage(values.image, iid, "items");
+        const result = Promise.resolve(promise);
+        return result;
+      })
+      //3. Store image location to db
+      .then((r) => {
+        console.log(r);
+        updateImgRef("items", iid, { image: r.ref.fullPath });
+        addI(iid);
+      });
+    Promise.resolve(promise);
+    handleClose();
+
+    // addItem(newValue).then((r) => {
+    //   linkCommunityItem(cid, r.id);
+    //   addI(r.id);
+    // });
+    // handleClose();
   };
 
   return (
