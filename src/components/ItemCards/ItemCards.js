@@ -41,10 +41,10 @@ export default function MediaCard(props) {
             alt="placeholder"
           />
           <Typography variant="body3" color="text.secondary">
-              <span>
-                <b>Price: { " " }</b>
-              </span>$xx.xx
-            </Typography>
+            <span>
+              <b>Price: $ {props.price}</b>
+            </span>
+          </Typography>
           <span className={styles.itemDesc}>
             <Typography variant="body3" color="text.secondary">
               {props.desc}

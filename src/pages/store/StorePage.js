@@ -73,7 +73,8 @@ function StorePage(props) {
         {allItemInfo.map((elem) => (
           <ItemCard
             title={elem[1].itemName}
-            desc={elem[1].itemPrice}
+            desc={elem[1].itemDesc}
+            price={elem[1].itemPrice}
             key={elem[0]}
             imgUrl={
               //"https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
@@ -84,11 +85,12 @@ function StorePage(props) {
           />
         ))}
         <ItemCard
-          title="Placeholder 1"
-          desc="P 1 Description"
+          title="Not in DB Placeholder"
+          desc="This placeholder is permenantly here"
           imgUrl={
             "https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
           }
+          price="999999.99"
         />
       </Grid>
     </Layout>
