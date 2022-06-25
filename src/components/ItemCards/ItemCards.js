@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import styles from "./ItemCards.module.css";
 import { Grid } from "@mui/material";
-import ViewItem from "../../pages/store/components/ViewItem"
+import ViewItem from "../../pages/store/components/ViewItem";
 
 export default function MediaCard(props) {
   return (
@@ -36,7 +36,8 @@ export default function MediaCard(props) {
           </Typography>
           <img
             className={styles.postImg}
-            src="https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
+            //src="https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
+            src={props.imgUrl}
             alt="placeholder"
           />
           <Typography variant="body3" color="text.secondary">
@@ -58,7 +59,7 @@ export default function MediaCard(props) {
           >
             Request
           </Button>
-          <ViewItem props={props}/>
+          <ViewItem props={props} />
         </CardActions>
       </Card>
     </Grid>
