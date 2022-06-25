@@ -40,8 +40,8 @@ function StorePage(props) {
 
   return (
     <Layout pageName={"Store - " + selectedCommName}>
+      <br />
       <ItemModal ai={addItem} cid={selectedComm} />
-      <Button onClick={() => console.log(location.state.commId)}>CLICK</Button>
       <Grid
         container
         spacing={2}

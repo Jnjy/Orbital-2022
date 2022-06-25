@@ -18,12 +18,6 @@ function Layout(props) {
     <>
       <NavBar />
       <div className={styles.caption}>
-        {pageName==="Store" 
-          ? (<>
-              <Button onClick={handleBack}>Back to Community</Button>
-              <br />
-            </>)
-          : <></>}
         <Typography  variant="h2">{ pageName }</Typography>
       </div> 
       <div className={styles.content}>{props.children}</div>
