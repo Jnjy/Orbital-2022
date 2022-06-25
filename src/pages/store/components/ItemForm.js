@@ -51,14 +51,18 @@ function ItemForm({ handleClose, addI, cid }) {
       ownerID: user.uid,
     };
 
-    let promise = addItem(newValue).then((r) => {
-      //1a. Link Community to Item
-      linkCommunityItem(cid, r.id).then((r) => r);
-      iid = r.id;
-      addI(iid);
-      console.log("Added NO IMAGE");
-      return r;
-    });
+    let promise = "";
+
+    if (values.image === "") {
+      promise = addItem(newValue).then((r) => {
+        //1a. Link Community to Item
+        linkCommunityItem(cid, r.id).then((r) => r);
+        iid = r.id;
+        addI(iid);
+        //console.log("Added NO IMAGE");
+        return r;
+      });
+    }
 
     if (values.image !== "") {
       //1. Create Item
@@ -73,26 +77,20 @@ function ItemForm({ handleClose, addI, cid }) {
         .then((r) => {
           const promise = uploadImage(values.image, iid, "items");
           const result = Promise.resolve(promise);
-          console.log(result);
+          //console.log(result);
           return result;
         })
         //3. Store image location to db
         .then((r) => {
-          console.log(r);
+          //console.log(r);
           updateImgRef("items", iid, { image: r.ref.fullPath });
           addI(iid);
-          console.log("Added YES IMAGE");
+          //console.log("Added YES IMAGE");
         });
     }
 
     Promise.resolve(promise);
     handleClose();
-
-    // addItem(newValue).then((r) => {
-    //   linkCommunityItem(cid, r.id);
-    //   addI(r.id);
-    // });
-    // handleClose();
   };
 
   return (
