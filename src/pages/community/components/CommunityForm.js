@@ -51,14 +51,19 @@ function ItemForm({ handleClose, addC }) {
       image: "placeholder-image.png",
     };
 
-    let promise = addCommunity(newValue).then((r) => {
-      //1a. Link user to communtiy (optional step at this juncture tbh)
-      linkUserCommunity(user.uid, r.id).then((r) => r);
-      cid = r.id;
-      addC(cid);
-      console.log("Added NO IMAGE");
-      return r;
-    });
+    let promise = "";
+
+    if (values.image === "") {
+      promise = addCommunity(newValue).then((r) => {
+        //1a. Link user to communtiy (optional step at this juncture tbh)
+        linkUserCommunity(user.uid, r.id).then((r) => r);
+        cid = r.id;
+        addC(cid);
+        console.log("Added NO IMAGE");
+        return r;
+      });
+    }
+
     if (values.image !== "") {
       //1. Create Community
       promise = addCommunity(newValue)
@@ -76,7 +81,7 @@ function ItemForm({ handleClose, addC }) {
         })
         //3. Store image location to db
         .then((r) => {
-          console.log(r);
+          //console.log(r);
           updateImgRef("community", cid, { image: r.ref.fullPath });
           addC(cid);
         });

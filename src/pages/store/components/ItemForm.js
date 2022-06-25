@@ -91,12 +91,6 @@ function ItemForm({ handleClose, addI, cid }) {
 
     Promise.resolve(promise);
     handleClose();
-
-    // addItem(newValue).then((r) => {
-    //   linkCommunityItem(cid, r.id);
-    //   addI(r.id);
-    // });
-    // handleClose();
   };
 
   return (
