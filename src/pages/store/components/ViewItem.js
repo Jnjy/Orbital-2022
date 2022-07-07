@@ -8,7 +8,7 @@ const modalStyle = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "90%",
+    width: "80%",
     bgcolor: "white",
     boxShadow: 24,
     p: 4,
@@ -42,8 +42,8 @@ function ViewItem(props) {
                                 <Typography variant="h5">{props.props.title}</Typography>
                                 <img 
                                 className={styles.image}
-                                src="https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
-                                alt="placeholder"/>
+                                src={props.props.imgUrl}
+                                alt={props.props.title}/>
                                 <Typography variant="p">
                                     <span>
                                         <b>Price: {" "}</b>

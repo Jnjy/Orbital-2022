@@ -26,7 +26,10 @@ const infoBox = {
 function ViewCommunity(props) {
     const [ open, setOpen ] = useState(false);
 
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+        console.log(props.props);  
+        setOpen(true);
+    }
 
     const handleClose = () => setOpen(false);
 
@@ -44,8 +47,8 @@ function ViewCommunity(props) {
                                 <Typography variant="h5">{props.props.title}</Typography>
                                 <img 
                                 className={styles.image}
-                                src="https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
-                                alt="placeholder"/>
+                                src={props.props.imgUrl}
+                                alt={props.props.title}/>
                                 <Typography variant="p">
                                     <span>
                                         <b>
