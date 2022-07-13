@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 import { getUser } from "../../../hooks/useDB";
 import moment from "moment";
+import EditProfile from "./EditProfileModal";
 
 function UserInformation() {
   const { user } = useAuth();
@@ -35,7 +36,7 @@ function UserInformation() {
   }, [profile]);
 
   return (
-    <Grid item md={4}>
+    <Grid item xl={4}>
       <Paper elevation={3}>
         <Grid
           container
@@ -56,7 +57,7 @@ function UserInformation() {
               }
             >
               <Avatar
-                alt={"Profile Picture"}
+                alt="Profile Picture"
                 src="https://helios-i.mashable.com/imagery/articles/04i1KeWXNed98aQakEZjeOs/hero-image.fill.size_1248x702.v1623362896.jpg"
                 sx={{ width: 150, height: 150 }}
               />
@@ -73,7 +74,7 @@ function UserInformation() {
               <Typography variant="p">Telegram Handle: @commflea</Typography>
             </Stack>
           </Grid>
-          <Grid item></Grid>
+          <Grid item><EditProfile profile={profile}/></Grid>
         </Grid>
       </Paper>
     </Grid>
