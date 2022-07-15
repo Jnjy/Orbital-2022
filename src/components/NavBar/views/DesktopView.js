@@ -33,6 +33,10 @@ function DesktopView() {
     navigate("/profile");
   };
 
+  const handleItemListingNavigation = () => {
+    navigate("/item-listing");
+  }
+
   const handleLogOut = async () => {
     await signout()
       .then((res) => navigate("/login"))
@@ -98,6 +102,7 @@ function DesktopView() {
           onClose={handleCloseMenu}
         >
           <MenuItem onClick={handleProfileNavigation}>Profile</MenuItem>
+          <MenuItem onClick={handleItemListingNavigation}>Item Listing</MenuItem>
           <MenuItem onClick={handleLogOut}>Log out</MenuItem>
         </Menu>
       </Box>
