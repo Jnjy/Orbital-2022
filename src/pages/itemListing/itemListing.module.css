@@ -1,0 +1,11 @@
+.tableContainer {
+    border-radius: 15;
+    margin: 10px;
+    width: 800px;
+    align-items: center;
+}
+
+.table {
+    min-width: 800px;
+    max-width: 800px;
+}

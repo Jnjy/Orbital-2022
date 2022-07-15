@@ -6,6 +6,7 @@ import ResetPasswordPage from "../../pages/resetPassword/ResetPasswordPage";
 import CommunityPage from "../../pages/community/CommunityPage";
 import UserProfile from "../../pages/profile/UserProfile";
 import StorePage from "../../pages/store/StorePage";
+import ItemListing from "../../pages/itemListing/ItemListing";
 import LandingPage from "../../pages/landing/LandingPage";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -21,6 +22,7 @@ function RoutePaths() {
       <Route path="/profile" element={<UserProfile />} />
       <Route path="/community" element={<CommunityPage />} />
       <Route path="/store" element={<StorePage />} />
+      <Route path="/item-listing" element={<ItemListing />} />
     </Routes>
   );
 }
