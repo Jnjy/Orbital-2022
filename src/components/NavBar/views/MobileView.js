@@ -70,7 +70,7 @@ function MobileView() {
         variant="h6"
         noWrap
         component="a"
-        href="/"
+        href="/community"
         sx={{
           marginRight: "36px",
           justifyContent: "center",
