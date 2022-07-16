@@ -17,7 +17,7 @@ const FORM_VALIDATION = Yup.object().shape({
 function EditProfileForm(props) {
 
     function handleSubmit(values) {
-        console.log(props.props.profile);
+        console.log(values);
     }
 
     return (
@@ -35,7 +35,6 @@ function EditProfileForm(props) {
                     name="username"
                     fullWidth
                     label="Username"
-                    value={props.props.profile.name}
                     required
                     />
                 </Grid>
@@ -44,7 +43,6 @@ function EditProfileForm(props) {
                     name="phone"
                     fullWidth
                     label="Phone Number"
-                    value={props.props.profile.phone}
                     required
                     />
                 </Grid>
