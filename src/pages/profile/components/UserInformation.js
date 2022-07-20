@@ -10,11 +10,12 @@ import EditProfile from "./EditProfileModal";
 function UserInformation() {
   const { user } = useAuth();
   const [name, setName] = useState("Loading name...");
-  const [profile, setProfile] = useState("blank profile");
+  const [profile, setProfile] = useState("");
   const [pemail, setEmail] = useState("placeholder@gmail.com");
   const [phone, setPhone] = useState("+65 XXXX XXXX");
   const [jdate, setJdate] = useState("DD/MM/YYYY");
-  const [tele, setTele] = useState("@");
+  const [tele, setTele] = useState("");
+  const [uProfile, setUProfile] = useState("");
 
   useEffect(() => {
     if (user?.displayName) {
@@ -33,8 +34,19 @@ function UserInformation() {
       const date = moment(parseInt(profile.creationTime)).format("DD-MM-YYYY");
       setJdate(date);
       setPhone(profile.phone);
+      if (profile.telegram) {
+        setTele(profile.telegram);
+      }
     }
   }, [profile]);
+
+  useEffect(() => {
+    if (uProfile) {
+      setName(uProfile.name);
+      setPhone(uProfile.phone);
+      setTele(uProfile.tele);
+    }
+  }, [uProfile]);
 
   return (
     <Grid item xl={4}>
@@ -76,7 +88,7 @@ function UserInformation() {
             </Stack>
           </Grid>
           <Grid item>
-            <EditProfile profile={profile} uid={user} />
+            <EditProfile profile={profile} uid={user} su={setUProfile} />
           </Grid>
         </Grid>
       </Paper>
