@@ -32,7 +32,7 @@ function ProfileModal(props) {
           <Stack spacing={2}>
             <Typography variant="h5">Edit Profile</Typography>
             <br />
-            <EditProfileForm props={props} hc={handleClose} />
+            <EditProfileForm uid={props.uid} hc={handleClose} su={props.su} />
           </Stack>
         </Box>
       </Modal>

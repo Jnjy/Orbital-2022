@@ -18,12 +18,20 @@ function EditProfileForm(props) {
     //console.log(props);
     //console.log(props.props.uid.uid);
     let promise = "";
-    promise = updateProfile("users", props.props.uid.uid, {
+    promise = updateProfile("users", props.uid.uid, {
       phone: values.phone,
       name: values.username,
       telegram: values.telegram,
     });
     Promise.resolve(promise);
+    props.su({
+      phone: values.phone,
+      name: values.username,
+      tele: values.telegram,
+    });
+    //props.sp(values.phone);
+    //props.st(values.telegram);
+    //handleclose
     props.hc();
   };
 
@@ -38,12 +46,7 @@ function EditProfileForm(props) {
           <Stack spacing={4}>
             <Grid container direction="row" spacing={4}>
               <Grid item xs={12} md={4}>
-                <TextFieldBox
-                  name="username"
-                  fullWidth
-                  label="Username"
-                  required
-                />
+                <TextFieldBox name="username" fullWidth label="Name" required />
               </Grid>
               <Grid item xs={12} md={4}>
                 <TextFieldBox
@@ -57,7 +60,7 @@ function EditProfileForm(props) {
                 <TextFieldBox
                   name="telegram"
                   fullWidth
-                  label="Telegram Handle"
+                  label="Telegram Handle(@xx)"
                   required
                 />
               </Grid>
