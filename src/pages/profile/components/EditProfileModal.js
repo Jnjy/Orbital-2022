@@ -14,29 +14,30 @@ const modalStyle = {
   p: 4,
 };
 
-function CommunityModal(props) {
-    
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => {
-        console.log(props)
-        setOpen(true);
-    }
-    const handleClose = () => setOpen(false);
+function ProfileModal(props) {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    console.log(props);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
 
-    return (
-        <div>
-        <Button variant="outlined" onClick={handleOpen}>Edit Profile</Button>
-        <Modal open={open} onClose={handleClose} closetimeoutms={1000}>
-            <Box sx={modalStyle}>
-            <Stack spacing={2}>
-                <Typography variant="h5">Edit Profile</Typography>
-                <br />
-                <EditProfileForm props={props}/>
-            </Stack>
-            </Box>
-        </Modal>
-        </div>
-    );
+  return (
+    <div>
+      <Button variant="outlined" onClick={handleOpen}>
+        Edit Profile
+      </Button>
+      <Modal open={open} onClose={handleClose} closetimeoutms={1000}>
+        <Box sx={modalStyle}>
+          <Stack spacing={2}>
+            <Typography variant="h5">Edit Profile</Typography>
+            <br />
+            <EditProfileForm props={props} hc={handleClose} />
+          </Stack>
+        </Box>
+      </Modal>
+    </div>
+  );
 }
 
-export default CommunityModal;
+export default ProfileModal;

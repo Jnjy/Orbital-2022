@@ -14,9 +14,18 @@ const INITIAL_FORM_STATE = {
 const FORM_VALIDATION = Yup.object().shape({});
 
 function EditProfileForm(props) {
-  function handleSubmit(values) {
-    console.log(values);
-  }
+  const handleSubmit = (values) => {
+    //console.log(props);
+    //console.log(props.props.uid.uid);
+    let promise = "";
+    promise = updateProfile("users", props.props.uid.uid, {
+      phone: values.phone,
+      name: values.username,
+      telegram: values.telegram,
+    });
+    Promise.resolve(promise);
+    props.hc();
+  };
 
   return (
     <Formik

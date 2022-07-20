@@ -14,6 +14,7 @@ function UserInformation() {
   const [pemail, setEmail] = useState("placeholder@gmail.com");
   const [phone, setPhone] = useState("+65 XXXX XXXX");
   const [jdate, setJdate] = useState("DD/MM/YYYY");
+  const [tele, setTele] = useState("@");
 
   useEffect(() => {
     if (user?.displayName) {
@@ -71,10 +72,12 @@ function UserInformation() {
             <Stack spacing={2}>
               <Typography variant="p">{pemail}</Typography>
               <Typography variant="p">Phone No: {phone}</Typography>
-              <Typography variant="p">Telegram Handle: @commflea</Typography>
+              <Typography variant="p">Telegram Handle: {tele}</Typography>
             </Stack>
           </Grid>
-          <Grid item><EditProfile profile={profile}/></Grid>
+          <Grid item>
+            <EditProfile profile={profile} uid={user} />
+          </Grid>
         </Grid>
       </Paper>
     </Grid>
