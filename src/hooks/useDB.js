@@ -132,3 +132,9 @@ export const updateImgRef = async (col, id, info) => {
   const updateFn = await updateDoc(docRef, info);
   return updateFn;
 };
+
+export const updateProfile = async (col, id, info) => {
+  const docRef = doc(db, col, id);
+  const updateFn = await updateDoc(docRef, info);
+  return updateFn;
+};
