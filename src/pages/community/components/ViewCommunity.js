@@ -1,4 +1,4 @@
-import { Box, Button, Modal, Stack, Typography } from "@mui/material";
+import { AvatarIcon, Box, Button, IconButton, Modal, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import styles from "../CommunityPage.module.css";
@@ -40,7 +40,9 @@ function ViewCommunity(props) {
                 <Box sx={modalStyle}>
                     <Stack spacing={2}>
                         <Box sx={{display: 'flex', flexDirection: 'row-reverse'}}>
-                            <CloseIcon onClick={handleClose}/>
+                            <IconButton onClick={handleClose}>
+                                <CloseIcon />
+                            </IconButton>
                         </Box>
                         <Box sx={infoBox}>
                             <Stack spacing={2}>

@@ -13,13 +13,13 @@ export default function MediaCard(props) {
 
   const sendReqMail = (values) => {
     console.log(values.receiver);
-    console.log("hi");
-    emailjs.send('service_4dmbshm', 'template_roili0o', values, '0cfS7-ifOcQSycHp1')
+    console.log(props.owner);
+    /* emailjs.send('service_4dmbshm', 'template_roili0o', values, '0cfS7-ifOcQSycHp1')
     .then((result) => {
       console.log(result.text);
     }, (error) => {
       console.log(error.text);
-    });
+    });*/ 
   }
 
   return (
