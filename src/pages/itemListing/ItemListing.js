@@ -71,7 +71,7 @@ function ItemListing() {
                   /* e[1] is data, e[0] is the id */
                   <TableRow key={e[0]} hover>
                     <TableCell>{e[1].itemName}</TableCell>
-                    <TableCell>{e[1].itemDesc}</TableCell>
+                    <TableCell>PlaceHolder</TableCell>
                     <TableCell>{e[1].itemPrice}</TableCell>
                     <TableCell>{e[1].itemCond}</TableCell>
                     {/* <ActionButton /> */}
