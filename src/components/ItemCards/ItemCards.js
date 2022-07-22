@@ -33,7 +33,7 @@ export default function MediaCard(props) {
     });
   };
 
-  //No longer needed
+  //No longer needed - to be removed in the next revision
   const sendReqMail = (values) => {
     console.log(values.receiver);
     console.log("hi");
@@ -95,7 +95,6 @@ export default function MediaCard(props) {
           <Button
             variant="outlined"
             size="small"
-            //onClick={() => sendReqMail({ receiver: "seanwong2307@gmail.com" })}
             onClick={() => {
               sendOwnerEmail(props.oid);
             }}
