@@ -7,20 +7,47 @@ import Typography from "@mui/material/Typography";
 import styles from "./ItemCards.module.css";
 import { Grid } from "@mui/material";
 import ViewItem from "../../pages/store/components/ViewItem";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
+import { getOwnerDoc } from "../../hooks/useDB";
 
 export default function MediaCard(props) {
+  const sendOwnerEmail = (ownerID) => {
+    console.log(ownerID);
+    getOwnerDoc(ownerID).then((r) => {
+      //console.log(r.email);
+      emailjs
+        .send(
+          "service_4dmbshm",
+          "template_roili0o",
+          { receiver: r.email },
+          "0cfS7-ifOcQSycHp1"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+    });
+  };
 
+  //No longer needed - to be removed in the next revision
   const sendReqMail = (values) => {
     console.log(values.receiver);
     console.log("hi");
-    emailjs.send('service_4dmbshm', 'template_roili0o', values, '0cfS7-ifOcQSycHp1')
-    .then((result) => {
-      console.log(result.text);
-    }, (error) => {
-      console.log(error.text);
-    });
-  }
+    emailjs
+      .send("service_4dmbshm", "template_roili0o", values, "0cfS7-ifOcQSycHp1")
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
   return (
     <Grid container justifyContent="center" item sm={6} md={4} xl={3}>
@@ -68,7 +95,9 @@ export default function MediaCard(props) {
           <Button
             variant="outlined"
             size="small"
-            onClick={() => sendReqMail({"receiver": 'commflea@gmail.com'})}
+            onClick={() => {
+              sendOwnerEmail(props.oid);
+            }}
           >
             Request
           </Button>
