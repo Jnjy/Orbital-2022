@@ -138,3 +138,18 @@ export const updateProfile = async (col, id, info) => {
   const updateFn = await updateDoc(docRef, info);
   return updateFn;
 };
+
+//This should return an array of items that the user listed
+export const getAllUserItem = async (uid) => {
+  const colRef = collection(db, "items");
+  const q = query(colRef, where("ownerID", "==", uid));
+  const querySnapshot = await getDocs(q);
+
+  let data = [];
+
+  querySnapshot.forEach((doc) => {
+    //console.log(doc.data());
+    data = [...data, doc.data()];
+  });
+  return data;
+};
