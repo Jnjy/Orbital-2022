@@ -39,8 +39,12 @@ function ItemListing() {
     if (user) {
       //console.log(user);
       getAllUserItem(user.uid).then((r) => {
-        console.log(r);
-        setItemList(r);
+        //console.log(r);
+        let e = r.map((d) => {
+          //console.log(d.id);
+          return [d.id, d.data()];
+        });
+        setItemList(e);
         setIsLoading(false);
       });
     }
@@ -64,11 +68,12 @@ function ItemListing() {
             <TableBody>
               {!isLoading ? (
                 itemList.map((e) => (
+                  /* e[1] is data, e[0] is the id */
                   <TableRow hover>
-                    <TableCell>{e.itemName}</TableCell>
-                    <TableCell>{e.itemDesc}</TableCell>
-                    <TableCell>{e.itemPrice}</TableCell>
-                    <TableCell>{e.itemCond}</TableCell>
+                    <TableCell>{e[1].itemName}</TableCell>
+                    <TableCell>{e[1].itemDesc}</TableCell>
+                    <TableCell>{e[1].itemPrice}</TableCell>
+                    <TableCell>{e[1].itemCond}</TableCell>
                     <ActionButton />
                   </TableRow>
                 ))

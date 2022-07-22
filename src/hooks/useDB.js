@@ -149,7 +149,7 @@ export const getAllUserItem = async (uid) => {
 
   querySnapshot.forEach((doc) => {
     //console.log(doc.data());
-    data = [...data, doc.data()];
+    data = [...data, doc];
   });
   return data;
 };
