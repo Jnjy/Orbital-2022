@@ -75,6 +75,7 @@ function StorePage(props) {
             title={elem[1].itemName}
             desc={elem[1].itemDesc}
             price={elem[1].itemPrice}
+            oid={elem[1].ownerID}
             key={elem[0]}
             imgUrl={
               //"https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png"
