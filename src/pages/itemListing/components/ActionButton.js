@@ -1,8 +1,12 @@
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import { useState } from "react";
+import ItemView from "./ItemView";
 
-function ActionButton() {
+function ActionButton(props) {
+
+    const { item } = props;
+
     const [anchorEl, setAnchorEl] = useState(null);
 
     const open=Boolean(anchorEl);
@@ -10,6 +14,10 @@ function ActionButton() {
     const handleOpenMenu = event => setAnchorEl(event.currentTarget);
     
     const handleClose = () => setAnchorEl(null);
+
+    const handleView = () => {
+        console.log(item);
+    }
 
     return (
         <>
@@ -30,11 +38,7 @@ function ActionButton() {
             open={open}
             onClose={handleClose}
             >
-                <MenuItem>
-                    <Typography>
-                        View
-                    </Typography>
-                </MenuItem>
+                <ItemView item={item}/>
                 <MenuItem>
                     <Typography color="error">
                         Delete
