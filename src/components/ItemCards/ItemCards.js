@@ -12,17 +12,19 @@ import { getOwnerDoc } from "../../hooks/useDB";
 
 export default function MediaCard(props) {
   const sendOwnerEmail = (ownerID) => {
-    console.log(ownerID);
+    //console.log(ownerID);
     getOwnerDoc(ownerID).then((r) => {
-      console.log(r);
+      //console.log(r);
       emailjs
         .send(
           "service_4dmbshm",
           "template_roili0o",
-          { receiver: r.email,
+          {
+            receiver: r.email,
             telegram: r.telegram,
-            name: r.name, 
-            phone: r.phone },
+            name: r.name,
+            phone: r.phone,
+          },
           "0cfS7-ifOcQSycHp1"
         )
         .then(
@@ -38,8 +40,8 @@ export default function MediaCard(props) {
 
   //No longer needed - to be removed in the next revision
   const sendReqMail = (values) => {
-    console.log(values.receiver);
-    console.log("hi");
+    //console.log(values.receiver);
+    //console.log("hi");
     emailjs
       .send("service_4dmbshm", "template_roili0o", values, "0cfS7-ifOcQSycHp1")
       .then(
