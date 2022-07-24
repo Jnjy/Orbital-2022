@@ -70,7 +70,7 @@ function LoginForm() {
   async function googleSignIn() {
     await signInWithGoogle()
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         createUserGoogle(res);
         return res;
       })
