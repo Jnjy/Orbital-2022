@@ -35,7 +35,7 @@ function ViewItem(props) {
 
     const getImage = async (path) => {
         const imageURL = await getImageURL(path);
-        console.log(imageURL);
+        // console.log(imageURL);
         return imageURL;
     }
 
