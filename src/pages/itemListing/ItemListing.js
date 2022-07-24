@@ -35,6 +35,8 @@ function ItemListing() {
     setPage(0);
   };
 
+  const removeItem = (iid) => {};
+
   useEffect(() => {
     if (user) {
       //console.log(user);
