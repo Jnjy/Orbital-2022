@@ -41,7 +41,7 @@ function ItemListing() {
       if (itemList[i][0] !== iid) {
         tmp = [...tmp, itemList[i]];
       }
-      console.log(tmp);
+      //console.log(tmp);
     }
     setItemList(tmp);
   };
@@ -55,7 +55,7 @@ function ItemListing() {
           //console.log(d.id);
           return [d.id, d.data()];
         });
-        console.log(e);
+        //console.log(e);
         setItemList(e);
         setIsLoading(false);
       });
