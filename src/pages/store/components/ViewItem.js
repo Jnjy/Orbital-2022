@@ -25,7 +25,10 @@ const infoBox = {
 
 function ViewItem(props) {
     const [open, setOpen ] = useState(false);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+        setOpen(true);
+        console.log(props.props.imgUrl);
+    }
     const handleClose = () => setOpen(false);
 
     return (

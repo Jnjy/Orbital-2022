@@ -72,8 +72,17 @@ export const queryItems = async (cid) => {
 };
 
 //delete item of specific user id
-export const deleteItem = async (uid) => {
-
+export const deleteItem = async (iid) => {
+  try {
+    const itemDocRef = collection(db, "items", iid);
+    // const junctionDocRef = collection(db, "junction_community_items");
+    // const queryJunction = query(junctionDocRef, where("itemid", "==", itemId));
+    const itemSnapshot = await getDoc(itemDocRef);  
+    console.log(itemSnapshot.data());
+  } catch (error) {
+    console.log(error);
+  }
+  
 }
 
 //iid = Item ID

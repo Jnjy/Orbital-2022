@@ -2,6 +2,7 @@ import { Box, Button, MenuItem, Modal, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import styles from "../itemListing.module.css";
+import { getImageURL } from "../../../hooks/useStorage";
 
 const modalStyle = {
     position: "absolute",
@@ -32,9 +33,15 @@ function ViewItem(props) {
     }
     const handleClose = () => setOpen(false);
 
+    const getImage = async (path) => {
+        const imageURL = await getImageURL(path);
+        console.log(imageURL);
+        return imageURL;
+    }
+
     return (
         <>
-            <MenuItem size="small" onClick={handleOpen}>Learn More</MenuItem>
+            <MenuItem size="small" onClick={handleOpen}>View</MenuItem>
             <Modal open={open} onClose={handleClose} closetimeoutms={1000}>
                 <Box sx={modalStyle}>
                     <Stack spacing={2}>
@@ -46,7 +53,7 @@ function ViewItem(props) {
                                 <Typography variant="h5">{item[1].itemName}</Typography>
                                 <img 
                                 className={styles.image}
-                                src={item[1].image}
+                                src={getImage(item[1].image)}
                                 alt={item[1].itemName}/>
                                 <Typography variant="p">
                                     <span>
