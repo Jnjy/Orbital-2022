@@ -59,7 +59,7 @@ function ItemForm({ handleClose, addC }) {
         linkUserCommunity(user.uid, r.id).then((r) => r);
         cid = r.id;
         addC(cid);
-        console.log("Added NO IMAGE");
+        //console.log("Added NO IMAGE");
         return r;
       });
     }

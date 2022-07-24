@@ -12,7 +12,7 @@ import ViewCommunity from "../../pages/community/components/ViewCommunity";
 export default function CommCard(props) {
   const navigate = useNavigate();
 
-  console.log(props.imgUrl);
+  //console.log(props.imgUrl);
 
   const handleNavigate = () => {
     navigate("/store", {

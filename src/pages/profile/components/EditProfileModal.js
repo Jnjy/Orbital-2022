@@ -17,7 +17,7 @@ const modalStyle = {
 function ProfileModal(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
-    console.log(props);
+    //console.log(props);
     setOpen(true);
   };
   const handleClose = () => setOpen(false);

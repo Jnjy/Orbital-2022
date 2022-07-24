@@ -11,15 +11,15 @@ function Layout(props) {
   const navigate = useNavigate();
 
   const handleBack = () => {
-      navigate("/community");
-  }
+    navigate("/community");
+  };
 
   return (
     <>
       <NavBar />
       <div className={styles.caption}>
-        <Typography  variant="h2">{ pageName }</Typography>
-      </div> 
+        <Typography variant="h2">{pageName}</Typography>
+      </div>
       <div className={styles.content}>{props.children}</div>
     </>
   );

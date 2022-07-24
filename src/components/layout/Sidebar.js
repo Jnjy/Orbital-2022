@@ -13,7 +13,7 @@ function Sidebar(props) {
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    console.log("sign out");
+    //console.log("sign out");
     signout();
     navigate("/login");
   };

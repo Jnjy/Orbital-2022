@@ -11,11 +11,13 @@
 </div>
 
 ## Milestone 1 Submission Links
+
 - [Milestone 1 Submission Doc](https://docs.google.com/document/d/19IC9HQEe5kSnHDYaKgG3j4TdZFJLZ2OfEOU09IhtJ0k/edit?usp=sharing)
 - [Project Poster](https://drive.google.com/file/d/14bD8aRG6kZ-ZY17KRrQ7-mqaWbhRX1po/view?usp=sharing)
 - [Project Video](https://youtu.be/b5NzQEMzgm0)
 
 ## Milestone 2 Submission Links
- - [Milestone 2 Submission Doc](https://docs.google.com/document/d/1hF9R3qXH_wtk_vts1j9aE-EJnT47l2ma27_TePM1YwQ/edit?usp=sharing)
- - [Project Poster](https://drive.google.com/file/d/1DR_zlXvbefOpK1R5ZiEElsvrI8VDRuZk/view?usp=sharing)
- - [Project Video](https://youtu.be/YKhzUp1gPq0)
+
+- [Milestone 2 Submission Doc](https://docs.google.com/document/d/1hF9R3qXH_wtk_vts1j9aE-EJnT47l2ma27_TePM1YwQ/edit?usp=sharing)
+- [Project Poster](https://drive.google.com/file/d/1DR_zlXvbefOpK1R5ZiEElsvrI8VDRuZk/view?usp=sharing)
+- [Project Video](https://youtu.be/YKhzUp1gPq0)

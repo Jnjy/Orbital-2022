@@ -87,28 +87,28 @@ export const getItemInfo = async (iid) => {
 export const addCommunity = async (data) => {
   const colRef = collection(db, "community");
   const docRef = await addDoc(colRef, data);
-  console.log(docRef);
+  //console.log(docRef);
   return docRef;
 };
 
 export const linkUserCommunity = async (uid, cid) => {
   const docRef = doc(db, "junction_user_community", uid + "_" + cid);
   const docSnap = await setDoc(docRef, { commid: cid, userid: uid });
-  console.log(docSnap);
+  //console.log(docSnap);
   return docSnap;
 };
 
 export const addItem = async (data) => {
   const colRef = collection(db, "items");
   const docRef = await addDoc(colRef, data);
-  console.log(docRef);
+  //console.log(docRef);
   return docRef;
 };
 
 export const linkCommunityItem = async (cid, iid) => {
   const docRef = doc(db, "junction_community_items", cid + "_" + iid);
   const docSnap = await setDoc(docRef, { commid: cid, itemid: iid });
-  console.log(docSnap);
+  //console.log(docSnap);
   return docSnap;
 };
 
@@ -170,7 +170,7 @@ export const getOwnerDoc = async (uid) => {
 // 2. Remove the item from the junction table of community and items
 export const deleteItem = async (iid) => {
   const docRef = doc(db, "items", iid);
-  console.log(docRef);
+  //console.log(docRef);
   return await deleteDoc(docRef);
 };
 
@@ -179,17 +179,17 @@ export const deleteCommunityItemLink = async (iid) => {
   const q = query(colRef, where("itemid", "==", iid));
   const querySnapshot = await getDocs(q);
 
-  console.log(q);
-  console.log(querySnapshot);
+  //console.log(q);
+  //console.log(querySnapshot);
 
   let data = [];
-  console.log("THIS IS THE LINK PART");
+  //console.log("THIS IS THE LINK PART");
 
   //Put docref into array
   querySnapshot.forEach((doc) => {
-    console.log(doc);
+    //console.log(doc);
     data = [...data, doc.ref];
   });
-  console.log(data[0]);
+  //console.log(data[0]);
   return await deleteDoc(data[0]);
 };

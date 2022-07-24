@@ -8,9 +8,12 @@ function LandingPage() {
     <div>
       <Typography variant="h1">Landing Page</Typography>
       <Typography variant="h4">Work in Progress...</Typography>
-      <br/>
-      <Button variant="outlined" onClick={() => navigate("/login")}>Go to Login Page</Button>
-    </div>);
+      <br />
+      <Button variant="outlined" onClick={() => navigate("/login")}>
+        Go to Login Page
+      </Button>
+    </div>
+  );
 }
 
 export default LandingPage;

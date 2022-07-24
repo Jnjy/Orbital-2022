@@ -1,16 +1,16 @@
 .postImg {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    max-width: 500px;
-    object-fit: cover;
-    border-radius: 8px;
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  max-width: 500px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .commDesc {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
