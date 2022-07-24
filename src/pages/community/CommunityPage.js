@@ -41,7 +41,7 @@ function CommunityPage(props) {
         tmp[i] = r[i][2];
       }
       Promise.all(tmp).then((res) => {
-        console.log(res);
+        //console.log(res);
         for (let j = 0; j < r.length; j++) {
           r[j][2] = res[j];
         }
