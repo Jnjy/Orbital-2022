@@ -37,8 +37,13 @@ function ItemListing() {
 
   const removeItem = (iid) => {
     let tmp = [];
-    console.log(itemList);
-    console.log(iid);
+    for (let i = 0; i < itemList.length; i++) {
+      if (itemList[i][0] !== iid) {
+        tmp = [...tmp, itemList[i]];
+      }
+      console.log(tmp);
+    }
+    setItemList(tmp);
   };
 
   useEffect(() => {
