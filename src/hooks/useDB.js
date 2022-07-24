@@ -71,6 +71,11 @@ export const queryItems = async (cid) => {
   return data;
 };
 
+//delete item of specific user id
+export const deleteItem = async (uid) => {
+
+}
+
 //iid = Item ID
 export const getItemInfo = async (iid) => {
   const docRef = doc(db, "items", iid);

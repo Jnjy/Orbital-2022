@@ -74,7 +74,7 @@ function ItemListing() {
                     <TableCell>PlaceHolder</TableCell>
                     <TableCell>{e[1].itemPrice}</TableCell>
                     <TableCell>{e[1].itemCond}</TableCell>
-                    {/* <ActionButton /> */}
+                    <TableCell><ActionButton item={e}/></TableCell>
                   </TableRow>
                 ))
               ) : (
