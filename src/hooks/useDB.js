@@ -171,7 +171,7 @@ export const getOwnerDoc = async (uid) => {
 export const deleteItem = async (iid) => {
   const docRef = doc(db, "items", iid);
   console.log(docRef);
-  return await deleteDoc(docRef);
+  //return await deleteDoc(docRef);
 };
 
 export const deleteCommunityItemLink = async (iid) => {
@@ -191,5 +191,5 @@ export const deleteCommunityItemLink = async (iid) => {
     data = [...data, doc.ref];
   });
   console.log(data[0]);
-  return await deleteDoc(data[0]);
+  //return await deleteDoc(data[0]);
 };
