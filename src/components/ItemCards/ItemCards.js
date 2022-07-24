@@ -14,12 +14,15 @@ export default function MediaCard(props) {
   const sendOwnerEmail = (ownerID) => {
     console.log(ownerID);
     getOwnerDoc(ownerID).then((r) => {
-      //console.log(r.email);
+      console.log(r);
       emailjs
         .send(
           "service_4dmbshm",
           "template_roili0o",
-          { receiver: r.email },
+          { receiver: r.email,
+            telegram: r.telegram,
+            name: r.name, 
+            phone: r.phone },
           "0cfS7-ifOcQSycHp1"
         )
         .then(
