@@ -165,9 +165,21 @@ export const getOwnerDoc = async (uid) => {
   }
 };
 
+// We need to
+// 1. Remove the item from the items collection
+// 2. Remove the item from the junction table of community and items
 export const deleteItem = async (iid) => {
+  const colRef = collection(db, "junction_community_items");
+  const q = query(colRef, where("itemid", "==", iid));
+  const querySnapshot = await getDocs(q);
+
   const docRef = doc(db, "items", iid);
-  return await deleteDoc(docRef);
+
+  console.log(q);
+  console.log(querySnapshot);
+  console.log(docRef);
+
+  return await deleteDoc(docRef).then(deleteDoc(querySnapshot));
 };
 
 //This should return an array of items that the community have
