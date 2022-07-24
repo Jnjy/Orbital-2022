@@ -5,7 +5,7 @@ import { deleteItem, deleteCommunityItemLink } from "../../../hooks/useDB";
 import ItemView from "./ItemView";
 
 function ActionButton(props) {
-  const { item } = props;
+  const { item, removeItem } = props;
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -19,6 +19,7 @@ function ActionButton(props) {
     console.log(item[0]);
     deleteItem(item[0]);
     deleteCommunityItemLink(item[0]);
+    props.removeItem(123);
   };
 
   return (

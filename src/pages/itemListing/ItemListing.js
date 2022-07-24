@@ -35,7 +35,11 @@ function ItemListing() {
     setPage(0);
   };
 
-  const removeItem = (iid) => {};
+  const removeItem = (iid) => {
+    let tmp = [];
+    console.log(itemList);
+    console.log(iid);
+  };
 
   useEffect(() => {
     if (user) {
@@ -78,7 +82,7 @@ function ItemListing() {
                     <TableCell>{e[1].itemPrice}</TableCell>
                     <TableCell>{e[1].itemCond}</TableCell>
                     <TableCell>
-                      <ActionButton item={e} />
+                      <ActionButton item={e} rm={removeItem} />
                     </TableCell>
                   </TableRow>
                 ))
