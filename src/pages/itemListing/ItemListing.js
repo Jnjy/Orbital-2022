@@ -35,6 +35,17 @@ function ItemListing() {
     setPage(0);
   };
 
+  const removeItem = (iid) => {
+    let tmp = [];
+    for (let i = 0; i < itemList.length; i++) {
+      if (itemList[i][0] !== iid) {
+        tmp = [...tmp, itemList[i]];
+      }
+      //console.log(tmp);
+    }
+    setItemList(tmp);
+  };
+
   useEffect(() => {
     if (user) {
       //console.log(user);
@@ -44,6 +55,7 @@ function ItemListing() {
           //console.log(d.id);
           return [d.id, d.data()];
         });
+        //console.log(e);
         setItemList(e);
         setIsLoading(false);
       });
@@ -74,7 +86,9 @@ function ItemListing() {
                     <TableCell>PlaceHolder</TableCell>
                     <TableCell>{e[1].itemPrice}</TableCell>
                     <TableCell>{e[1].itemCond}</TableCell>
-                    <TableCell><ActionButton item={e}/></TableCell>
+                    <TableCell>
+                      <ActionButton item={e} rm={removeItem} />
+                    </TableCell>
                   </TableRow>
                 ))
               ) : (

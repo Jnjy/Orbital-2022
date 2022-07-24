@@ -71,20 +71,6 @@ export const queryItems = async (cid) => {
   return data;
 };
 
-//delete item of specific user id
-export const deleteItem = async (iid) => {
-  try {
-    const itemDocRef = collection(db, "items", iid);
-    // const junctionDocRef = collection(db, "junction_community_items");
-    // const queryJunction = query(junctionDocRef, where("itemid", "==", itemId));
-    const itemSnapshot = await getDoc(itemDocRef);  
-    console.log(itemSnapshot.data());
-  } catch (error) {
-    console.log(error);
-  }
-  
-}
-
 //iid = Item ID
 export const getItemInfo = async (iid) => {
   const docRef = doc(db, "items", iid);
@@ -133,8 +119,6 @@ export const getAllCommunity = async () => {
   let data = [];
 
   querySnapshot.forEach((doc) => {
-    //console.log(doc.id, " => ", doc.data());
-    //console.log(doc);
     data = [...data, doc.id];
   });
   //console.log(data);
@@ -166,8 +150,8 @@ export const getAllUserItem = async (uid) => {
     data = [...data, doc];
   });
   return data;
- };
-  
+};
+
 //iid = Item ID
 export const getOwnerDoc = async (uid) => {
   const docRef = doc(db, "users", uid);
@@ -179,4 +163,33 @@ export const getOwnerDoc = async (uid) => {
     // doc.data() will be undefined in this case
     console.log("No such document!");
   }
+};
+
+// We need to
+// 1. Remove the item from the items collection
+// 2. Remove the item from the junction table of community and items
+export const deleteItem = async (iid) => {
+  const docRef = doc(db, "items", iid);
+  console.log(docRef);
+  return await deleteDoc(docRef);
+};
+
+export const deleteCommunityItemLink = async (iid) => {
+  const colRef = collection(db, "junction_community_items");
+  const q = query(colRef, where("itemid", "==", iid));
+  const querySnapshot = await getDocs(q);
+
+  console.log(q);
+  console.log(querySnapshot);
+
+  let data = [];
+  console.log("THIS IS THE LINK PART");
+
+  //Put docref into array
+  querySnapshot.forEach((doc) => {
+    console.log(doc);
+    data = [...data, doc.ref];
+  });
+  console.log(data[0]);
+  return await deleteDoc(data[0]);
 };
