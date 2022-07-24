@@ -23,7 +23,7 @@ const authContext = createContext();
 
 const createUser = async (id, data) => {
   await setDoc(doc(db, "users", id), data);
-  console.log("Creating user doc");
+  //console.log("Creating user doc");
 };
 
 //Phone number is placeholder
@@ -32,7 +32,7 @@ export const createUserGoogle = async (userObj) => {
     .then((doc) => {
       if (doc.exists()) {
       } else {
-        console.log("doc don't exist!");
+        //console.log("doc don't exist!");
         createUser(userObj.user.uid, {
           name: userObj.user.displayName,
           email: userObj.user.email,
@@ -91,7 +91,7 @@ function useProvideAuth() {
   const signout = () => {
     return signOut(firebaseAuth)
       .then(() => {
-        console.log("Sign Out Successful");
+        //console.log("Sign Out Successful");
         setUser(null);
       })
       .catch((error) => {
