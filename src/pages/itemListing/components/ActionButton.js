@@ -1,7 +1,7 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import { useState } from "react";
-import { deleteItem } from "../../../hooks/useDB";
+import { deleteItem, deleteCommunityItemLink } from "../../../hooks/useDB";
 import ItemView from "./ItemView";
 
 function ActionButton(props) {
@@ -17,7 +17,8 @@ function ActionButton(props) {
 
   const handleDelete = () => {
     console.log(item[0]);
-    //deleteItem("0XTBTu1Bz0uJm0NXHJcQ");
+    deleteItem(item[0]);
+    deleteCommunityItemLink(item[0]);
   };
 
   return (

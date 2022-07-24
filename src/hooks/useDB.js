@@ -169,31 +169,27 @@ export const getOwnerDoc = async (uid) => {
 // 1. Remove the item from the items collection
 // 2. Remove the item from the junction table of community and items
 export const deleteItem = async (iid) => {
+  const docRef = doc(db, "items", iid);
+  console.log(docRef);
+  return await deleteDoc(docRef);
+};
+
+export const deleteCommunityItemLink = async (iid) => {
   const colRef = collection(db, "junction_community_items");
   const q = query(colRef, where("itemid", "==", iid));
   const querySnapshot = await getDocs(q);
 
-  const docRef = doc(db, "items", iid);
-
   console.log(q);
   console.log(querySnapshot);
-  console.log(docRef);
-
-  return await deleteDoc(docRef).then(deleteDoc(querySnapshot));
-};
-
-//This should return an array of items that the community have
-//THIS IS HERE FOR REF
-export const queqryItems = async (cid) => {
-  const colRef = collection(db, "junction_community_items");
-  const q = query(colRef, where("commid", "==", cid));
-  const querySnapshot = await getDocs(q);
 
   let data = [];
+  console.log("THIS IS THE LINK PART");
 
+  //Put docref into array
   querySnapshot.forEach((doc) => {
-    //console.log(doc.data());
-    data = [...data, doc.data().itemid];
+    console.log(doc);
+    data = [...data, doc.ref];
   });
-  return data;
+  console.log(data[0]);
+  return await deleteDoc(data[0]);
 };

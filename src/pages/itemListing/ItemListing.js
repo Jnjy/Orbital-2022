@@ -44,6 +44,7 @@ function ItemListing() {
           //console.log(d.id);
           return [d.id, d.data()];
         });
+        console.log(e);
         setItemList(e);
         setIsLoading(false);
       });
@@ -74,7 +75,9 @@ function ItemListing() {
                     <TableCell>PlaceHolder</TableCell>
                     <TableCell>{e[1].itemPrice}</TableCell>
                     <TableCell>{e[1].itemCond}</TableCell>
-                    <TableCell><ActionButton item={e}/></TableCell>
+                    <TableCell>
+                      <ActionButton item={e} />
+                    </TableCell>
                   </TableRow>
                 ))
               ) : (
