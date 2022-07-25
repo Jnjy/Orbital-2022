@@ -1,5 +1,5 @@
 import { Box, Button, MenuItem, Modal, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import styles from "../itemListing.module.css";
 import { getImageURL } from "../../../hooks/useStorage";
@@ -27,6 +27,8 @@ const infoBox = {
 function ViewItem(props) {
   const { item } = props;
   const [open, setOpen] = useState(false);
+  const [image, setImage] = useState("https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png");
+
   const handleOpen = () => {
     setOpen(true);
     console.log(item);
@@ -36,8 +38,12 @@ function ViewItem(props) {
   const getImage = async (path) => {
     const imageURL = await getImageURL(path);
     // console.log(imageURL);
-    return imageURL;
+    setImage(imageURL);
   };
+
+  useEffect(() => {
+    getImage(item[1].image);
+  })
 
   return (
     <>
@@ -55,7 +61,7 @@ function ViewItem(props) {
                 <Typography variant="h5">{item[1].itemName}</Typography>
                 <img
                   className={styles.image}
-                  src={getImage(item[1].image)}
+                  src={image}
                   alt={item[1].itemName}
                 />
                 <Typography variant="p">
